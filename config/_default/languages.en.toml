@@ -11,7 +11,7 @@ copyright = "© 2024 Steven Lio"
   dateFormat = "02 Jan, 2006"
 
   mainSections = ["section1", "section2"]
-  description = "Portfolio of Steven Lio"
+  description = "Personal site of Steven Lio"
 
 [params.author]
   name = "Steven Lio"

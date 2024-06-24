@@ -1,6 +1,6 @@
 ---
-description: Personal site of Ruihao Li
-# title: 'Steven Lioi'
+description: Personal site of Steven Lio
+# title: 'Steven Lio'
 ---
 
 {{< lead >}}
