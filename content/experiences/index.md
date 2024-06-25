@@ -31,32 +31,32 @@ showComments: false
 
 ## Professional Experience
 
-<!---<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Data Scientist** · [Blueprint Software System](https://www.blueprintsys.com/)<br>
 <kbd>Sep, 2022 – Jun, 2024</kbd>
 
 
-<!---<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Quality Assurance Business Analyst** · [Blueprint Software System](https://www.blueprintsys.com/)<br>
 <kbd>Apr, 2021 – Aug, 2022</kbd>
 
 
-<!---<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Data Scientist** · [Bell Mobility](https://www.bell.ca/Mobility/)<br>
 <kbd>Jan, 2020 – Dec, 2020</kbd>
 
 
-<!---<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Market Insight Analyst** · [Bell Mobility](https://www.bell.ca/Mobility/)<br>
 <kbd>Aug, 2017 – Dec, 2019</kbd>
 
 
-<!---<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Data QA Analyst** · [Environment and Climate Change Canada](https://weather.gc.ca/canada_e.html)<br>
 <kbd>May, 2016 – Apr, 2017</kbd>
 
@@ -65,14 +65,14 @@ showComments: false
 
 ## Co-op / Internship
 
-<!---<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Data QA Support** · [Environment and Climate Change Canada](https://weather.gc.ca/canada_e.html)</a><br>
 <kbd>May, 2015 – Dec, 2015</kbd>
 
 
-<!---<img src="/experiences/jobs/sc.jpeg" alt="Statistics Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="jobs/sc.jpeg" alt="Statistics Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Assistant Methodologist** · [Statistics Canada](https://www.statcan.gc.ca/en/start)</a><br>
 <kbd>Jan, 2014 – Aug, 2014</kbd>
 
@@ -102,15 +102,15 @@ showComments: false
 
 ## Education
 
-<!---<img src="/experiences/jobs/ubc.jpeg" alt="UBC" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="/experiences/jobs/ubc.jpeg" alt="UBC" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Masters of Data Science**<br>
 <a href="https://masterdatascience.ubc.ca/">University of British Columbia</a><br>
 <kbd>Sep, 2021 - Aug, 2022</kbd>
 
 
-<!---<img src="/experiences/jobs/mc.jpeg" alt="McMaster" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
---->
+<img src="/experiences/jobs/mc.jpeg" alt="McMaster" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
 **Honors Bachelor of Science - Mathematics and Statistics Co-op**<br>
 <a href="https://scce.science.mcmaster.ca/">McMaster University</a><br>
 <kbd>Sep, 2011 - Aug, 2016</kbd>
@@ -122,7 +122,7 @@ showComments: false
 
 ------
 
-View my detail [Résumé](/experiences/Steven_Lio_Resume.pdf) or 
-{{<button href="/experiences/Steven_Lio_Resume.pdf" download="Steven_Lio_Resume" target="_self">}}
+View my detail [Résumé](Steven_Lio_Resume.pdf) or 
+{{<button href="Steven_Lio_Resume.pdf" download="Steven_Lio_Resume" target="_self">}}
 Download
 {{</button>}}
