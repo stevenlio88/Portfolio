@@ -136,6 +136,6 @@ showComments: false
 
 ------
 
-{{<button href="/experiences/Steven_Lio_Resume.pdf" download="download" target="_self">}}
+{{<button href="/experiences/Steven_Lio_Resume.pdf" download="Steven_Lio_Resume" target="_self">}}
 Download Résumé
 {{</button>}}

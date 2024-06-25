@@ -9,13 +9,11 @@ description: Personal site of Steven Lio
 
 Hi there! 你好!  👋
 
-Welcome to my portfolio! 
+Welcome to my personal website! 
 
-I am a dedicated data scientist with over 6 years of experience specializing in **developing data-driven solutions** to **drive business performance**.
+I am a dedicated Data Scientist with extensive experience in **developing data-driven solutions** to **drive business performance**.
 
-Please feel free to explore my portfolio to discover projects that I have worked on or topics that I find interesting in the field of data science.
-
-</br>
+Please explore my portfolio to discover projects I've worked on and topics I find interesting in data science.
 
 {{< alert "linkedin">}}
 I am always open to collaborations and discussions. Please feel free to reach out to me on [Linkedin](https://www.linkedin.com/in/steven-lio/).
