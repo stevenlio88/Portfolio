@@ -31,83 +31,70 @@ showComments: false
 
 ## Professional Experience
 
-<p>
-	<a href="https://www.blueprintsys.com/">
-		<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Data Scientist</b> · <a href="https://www.blueprintsys.com/">Blueprint Software System</a><br>
-	<kbd>Sep, 2022 – Jun, 2024</kbd>
-</p>
+<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Data Scientist** · [Blueprint Software System](https://www.blueprintsys.com/)<br>
+*Sep, 2022 – Jun, 2024*
 
 
-<p>
-	<a href="https://www.blueprintsys.com/">
-		<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Quality Assurance Business Analyst</b> · <a href="https://www.blueprintsys.com/">Blueprint Software System</a><br>
-	<kbd>Apr, 2021 – Aug, 2022</kbd>
-</p>
+<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
-<p>
-	<a href="https://www.bell.ca/Mobility">
-		<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Data Scientist</b> · <a href="https://www.bell.ca/Mobility/">Bell Mobility</a><br>
-	<kbd>Jan, 2020 – Dec, 2020</kbd>
-</p>
+**Quality Assurance Business Analyst** · [Blueprint Software System](https://www.blueprintsys.com/)<br>
+*Apr, 2021 – Aug, 2022*
 
-<p>
-	<a href="https://www.bell.ca/Mobility">
-		<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Market Insight Analyst</b> · <a href="https://www.bell.ca/Mobility/">Bell Mobility</a><br>
-	<kbd>Aug, 2017 – Dec, 2019</kbd>
-</p>
 
-<p>
-	<a href="https://weather.gc.ca/canada_e.html">
-		<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Data QA Analyst</b> · <a href="https://weather.gc.ca/canada_e.html">Environment and Climate Change Canada</a><br>
-	<kbd>May, 2016 – Apr, 2017</kbd>
-</p>
+<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Data Scientist** · [Bell Mobility](https://www.bell.ca/Mobility/)<br>
+*Jan, 2020 – Dec, 2020*
+
+
+<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Market Insight Analyst** · [Bell Mobility](https://www.bell.ca/Mobility/)<br>
+*Aug, 2017 – Dec, 2019*
+
+
+<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Data QA Analyst** · [Environment and Climate Change Canada](https://weather.gc.ca/canada_e.html)<br>
+*May, 2016 – Apr, 2017*
 
 
 ------
 
 ## Co-op / Internship
-<p>
-	<a href="https://weather.gc.ca/canada_e.html">
-		<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Data QA Support</b> · <a href="https://weather.gc.ca/canada_e.html">Environment and Climate Change Canada</a><br>
-	<kbd>May, 2015 – Dec, 2015</kbd>
-</p>
 
-<p>
-	<a href="https://www.statcan.gc.ca/en/start">
-		<img src="/experiences/jobs/sc.jpeg" alt="Statistics Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
-	</a>
-	<b>Assistant Methodologist</b> · <a href="https://www.statcan.gc.ca/en/start">Statistics Canada</a><br>
-	<kbd>Jan, 2014 – Aug, 2014</kbd>
-</p>
+<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
+**Data QA Support** · [Environment and Climate Change Canada](https://weather.gc.ca/canada_e.html)</a><br>
+<kbd>May, 2015 – Dec, 2015</kbd>
+
+
+<img src="/experiences/jobs/sc.jpeg" alt="Statistics Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Assistant Methodologist** · [Statistics Canada](https://www.statcan.gc.ca/en/start)</a><br>
+<kbd>Jan, 2014 – Aug, 2014</kbd>
 
 ------
 
 ## Projects
 
-<kbd>Jan, 2023 - Jun, 2023</kbd><br>
-<b>Segmentation of Coral baby</b> · Personal Project
+<b>Segmentation of Coral baby</b> · Personal Project<br>
+<kbd>Jan, 2023 - Jun, 2023</kbd>
+
 * Developed an image segmentation model using a U-Net architecture with transfer learning from ResNet50 to identify coral babies in raw images of coral frags
 
-<kbd>May, 2022 - Jun, 2022</kbd><br>
+
 <b>Photo of Photo detection</b> · Capston Project - Trusting Pixels Inc.<br>
+<kbd>May, 2022 - Jun, 2022</kbd>
+
 * Collaborated with a team to develop a proof-of-concept machine learning model for detecting recaptured images
 * Built an interactive Dash application incorporating the best model, allowing users to annotate and identify false recaptured images
 
-<kbd>Feb, 2021 - Feb, 2021</kbd><br>
-<b>Polyfit</b> · Personal Project
+
+<b>Polyfit</b> · Personal Project<br>
+<kbd>Feb, 2021 - Feb, 2021</kbd>
 * Interactive tool for visualizing curve fitting using polynomials using R Shiny
 * [Live-demo](http://stevenlio.shinyapps.io/polyfit), [{{< icon "github" >}} GitHub](https://github.com/stevenlio88/Polyfit)
 
@@ -115,22 +102,18 @@ showComments: false
 
 ## Education
 
-<div>
-    <a href="https://masterdatascience.ubc.ca/">
-        <img src="/experiences/jobs/ubc.jpeg" alt="UBC" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-    </a>
-    <b>Masters of Data Science</b><br>
-	<a href="https://masterdatascience.ubc.ca/">University of British Columbia</a><br>
-	<kbd>Sep, 2021 - Aug, 2022</kbd><br>
+<img src="/experiences/jobs/ubc.jpeg" alt="UBC" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
-<div>
-    <a href="https://scce.science.mcmaster.ca/">
-        <img src="/experiences/jobs/mc.jpeg" alt="McMaster" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-    </a>
-    <b>Honors Bachelor of Science - Mathematics and Statistics Co-op</b><br>
-	<a href="https://scce.science.mcmaster.ca/">McMaster University</a><br>
-	<kbd>Sep, 2011 - Aug, 2016</kbd><br>
-</div>
+**Masters of Data Science**<br>
+<a href="https://masterdatascience.ubc.ca/">University of British Columbia</a><br>
+<kbd>Sep, 2021 - Aug, 2022</kbd><br>
+
+<img src="/experiences/jobs/mc.jpeg" alt="McMaster" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Honors Bachelor of Science - Mathematics and Statistics Co-op**<br>
+<a href="https://scce.science.mcmaster.ca/">McMaster University</a><br>
+<kbd>Sep, 2011 - Aug, 2016</kbd><br>
+
 
 ## Misc. Information
 
