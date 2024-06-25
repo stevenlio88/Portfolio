@@ -1,10 +1,20 @@
 ![icon](/themes/congo/static/android-chrome-192x192.png)
 
-Hi, welcome!
+Hi, welcome! 你好！👋
 
 This is the github repository for Steven Lio's [personal site](https://stevenlio88.github.io/Portfolio/).
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=yushi1007&layout=compact)](https://github.com/stevenlio88)
+
+### About me 
+- Canada 🍁
+- Curious 🦧
+- Travel 🗺️
+- Data Science 👨‍💻
+- Python🐍
+- Cat 🐈 & Dogs 🐕
+- Piano 🎹
+- Photography 📷
 
 ### Reach out to me 📫
 
