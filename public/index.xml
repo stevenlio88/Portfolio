@@ -28,14 +28,14 @@
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>A picture of me - Jun, 2024&#xD;I am Cantonese, born in Hong Kong, China and grew up in Macau, China.</description>
+      <description>A picture of me - Jun, 2024&#xD;Hi!</description>
     </item>
     <item>
       <title>Résumé</title>
       <link>http://localhost:1313/experiences/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/experiences/</guid>
-      <description>Detailed Résumé can be found here.</description>
+      <description>Technical Skills # Programming Languages: Python&#xD;, R&#xD;, SQL&#xD;C#&#xD;, VB.</description>
     </item>
   </channel>
 </rss>

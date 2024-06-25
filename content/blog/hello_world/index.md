@@ -2,7 +2,7 @@
 title: "Hello World! 🌎"
 date: 2024-06-24
 draft: false
-tags: [Data Science, R, Math]
+tags: [Data Science, Math, R]
 categories: []
 showReadingTime: true
 showTableOfContents: true

@@ -7,4 +7,4 @@ showTableOfContents: true
 showComments: false
 ---
 
-Here you will find all the random things I wrote.
+Random things I wrote.
