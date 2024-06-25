@@ -1,5 +1,5 @@
 ---
-title: "Hello World"
+title: "Stay tuned"
 date: 2024-06-24
 draft: false
 tags: [Machine Learning, Python]
@@ -7,6 +7,11 @@ categories: []
 showReadingTime: true
 showTableOfContents: true
 ---
+
+I am working on putting my projects here. Stay tuned and visit back later!
+Here is me working on it....
+
+<img src="https://i.gifer.com/Kdxh.gif" align="center"/>
 
 # Lorem ipsum
 
