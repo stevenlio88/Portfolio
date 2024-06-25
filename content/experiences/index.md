@@ -102,14 +102,14 @@ showComments: false
 
 ## Education
 
-<img src="/experiences/jobs/ubc.jpeg" alt="UBC" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+<img src="jobs/ubc.jpeg" alt="UBC" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
 **Masters of Data Science**<br>
 <a href="https://masterdatascience.ubc.ca/">University of British Columbia</a><br>
 <kbd>Sep, 2021 - Aug, 2022</kbd>
 
 
-<img src="/experiences/jobs/mc.jpeg" alt="McMaster" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+<img src="jobs/mc.jpeg" alt="McMaster" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
 **Honors Bachelor of Science - Mathematics and Statistics Co-op**<br>
 <a href="https://scce.science.mcmaster.ca/">McMaster University</a><br>
