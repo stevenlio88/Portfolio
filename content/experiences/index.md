@@ -30,74 +30,72 @@ showComments: false
 ------
 
 ## Professional Experience
-<div>
-	<div>
+
+<img src="/experiences/jobs/bp.jpeg" alt="LeadTech" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;">
+
+<kbd>Aug 2022 - Present</kbd><br>**Flutter Developer** · [LeadTech](https://leadtech.com)<br>
+
+
+<p>
 	<a href="https://www.blueprintsys.com/">
-		<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+		<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
 	</a>
 	<b>Data Scientist</b> · <a href="https://www.blueprintsys.com/">Blueprint Software System</a><br>
 	<kbd>Sep, 2022 – Jun, 2024</kbd>
-	</div>
-</div>
-<br>
+</p>
 
-<div>
-<a href="https://www.blueprintsys.com/">
-	<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-</a>
-<b>Quality Assurance Business Analyst</b> · <a href="https://www.blueprintsys.com/">Blueprint Software System</a><br>
-<kbd>Apr, 2021 – Aug, 2022</kbd>
-</div>
-<br>
 
-<div>
-<a href="https://www.bell.ca/Mobility">
-	<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-</a>
-<b>Data Scientist</b> · <a href="https://www.bell.ca/Mobility/">Bell Mobility</a><br>
-<kbd>Jan, 2020 – Dec, 2020</kbd>
-</div>
-<br>
+<p>
+	<a href="https://www.blueprintsys.com/">
+		<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
+	</a>
+	<b>Quality Assurance Business Analyst</b> · <a href="https://www.blueprintsys.com/">Blueprint Software System</a><br>
+	<kbd>Apr, 2021 – Aug, 2022</kbd>
+</p>
 
-<div>
-<a href="https://www.bell.ca/Mobility">
-	<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-</a>
-<b>Market Insight Analyst</b> · <a href="https://www.bell.ca/Mobility/">Bell Mobility</a><br>
-<kbd>Aug, 2017 – Dec, 2019</kbd>
-</div>
-<br>
+<p>
+	<a href="https://www.bell.ca/Mobility">
+		<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
+	</a>
+	<b>Data Scientist</b> · <a href="https://www.bell.ca/Mobility/">Bell Mobility</a><br>
+	<kbd>Jan, 2020 – Dec, 2020</kbd>
+</p>
 
-<div>
-<a href="https://weather.gc.ca/canada_e.html">
-	<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-</a>
-<b>Data QA Analyst</b> · <a href="https://weather.gc.ca/canada_e.html">Environment and Climate Change Canada</a><br>
-<kbd>May, 2016 – Apr, 2017</kbd>
-</div>
-<br>
+<p>
+	<a href="https://www.bell.ca/Mobility">
+		<img src="/experiences/jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
+	</a>
+	<b>Market Insight Analyst</b> · <a href="https://www.bell.ca/Mobility/">Bell Mobility</a><br>
+	<kbd>Aug, 2017 – Dec, 2019</kbd>
+</p>
+
+<p>
+	<a href="https://weather.gc.ca/canada_e.html">
+		<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
+	</a>
+	<b>Data QA Analyst</b> · <a href="https://weather.gc.ca/canada_e.html">Environment and Climate Change Canada</a><br>
+	<kbd>May, 2016 – Apr, 2017</kbd>
+</p>
 
 
 ------
 
 ## Co-op / Internship
-<div>
-<a href="https://weather.gc.ca/canada_e.html">
-	<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-</a>
-<b>Data QA Support</b> · <a href="https://weather.gc.ca/canada_e.html">Environment and Climate Change Canada</a><br>
-<kbd>May, 2015 – Dec, 2015</kbd>
-</div>
-<br>
+<p>
+	<a href="https://weather.gc.ca/canada_e.html">
+		<img src="/experiences/jobs/ecc.jpeg" alt="Environment Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
+	</a>
+	<b>Data QA Support</b> · <a href="https://weather.gc.ca/canada_e.html">Environment and Climate Change Canada</a><br>
+	<kbd>May, 2015 – Dec, 2015</kbd>
+</p>
 
-<div>
-<a href="https://www.statcan.gc.ca/en/start">
-	<img src="/experiences/jobs/sc.jpeg" alt="Statistics Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-</a>
-<b>Assistant Methodologist</b> · <a href="https://www.statcan.gc.ca/en/start">Statistics Canada</a><br>
-<kbd>Jan, 2014 – Aug, 2014</kbd>
-</div>
-<br>
+<p>
+	<a href="https://www.statcan.gc.ca/en/start">
+		<img src="/experiences/jobs/sc.jpeg" alt="Statistics Canada" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
+	</a>
+	<b>Assistant Methodologist</b> · <a href="https://www.statcan.gc.ca/en/start">Statistics Canada</a><br>
+	<kbd>Jan, 2014 – Aug, 2014</kbd>
+</p>
 
 
 ------
