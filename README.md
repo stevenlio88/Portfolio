@@ -4,4 +4,13 @@ Hi, welcome!
 
 This is the github repository for Steven Lio's [personal site](https://stevenlio88.github.io/Portfolio/).
 
-You can find me on [Linkedin](https://www.linkedin.com/in/steven-lio/) or [Instagram](https://www.instagram.com/stevenlio/).
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=yushi1007&layout=compact)](https://github.com/stevenlio88)
+
+### Reach out to me 📫
+
+[![email](https://img.shields.io/badge/-email-red?&logo=Gmail&logoColor=white)](mailto:stevenlio88@gmail.com)
+[![linkedin](https://img.shields.io/badge/-linkedin-blue?&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/steven-lio/)
+[![instagram](https://img.shields.io/badge/-instagram-yellow?&logo=Instagram&logoColor=white)](https://www.instagram.com/stevenlio/)
+[![website](https://img.shields.io/badge/-website-purple?&logo=Hugo&logoColor=white)](https://stevenlio88.github.io/Portfolio/)
+
+![](https://komarev.com/ghpvc/?username=stevenlio88&color=grey)
