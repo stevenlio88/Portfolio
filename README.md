@@ -21,6 +21,6 @@ This is the github repository for Steven Lio's [personal site](https://stevenlio
 [![instagram](https://img.shields.io/badge/-instagram-yellow?&logo=Instagram&logoColor=white)](https://www.instagram.com/stevenlio/)
 [![website](https://img.shields.io/badge/-website-purple?&logo=Hugo&logoColor=white)](https://stevenlio88.github.io/Portfolio/)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=yushi1007&layout=compact)](https://github.com/stevenlio88)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stevenlio88&layout=compact)](https://github.com/stevenlio88)
 
 ![](https://komarev.com/ghpvc/?username=stevenlio88&color=grey)
