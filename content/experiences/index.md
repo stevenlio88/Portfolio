@@ -31,11 +31,6 @@ showComments: false
 
 ## Professional Experience
 
-<img src="/experiences/jobs/bp.jpeg" alt="LeadTech" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;">
-
-<kbd>Aug 2022 - Present</kbd><br>**Flutter Developer** · [LeadTech](https://leadtech.com)<br>
-
-
 <p>
 	<a href="https://www.blueprintsys.com/">
 		<img src="/experiences/jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" /></img>
