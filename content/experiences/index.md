@@ -135,7 +135,7 @@ showComments: false
 * Languages: English, Cantonese, Mandarin
 
 ------
-
+View my detail [Résumé](/experiences/Steven_Lio_Resume.pdf) or 
 {{<button href="/experiences/Steven_Lio_Resume.pdf" download="Steven_Lio_Resume" target="_self">}}
-Download Résumé
+Download
 {{</button>}}
