@@ -10,13 +10,6 @@
     <lastBuildDate>Mon, 24 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/projects/hello_world/</link>
-      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/hello_world/</guid>
-      <description>Lorem ipsum #Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
-    </item>
-    <item>
       <title>Hello World! 🌎</title>
       <link>http://localhost:1313/blog/hello_world/</link>
       <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
@@ -24,11 +17,18 @@
       <description>Hello internet, welcome to my personal website 🐣!</description>
     </item>
     <item>
+      <title>Stay tuned</title>
+      <link>http://localhost:1313/projects/stay_tuned/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/stay_tuned/</guid>
+      <description>I am working on putting my projects here.</description>
+    </item>
+    <item>
       <title>About me</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>A picture of me&#xD;I am Cantonese, born in Hong Kong, China and grew up in Macau, China.</description>
+      <description>A picture of me - Jun, 2024&#xD;I am Cantonese, born in Hong Kong, China and grew up in Macau, China.</description>
     </item>
     <item>
       <title>Résumé</title>

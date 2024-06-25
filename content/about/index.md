@@ -9,9 +9,9 @@ showComments: false
 
 <center>
 {{< figure
-    src="android-chrome-512x512.png"
+    src="me.jpg"
     alt="Data Scientist | Machine Learning Engineer | Data Analyst"
-    caption="A picture of me"
+    caption="A picture of me - Jun, 2024"
     class="center_scaled"
     >}}
 </center>
