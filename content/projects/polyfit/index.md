@@ -2,7 +2,7 @@
 title: "Polyfit〰️"
 date: 2021-02-06
 draft: false
-tags: [Machine Learning, Data Science, Predictive Modeling, Linear Algebra, R, Shiny]
+tags: [Machine Learning, Data Science, Predictive Modeling, Linear Algebra, R, R Shiny]
 categories: []
 showReadingTime: true
 showTableOfContents: true

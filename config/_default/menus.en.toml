@@ -32,7 +32,7 @@
 		
 [[main]]
   identifier = "search"
-  weight = 99
+  weight = 5
   [main.params]
     action = "search"
 
