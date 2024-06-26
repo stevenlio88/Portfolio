@@ -7,26 +7,13 @@ description: Personal site of Steven Lio
 
 {{< /lead >}}
 
-Hi there! 你好!  👋
+<!---Hi there! 你好! Welcome to my personal website! 👋 --->
 
-Welcome to my personal website! 
+I specialize in developing tools and implementing advanced **Machine Learning** solutions to tackle challenges within **Data Science** and **Data-Driven Analytics**.
 
-I am a dedicated Data Scientist with extensive experience in **developing data-driven solutions** to **drive business performance**.
 
-Please explore my portfolio to discover projects I've worked on and topics I find interesting in data science.
-
-{{< alert "linkedin">}}
-I am always open to collaborations and discussions. Please feel free to reach out to me on [Linkedin](https://www.linkedin.com/in/steven-lio/).
-{{< /alert >}}
+{{<button href="/about" target="_self">}}
+Learn More
+{{</button>}}
 
 <br>
-
-<!---
-{{< button href="/about/" target="_self" >}}
-About
-{{< /button >}}
-&nbsp; &nbsp; &nbsp;
-{{< button href="/experience/" target="_self" >}}
-Experiences
-{{< /button >}}
---->

@@ -5,12 +5,12 @@ draft: false
 tags: [Data Science, Math, R]
 categories: []
 showReadingTime: true
-showTableOfContents: true
+showTableOfContents: false
 ---
 
 Hello internet, welcome to my personal website 🐣! First time doing this, let's see how it goes!
 
-## Display some of my favorite Math equations:
+## Display some Math:
 Einstein's famous Mass-energy equivalence formula 🌌:
 
 $$ E = mc^2 $$
@@ -34,7 +34,7 @@ An example graph of the function:
     >}}
 </center>
 
-## Embedding codes
+## Embedding code block
 
 This is the R code used to generate the above graph.
 
@@ -99,7 +99,7 @@ ggplot(data,aes(x,y))+
  geom_line()
 ```
 
-## Let's talk about some Linear Algebra:
+## Some Linear Algebra:
 
 To find a plane of best-fit.
 <img src="plane.gif" align="center"/>
@@ -177,7 +177,7 @@ $$
 
 Hence for a line, you are solving for the equation with one parameter $$y = \beta_0 + \beta_1 x$$ and for a plane there will be two parameters. $$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2$$
 
-## Least-squares estimation (a.k.a. Line of best fit):
+## Least-squares estimation:
 
 Since *y* and *x* are assumed to be a linear relationship and we would like to find the "best" *β* which solve the system of equations and to minimize *ε*. Hence let:
 $$

@@ -10,14 +10,14 @@ copyright = "© 2024 Steven Lio"
 [params]
   dateFormat = "02 Jan, 2006"
 
-  mainSections = ["section1", "section2"]
+  mainSections = ["projects"]
   description = "Personal site of Steven Lio"
 
 [params.author]
   name = "Steven Lio"
   image = "img/android-chrome-512x512.png"
-  headline = "Data Scientist | Machine Learning Engineer | Data Analyst"
-  bio = "Data Scientist | Machine Learning Engineer | Data Analyst"
+  headline = "M.Sc. in Data Science | Data Scientist & ML Engineer | Data Analyst"
+  bio = "M.Sc. in Data Science | Data Scientist & ML Engineer | Data Analyst"
   links = [
     { linkedin = "https://linkedin.com/in/steven-lio" },
 	{ github = "https://github.com/stevenlio88" },

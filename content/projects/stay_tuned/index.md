@@ -6,9 +6,12 @@ tags: [Machine Learning, Python]
 categories: []
 showReadingTime: true
 showTableOfContents: true
+summary: "More projects is being curated here . . ."
 ---
 
-I am working on putting my projects here. Stay tuned and visit back later!
+I am working on putting my projects here. Stay tuned and I hope you will visit back later!
+Meanwhile, take a look at my [Résumé](/resume) or check out my first blog [here](/blog).
+
 Here is me working on it....
 
 <img src="https://i.gifer.com/Kdxh.gif" align="center"/>
