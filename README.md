@@ -1,4 +1,4 @@
-![icon](/themes/congo/static/android-chrome-192x192.png)  
+![icon](/static/android-chrome-192x192.png)  
 
 [![Deploy Hugo site to Pages](https://github.com/stevenlio88/Portfolio/actions/workflows/hugo.yml/badge.svg)](https://github.com/stevenlio88/Portfolio/actions/workflows/hugo.yml)
 
