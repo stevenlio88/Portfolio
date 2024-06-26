@@ -12,7 +12,7 @@ description: Personal site of Steven Lio
 I specialize in developing tools and implementing advanced **Machine Learning** solutions to tackle challenges within **Data Science** and **Data-Driven Analytics**.
 
 
-{{<button href="/about/" target="_self">}}
+{{<button href="/about" target="_self">}}
 Learn More
 {{</button>}}
 
