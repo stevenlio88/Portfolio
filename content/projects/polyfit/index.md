@@ -20,7 +20,7 @@ Launch App
 
 ## Introduction
 
-The aim of this project is to provide an educational tool that enhances understanding of Polynomial Regression<sup>1</sup>, model complexity, 
+The aim of this project is to provide an educational tool that enhances understanding of Polynomial Regression<sup>[1](https://en.wikipedia.org/wiki/Polynomial_regression)</sup>, model complexity, 
 and the trade-offs between model fit and over-fitting in data analysis and predictive modeling.
 
 The final product is an interactive app built using [R Shiny](https://www.rstudio.com/products/shiny/). This application will allow users to explore 
@@ -30,9 +30,9 @@ plots and key statistical metrics.
 ## Background
 
 During my undergraduate studies, I was fascinated by the numerical methods used to find approximate solutions for problems 
-where exact solutions are difficult to obtain. These methods form the backbone of many machine learning algorithms, such as numerical linear algebra<sup>2</sup> for solving 
-regression problems with large datasets, optimization algoithm like gradient descent<sup>3</sup> for minimizing cost functions, and backpropagation<sup>4</sup> for solving 
-complex chained derivatives when training neural networks<sup>5</sup>. This fascination inpired me to create an interactive tool that demonstrates these principles in action.
+where exact solutions are difficult to obtain. These methods form the backbone of many machine learning algorithms, such as numerical linear algebra<sup>[2](https://en.wikipedia.org/wiki/Numerical_linear_algebra)</sup> for solving 
+regression problems with large datasets, optimization algoithm like gradient descent<sup>[3](https://en.wikipedia.org/wiki/Gradient_descent)</sup> for minimizing cost functions, and backpropagation<sup>[4](https://en.wikipedia.org/wiki/Backpropagation)</sup> for solving 
+complex chained derivatives when training neural networks<sup>[5](https://en.wikipedia.org/wiki/Neural_network)</sup>. This fascination inpired me to create an interactive tool that demonstrates these principles in action.
 
 ## Building the App
 
@@ -65,7 +65,7 @@ The source code can be found here at [{{< icon "github" >}} GitHub](https://gith
 
 ## Conclusion
 
-Thank you for reading! If you like to learn more details about Polynomial Regression<sup>1</sup> you can also
+Thank you for reading! If you like to learn more details about Polynomial Regression<sup>[1](https://en.wikipedia.org/wiki/Polynomial_regression)</sup> you can also
 check out this article I wrote on Medium [{{< icon "medium" >}} Polynomial Regression〰️](https://stevenlio.medium.com/polynomial-regression-%EF%B8%8F-e0e20bfbe9d5)
 and play with the app as you read it or leave a comment below (GitHub required).
 

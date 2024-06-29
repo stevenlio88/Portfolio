@@ -89,12 +89,12 @@ showComments: false
 * Developed an image segmentation model using a U-Net architecture with transfer learning from ResNet50 to identify coral babies in raw images of coral frags
 
 
-**Photo of Photo detection** · Trusting Pixels Inc.<br>
+**Photo of Photo** · Trusting Pixels Inc.<br>
 <kbd>May, 2022 - Jun, 2022</kbd>
 
 * Collaborated on a team to develop a proof-of-concept machine learning model to detect recaptured images
 * Built an interactive Dash application incorporating the best model, allowing users to annotate and identify false recaptured images
-
+* [Project Page](/projects/photo_photo)
 
 **Polyfit** · Personal Project<br>
 <kbd>Feb, 2021 - Feb, 2021</kbd>

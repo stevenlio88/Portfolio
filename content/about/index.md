@@ -56,3 +56,11 @@ If you are interested to learn more about me, feel free to message me on [{{< ic
 *"All models are wrong, but some are useful" - [George Box](https://en.wikipedia.org/wiki/All_models_are_wrong#Quotations_of_George_Box)*
 
 *"We are the representatives of the cosmos; we are an example of what hydrogen atoms can do, given 15 billion years of cosmic evolution." - [Carl Sagan](https://en.wikipedia.org/wiki/Carl_Sagan)*
+
+---
+
+Check out the projects I've previously worked on:
+
+{{<button href="/projects/" target="_self">}}
+Learn More
+{{</button>}}
