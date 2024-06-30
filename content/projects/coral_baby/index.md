@@ -60,11 +60,11 @@ However, I can show you an example of the images I used:
 <div class="row">
   <div class="column">
     <figcaption align="center">Image example</figcaption>
-	<img src="coralplug.jpg" style="width: 40%; margin-top: 5px;">
+	<img src="coralplug.JPG" style="width: 40%; margin-top: 5px;">
   </div>
   <div class="column">
   	<figcaption align="center">Coral baby (Brown)</figcaption>
-	<img src="coralbaby.jpg" style="width: 40%; margin-top: 5px;">
+	<img src="coralbaby.JPG" style="width: 40%; margin-top: 5px;">
   </div>
 </div>
 
