@@ -24,6 +24,13 @@
       <description>More projects is being curated here . . .</description>
     </item>
     <item>
+      <title>Image Segmentation of Coral Baby</title>
+      <link>http://localhost:1313/projects/coral_baby/</link>
+      <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/coral_baby/</guid>
+      <description>Process of creating robust image segmentation of coral babies</description>
+    </item>
+    <item>
       <title>Photo of Photo</title>
       <link>http://localhost:1313/projects/photo_photo/</link>
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>

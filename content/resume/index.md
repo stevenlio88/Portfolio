@@ -83,10 +83,10 @@ showComments: false
 
 ## Projects
 
-**Segmentation of Coral baby** · Personal Project<br>
+**Image Segmentation of Coral Baby** · Personal Project<br>
 <kbd>Jan, 2023 - Jun, 2023</kbd>
 
-* Developed an image segmentation model using a U-Net architecture with transfer learning from ResNet50 to identify coral babies in raw images of coral frags
+* Developed an image segmentation model using a [U-Net](https://en.wikipedia.org/wiki/U-Net#:~:text=U%2DNet%20is%20a%20convolutional,of%20the%20University%20of%20Freiburg.) architecture with [ResNet](https://en.wikipedia.org/wiki/Residual_neural_network) backbone, transfer learning using pre-trained weights from [ImageNet](https://www.image-net.org/) to highlight area of coral babies in images of coral frags
 
 
 **Photo of Photo** · Trusting Pixels Inc.<br>

@@ -1,0 +1,62 @@
+{{ if not ($.Page.Scratch.Get "plotlyloaded") }}
+  {{ $.Page.Scratch.Set "plotlyloaded" 1 }}
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{{ end }}
+
+{{ $json := .Get "json" }}
+{{ $height := .Get "height" | default "100%" }}
+{{ $width := .Get "width" | default "100%" }}
+<div id="{{$json}}" class="plotly" style="height:{{$height}}; width:{{$width}}"></div>
+
+<script>
+function getCurrentTheme() {
+	const htmlClassList = document.documentElement.classList;
+    return htmlClassList.contains('dark') ? 'dark' : 'light';
+}
+
+function updatePlotlyLayout(theme, fig, originalLayout) {
+    var layoutUpdate = {};
+    if (theme === 'dark') {
+        layoutUpdate = {
+            paper_bgcolor: 'rgb(31,41,55)',
+            plot_bgcolor: 'rgb(40,52,71)',
+            font: {color: 'white'}
+        };
+    } else if (theme === 'light') {
+		layoutUpdate = originalLayout;
+	}
+	Plotly.update(fig.id, {}, layoutUpdate);
+}
+
+Plotly.d3.json({{$json}}, function(err, fig) {
+    fig.id = '{{$json}}';
+    var originalLayout = JSON.parse(JSON.stringify(fig.layout));
+
+    Plotly.plot('{{$json}}', fig.data, fig.layout, { responsive: true, displayModeBar: false });
+    var theme = getCurrentTheme();
+    updatePlotlyLayout(theme, fig, originalLayout);
+	console.log(fig.layout)
+	
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.target === document.documentElement && mutation.attributeName === 'class') {
+                var newTheme = getCurrentTheme();
+                updatePlotlyLayout(newTheme, fig, originalLayout);
+				console.log(fig.layout)
+            }
+        });
+    });
+
+    observer.observe(document.documentElement, {
+        attributes: true
+    });
+});
+</script>
+
+<!---
+<script>
+Plotly.d3.json({{$json}}, function(err, fig) {
+    Plotly.plot('{{$json}}', fig.data, fig.layout, {responsive: true, displayModeBar: false});
+});
+</script>
+--->

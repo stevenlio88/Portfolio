@@ -10,7 +10,7 @@ summary: "Using machine learning algorithms to detect Photo of a Photo"
 ---
 
 <center>
-	<img src="thumb.jpg" align="center" width="80%"/>
+	<img src="thumb.jpg" style="width=80%; margin-bottom: 5px;"/>
 	<figcaption align="center">Photo of a Photo © Steven Lio</figcaption>
 </center>
 
@@ -144,15 +144,15 @@ print("SIFT Similarity between 'Image 2' and 'Image 3' is {0:.2f}.".format(sift_
 <div class="row">
   <div class="column">
     <figcaption align="center">Image 1</figcaption>
-	<img src="img1.jpeg" style="width:40%">
+	<img src="img1.jpeg" style="width:40%; margin-top: 5px;">
   </div>
   <div class="column">
   	<figcaption align="center">Image 2</figcaption>
-	<img src="img2.jpeg" style="width:40%">
+	<img src="img2.jpeg" style="width:40%; margin-top: 5px;">
   </div>
     <div class="column">
   	<figcaption align="center">Image 3</figcaption>
-	<img src="img3.jpeg" style="width:40%">
+	<img src="img3.jpeg" style="width:40%; margin-top: 5px;">
   </div>
 </div>
 
