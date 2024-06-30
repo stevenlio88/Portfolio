@@ -142,7 +142,7 @@
     "keywords": ["Machine Learning","Deep Learning","Neural Network","Computer Vision","Transfer Learning","Image Processing","Python","PyTorch","OpenCV"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "2190"
+    "wordCount": "2214"
   }
   </script>
 
@@ -792,14 +792,14 @@ This approach allows me to leverage transfer learning from a more sophisticated 
 Additionally, given that I only have an Nvidia RTX 2060 with 6GB GPU, training a larger model from the ground up isn&rsquo;t feasible.</p>
 <h2 id="model-configs" class="relative group">Model Configs <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#model-configs" aria-label="Anchor">#</a></span></h2><ul>
 <li>Image size: <strong>256x256</strong></li>
-<li>Batch size: <strong>16</strong></li>
-<li>Epoch<sup><a href="https://en.wikipedia.org/wiki/Epoch_%28computing%29" target="_blank" rel="noreferrer">10</a></sup>: <strong>120</strong> (With Early Stopping<sup><a href="https://en.wikipedia.org/wiki/Early_stopping" target="_blank" rel="noreferrer">11</a>)</sup>)</li>
-<li>Loss Criteria<sup><a href="">12</a></sup>: <strong>Jaccard Loss</strong><sup><a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="noreferrer">13</a></sup> ~ <em>IoU</em><sup><a href="">14</a></sup></li>
-<li>Activation Function<sup><a href="">15</a></sup>: <strong>Sigmoid</strong></li>
-<li>Optimizer<sup><a href="">16</a></sup>: <strong>Adam</strong><sup><a href="">17</a></sup></li>
-<li>Learning Rate<sup><a href="">18</a></sup>: <strong>0.001</strong></li>
+<li>Batch size: <strong>32</strong></li>
+<li>Epoch<sup><a href="https://en.wikipedia.org/wiki/Epoch_%28computing%29" target="_blank" rel="noreferrer">10</a></sup>: <strong>500</strong> (With Early Stopping<sup><a href="https://en.wikipedia.org/wiki/Early_stopping" target="_blank" rel="noreferrer">11</a>)</sup>)</li>
+<li>Loss Criteria<sup><a href="https://en.wikipedia.org/wiki/Loss_function" target="_blank" rel="noreferrer">12</a></sup>: <strong>Jaccard Loss</strong><sup><a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="noreferrer">13</a></sup> ~ <em>IoU</em><sup><a href="">14</a></sup></li>
+<li>Activation Function<sup><a href="https://en.wikipedia.org/wiki/Activation_function" target="_blank" rel="noreferrer">15</a></sup>: <strong>Sigmoid</strong></li>
+<li>Optimizer<sup><a href="https://en.wikipedia.org/wiki/Stochastic_optimization" target="_blank" rel="noreferrer">16</a></sup>: <strong>Adam</strong><sup><a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam" target="_blank" rel="noreferrer">17</a></sup></li>
+<li>Learning Rate<sup><a href="https://en.wikipedia.org/wiki/Learning_rate" target="_blank" rel="noreferrer">18</a></sup>: <strong>0.001</strong></li>
 </ul>
-<h2 id="results" class="relative group">Results <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#results" aria-label="Anchor">#</a></span></h2><p>The training process early stopped after only <strong>63</strong> epochs to avoid overfitting.</p>
+<h2 id="results" class="relative group">Results <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#results" aria-label="Anchor">#</a></span></h2><p>The training process early stopped after only <strong>83</strong> epochs to avoid overfitting.</p>
 <p>In terms of metrics, the model demostrated great success in learning and generating accurate masks for the training data.
 However, its performance on unseen images (validation) wasn&rsquo;t optimal, although still quite satisfactory.</p>
 <div>
@@ -860,21 +860,34 @@ Plotly.d3.json("metric.json", function(err, fig) {
 
 
 </div>
-<p>Key takeaways: the best-performing model achieved a <strong>70%</strong> Intersection over Union (IoU)<sup><a href="https://en.wikipedia.org/?title=Intersection_over_union&amp;redirect=no" target="_blank" rel="noreferrer">14</a></sup> score and an <strong>82%</strong> recall rate.</p>
+<p>Key takeaways: the best-performing model achieved a <strong>69.9%</strong> Intersection over Union (IoU)<sup><a href="https://en.wikipedia.org/?title=Intersection_over_union&amp;redirect=no" target="_blank" rel="noreferrer">14</a></sup> score and an <strong>78.9%</strong> recall rate.</p>
 <p>Upon analyzing the performance metrics, there&rsquo;s a noticeable divergence between the validation images (unseen during training) and the training images.
 This indicates that the model is susceptible to overfitting, especially given the limited amount of images available which results in a small validation set - typically associated with higher variance.
 Also, the validation set may include specific cases that were not represented in the training data.</p>
 <p>Some prediction results on unseen images:</p>
 <img src="example1.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on test image - IoU (71.8%)</figcaption>
+<figcaption align="center">Predict on test image - IoU (71.8%); Left to right: Coral Plug, True Mask, Predicted Mask</figcaption>
 <img src="example2.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on image without preprocessing</figcaption>
+<figcaption align="center">Predict on image without preprocessing; Coral Plug vs Predicted Mask</figcaption>
 <img src="example3.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on unrelated image</figcaption>
+<figcaption align="center">Predict on Lenna</figcaption>
 <h2 id="what-ive-learned" class="relative group">What I&rsquo;ve learned <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#what-ive-learned" aria-label="Anchor">#</a></span></h2><p>I&rsquo;ve gained significant insights and hands-on experience developing a Neural Network for image segmentation on real-world images.
 There are many other things to explore for improving the model such as fine tuning trainin parameters, trying different CNN architecture,
 finding larger datasets and refining the true masks so the model will learn precisely what a baby coral is.</p>
-<h2 id="references" class="relative group">References <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a></span></h2><p><sup>1</sup>
+<h2 id="references" class="relative group">References <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a></span></h2><p>Here is the Jupyter notebook on the model building process.</p>
+<a
+  class="inline-block !rounded-md bg-primary-600 px-4 py-1 !text-neutral !no-underline hover:!bg-primary-500 dark:bg-primary-700 dark:hover:!bg-primary-500"
+  href="Project_Notebook.html"
+  target="_blank"
+  
+  role="button"
+>
+  
+Notebook
+
+</a>
+
+<p><sup>1</sup>
 
   <span class="icon relative inline-block align-text-bottom">
     <?xml version="1.0" encoding="iso-8859-1"?>

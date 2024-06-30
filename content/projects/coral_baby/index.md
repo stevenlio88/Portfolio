@@ -403,16 +403,16 @@ Additionally, given that I only have an Nvidia RTX 2060 with 6GB GPU, training a
 ## Model Configs
 
 * Image size: **256x256**
-* Batch size: **16**
-* Epoch<sup>[10](https://en.wikipedia.org/wiki/Epoch_(computing))</sup>: **120** (With Early Stopping<sup>[11](https://en.wikipedia.org/wiki/Early_stopping))</sup>)
-* Loss Criteria<sup>[12]()</sup>: **Jaccard Loss**<sup>[13](https://en.wikipedia.org/wiki/Jaccard_index)</sup> ~ *IoU*<sup>[14]()</sup>
-* Activation Function<sup>[15]()</sup>: **Sigmoid**
-* Optimizer<sup>[16]()</sup>: **Adam**<sup>[17]()</sup>
-* Learning Rate<sup>[18]()</sup>: **0.001**
+* Batch size: **32**
+* Epoch<sup>[10](https://en.wikipedia.org/wiki/Epoch_(computing))</sup>: **500** (With Early Stopping<sup>[11](https://en.wikipedia.org/wiki/Early_stopping))</sup>)
+* Loss Criteria<sup>[12](https://en.wikipedia.org/wiki/Loss_function)</sup>: **Jaccard Loss**<sup>[13](https://en.wikipedia.org/wiki/Jaccard_index)</sup> ~ *IoU*<sup>[14]()</sup>
+* Activation Function<sup>[15](https://en.wikipedia.org/wiki/Activation_function)</sup>: **Sigmoid**
+* Optimizer<sup>[16](https://en.wikipedia.org/wiki/Stochastic_optimization)</sup>: **Adam**<sup>[17](https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam)</sup>
+* Learning Rate<sup>[18](https://en.wikipedia.org/wiki/Learning_rate)</sup>: **0.001**
 
 ## Results
 
-The training process early stopped after only **63** epochs to avoid overfitting.
+The training process early stopped after only **83** epochs to avoid overfitting.
 
 In terms of metrics, the model demostrated great success in learning and generating accurate masks for the training data. 
 However, its performance on unseen images (validation) wasn't optimal, although still quite satisfactory.
@@ -421,7 +421,7 @@ However, its performance on unseen images (validation) wasn't optimal, although 
 {{< plotly json="metric.json" height="50%" >}}
 </div>
 
-Key takeaways: the best-performing model achieved a **70%** Intersection over Union (IoU)<sup>[14](https://en.wikipedia.org/?title=Intersection_over_union&redirect=no)</sup> score and an **82%** recall rate.
+Key takeaways: the best-performing model achieved a **69.9%** Intersection over Union (IoU)<sup>[14](https://en.wikipedia.org/?title=Intersection_over_union&redirect=no)</sup> score and an **78.9%** recall rate.
 
 Upon analyzing the performance metrics, there's a noticeable divergence between the validation images (unseen during training) and the training images.
 This indicates that the model is susceptible to overfitting, especially given the limited amount of images available which results in a small validation set - typically associated with higher variance.
@@ -430,13 +430,13 @@ Also, the validation set may include specific cases that were not represented in
 Some prediction results on unseen images:
 
 <img src="example1.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on test image - IoU (71.8%)</figcaption>
+<figcaption align="center">Predict on test image - IoU (71.8%); Left to right: Coral Plug, True Mask, Predicted Mask</figcaption>
 
 <img src="example2.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on image without preprocessing</figcaption>
+<figcaption align="center">Predict on image without preprocessing; Coral Plug vs Predicted Mask</figcaption>
 
 <img src="example3.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on unrelated image</figcaption>
+<figcaption align="center">Predict on Lenna</figcaption>
 
 ## What I've learned
 
@@ -445,6 +445,12 @@ There are many other things to explore for improving the model such as fine tuni
 finding larger datasets and refining the true masks so the model will learn precisely what a baby coral is.
 
 ## References
+
+Here is the Jupyter notebook on the model building process.
+
+{{<button href="Project_Notebook.html" target="_blank">}}
+Notebook
+{{</button>}}
 
 <sup>1</sup>{{< icon "wikipedia" >}}[Image Segmentation](https://en.wikipedia.org/wiki/Image_segmentation)
 <sup>2</sup>{{< icon "wikipedia" >}}[Convolutional Neural Network](https://en.wikipedia.org/wiki/Convolutional_neural_network)
