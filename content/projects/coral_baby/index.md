@@ -430,7 +430,7 @@ Also, the validation set may include specific cases that were not represented in
 Some prediction results on unseen images:
 
 <img src="example1.png" style="width: 50%; margin-bottom: 5px;"/>
-<figcaption align="center">Predict on test image - IoU (71.8%); Left to right: Coral Plug, True Mask, Predicted Mask</figcaption>
+<figcaption align="center">Predict on test image - IoU (74.1%); Left to right: Coral Plug, True Mask, Predicted Mask</figcaption>
 
 <img src="example2.png" style="width: 50%; margin-bottom: 5px;"/>
 <figcaption align="center">Predict on image without preprocessing; Coral Plug vs Predicted Mask</figcaption>
