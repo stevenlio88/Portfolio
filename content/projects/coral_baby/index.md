@@ -10,7 +10,7 @@ summary: "Process of creating robust image segmentation of coral babies"
 ---
 
 <img src="thumb.jpg" style="margin-bottom: 5px;"/>
-<figcaption align="center">Picture taken at Honolulu, HI in Apr, 2024 © Steven Lio</figcaption>
+<figcaption align="center">Picture taken at Honolulu, HI, USA in Apr, 2024 © Steven Lio</figcaption>
 
 ---
 

@@ -7,21 +7,21 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2024 Steven Lio</copyright>
-    <lastBuildDate>Mon, 24 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Upgoat or Downgoat?</title>
+      <link>http://localhost:1313/projects/goat/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/goat/</guid>
+      <description>A browser app to predict Upgoat or Downgoat</description>
+    </item>
     <item>
       <title>Hello World! 🌎</title>
       <link>http://localhost:1313/blog/hello_world/</link>
       <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/hello_world/</guid>
       <description>Hello internet, welcome to my personal website 🐣!</description>
-    </item>
-    <item>
-      <title>Stay tuned</title>
-      <link>http://localhost:1313/projects/stay_tuned/</link>
-      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/stay_tuned/</guid>
-      <description>More projects is being curated here . . .</description>
     </item>
     <item>
       <title>Image Segmentation of Coral Baby</title>

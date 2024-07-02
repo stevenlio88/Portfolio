@@ -1,6 +1,6 @@
 ---
 title: "Stay tuned"
-date: 2024-06-24
+date: 2024-07-30
 draft: false
 tags: [Machine Learning, Python]
 categories: []
