@@ -19,7 +19,7 @@ summary: "A browser app to predict Upgoat or Downgoat"
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
 
-<script src="/js/onnx.js"></script>
+<script src="js/onnx.js"></script>
 
 <center>
 <input type="file" id="image-upload" accept="image/*" style="display: block; margin: 0 auto 20px;">
