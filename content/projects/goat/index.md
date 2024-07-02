@@ -1,8 +1,8 @@
 ---
-title: "Upgoat or Downgoat?"
+title: "Web Application: Upgoat or Downgoat?"
 date: 2024-07-01
 draft: false
-tags: [Data Science, Machine Learning, Computer Vision, Python, OpenCV, Javascript, YOLO, Tensorflow, ONNX]
+tags: [Data Science, Machine Learning, Computer Vision, Python, OpenCV, Javascript, YOLO, Tensorflow, ONNX, Web Application]
 categories: []
 showReadingTime: true
 showTableOfContents: true
@@ -201,6 +201,12 @@ The resulting model is able to input RGB images of size *128x128* and produce a 
 The trained model performed exceptional on validation images where after tuning it achieved **~99.9%** in all metrics and ~0% loss.
 This does not mean the model has the ability to determine upgoat vs. downgoat **99.9%** all the time. But it is very good with the images available and to decide if an goat-like
 object is right-side-up or up-side-down, and probably still good at determining yours.
+
+Here are the details of the training process:
+{{<button href="Goat_Tensorflow.html" target="_blank">}}
+Notebook
+{{</button>}}
+
 
 ### 3. Convert to ONNX
 

@@ -17,8 +17,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="rgb(255,255,255)" />
   
-  <title>Upgoat or Downgoat? &middot; Steven Lio</title>
-    <meta name="title" content="Upgoat or Downgoat? &middot; Steven Lio" />
+  <title>Web Application: Upgoat or Downgoat? &middot; Steven Lio</title>
+    <meta name="title" content="Web Application: Upgoat or Downgoat? &middot; Steven Lio" />
   
   
   
@@ -98,7 +98,7 @@
   
   <meta property="og:url" content="http://localhost:1313/projects/goat/">
   <meta property="og:site_name" content="Steven Lio">
-  <meta property="og:title" content="Upgoat or Downgoat?">
+  <meta property="og:title" content="Web Application: Upgoat or Downgoat?">
   <meta property="og:description" content="A browser app to predict Upgoat or Downgoat">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
@@ -114,7 +114,7 @@
 
   
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Upgoat or Downgoat?">
+  <meta name="twitter:title" content="Web Application: Upgoat or Downgoat?">
   <meta name="twitter:description" content="A browser app to predict Upgoat or Downgoat">
 
   
@@ -123,8 +123,8 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Projects",
-    "name": "Upgoat or Downgoat?",
-    "headline": "Upgoat or Downgoat?",
+    "name": "Web Application: Upgoat or Downgoat?",
+    "headline": "Web Application: Upgoat or Downgoat?",
     
     "abstract": "A browser app to predict Upgoat or Downgoat",
     "inLanguage": "en",
@@ -139,10 +139,10 @@
     
     "dateModified": "2024-07-01T00:00:00\u002b00:00",
     
-    "keywords": ["Data Science","Machine Learning","Computer Vision","Python","OpenCV","Javascript","YOLO","Tensorflow","ONNX"],
+    "keywords": ["Data Science","Machine Learning","Computer Vision","Python","OpenCV","Javascript","YOLO","Tensorflow","ONNX","Web Application"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1143"
+    "wordCount": "1152"
   }
   </script>
 
@@ -311,7 +311,7 @@
     <header class="max-w-prose">
       
       <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        Upgoat or Downgoat?
+        Web Application: Upgoat or Downgoat?
       </h1>
       
         <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
@@ -414,6 +414,12 @@
               href="/tags/onnx/"
               class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
               >ONNX</a
+            >
+          
+            <a
+              href="/tags/web-application/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Web Application</a
             >
           
         
@@ -628,6 +634,19 @@ in the final model then train it to identify upgoats vs downgoats.</p>
 The trained model performed exceptional on validation images where after tuning it achieved <strong>~99.9%</strong> in all metrics and ~0% loss.
 This does not mean the model has the ability to determine upgoat vs. downgoat <strong>99.9%</strong> all the time. But it is very good with the images available and to decide if an goat-like
 object is right-side-up or up-side-down, and probably still good at determining yours.</p>
+<p>Here are the details of the training process:
+<a
+  class="inline-block !rounded-md bg-primary-600 px-4 py-1 !text-neutral !no-underline hover:!bg-primary-500 dark:bg-primary-700 dark:hover:!bg-primary-500"
+  href="Goat_Tensorflow.html"
+  target="_blank"
+  
+  role="button"
+>
+  
+Notebook
+
+</a>
+</p>
 <h3 id="3-convert-to-onnx" class="relative group">3. Convert to ONNX <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#3-convert-to-onnx" aria-label="Anchor">#</a></span></h3><p>The final model object <em>(.h5)</em> is converted to an ONNX object<sup><a href="https://onnx.ai/" target="_blank" rel="noreferrer">5</a></sup>. It is an open format built to represent machine learning models available in both
 Python and JavaScript.</p>
 <details>

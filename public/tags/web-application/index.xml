@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OpenCV on Steven Lio</title>
-    <link>http://localhost:1313/tags/opencv/</link>
-    <description>Recent content in OpenCV on Steven Lio</description>
+    <title>Web Application on Steven Lio</title>
+    <link>http://localhost:1313/tags/web-application/</link>
+    <description>Recent content in Web Application on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2024 Steven Lio</copyright>
     <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/web-application/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Web Application: Upgoat or Downgoat?</title>
       <link>http://localhost:1313/projects/goat/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/goat/</guid>
       <description>A browser app to predict Upgoat or Downgoat</description>
-    </item>
-    <item>
-      <title>Image Segmentation of Coral Baby</title>
-      <link>http://localhost:1313/projects/coral_baby/</link>
-      <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/coral_baby/</guid>
-      <description>Process of creating robust image segmentation of coral babies</description>
     </item>
   </channel>
 </rss>
