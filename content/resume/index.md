@@ -128,6 +128,6 @@ Launch App
 
 ------
 
-{{<button href="Steven_Lio_Resume.pdf" target="_blank">}}
+{{<button onclick="Steven_Lio_Resume.pdf" target="_blank">}}
 Download Résumé
 {{</button>}}
