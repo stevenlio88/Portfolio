@@ -203,7 +203,7 @@ This does not mean the model has the ability to determine upgoat vs. downgoat **
 object is right-side-up or up-side-down, and probably still good at determining yours.
 
 Here are the details of the training process:
-{{<button href="/projects/goat/Goat_Tensorflow.html" target="_blank">}}
+{{<button href="Goat_Tensorflow.html" target="_blank">}}
 Notebook
 {{</button>}}
 
