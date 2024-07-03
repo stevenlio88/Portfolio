@@ -61,6 +61,6 @@ If you are interested to learn more about me, feel free to message me on [{{< ic
 
 Check out the projects I've previously worked on:
 
-{{<button href="/projects/" target="_self">}}
+{{<button href="https://stevenlio88.github.io/Portfolio/about/" target="_self">}}
 Learn More
 {{</button>}}
