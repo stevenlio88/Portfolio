@@ -100,7 +100,7 @@ showComments: false
 <kbd>Feb, 2021 - Feb, 2021</kbd>
 * Interactive R Shiny tool for visualizing curve fitting using polynomials
 * [Project Page](/projects/polyfit), [{{< icon "github" >}} GitHub](https://github.com/stevenlio88/Polyfit)
-* {{<button href="http://stevenlio.shinyapps.io/polyfit" target="_self">}}
+* {{<button href="http://stevenlio.shinyapps.io/polyfit" target="_blank">}}
 Launch App
 {{</button>}}
 
@@ -128,6 +128,6 @@ Launch App
 
 ------
 
-{{<button href="Steven_Lio_Resume.pdf" target="_self">}}
+{{<button href="/resume/Steven_Lio_Resume.pdf" target="_self">}}
 Download Résumé
 {{</button>}}

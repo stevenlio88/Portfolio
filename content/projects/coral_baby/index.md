@@ -448,7 +448,7 @@ finding larger datasets and refining the true masks so the model will learn prec
 
 Here is the Jupyter notebook on the model building process.
 
-{{<button href="Project_Notebook.html" target="_blank">}}
+{{<button href="projects/coral_baby/Project_Notebook.html" target="_blank">}}
 Notebook
 {{</button>}}
 

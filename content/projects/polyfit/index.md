@@ -12,7 +12,7 @@ summary: "Interactive R Shiny App to Visualize Polynomial Regression"
 <img src="thumb.gif" align="center"/>
 
 
-{{<button href="http://stevenlio.shinyapps.io/polyfit" target="_self">}}
+{{<button href="http://stevenlio.shinyapps.io/polyfit" target="_blank">}}
 Launch App
 {{</button>}}
 
