@@ -235,10 +235,6 @@ onnx.save(onnx_model, r"model/goat.onnx")
 
 The implementation of incorporating an ONNX model in JavaScript is straight forward using the ONNX Runtime library<sup>[6](https://onnxruntime.ai/docs/performance/model-optimizations/ort-format-models.html)</sup>.
 
-## Future Improvements
-
-Add YOLO to the app, find if image do contains a goat like subject.
-
 <details>
   <summary><u>Click me to see the model implementation in JavaScript:</u></summary>
 
@@ -260,6 +256,11 @@ const input = ... # Define the necessary input for your model
 const output = await model.run(input);
 ```
 </details>
+
+## Future Improvements
+
+Add YOLO to the app, find if image do contains a goat like subject.
+
 
 ## What I've learned
 
