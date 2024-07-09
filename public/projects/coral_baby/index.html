@@ -142,7 +142,7 @@
     "keywords": ["Machine Learning","Deep Learning","Neural Network","Computer Vision","Transfer Learning","Image Processing","Python","PyTorch","OpenCV"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "2215"
+    "wordCount": "2229"
   }
   </script>
 
@@ -711,15 +711,17 @@ to generalized especially when dealing with real-world data.</p>
 </span></span></span><span class="line"><span class="cl"><span class="s2">        n_colors (int): Number of color palettes to return.
 </span></span></span><span class="line"><span class="cl"><span class="s2">
 </span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
-</span></span></span><span class="line"><span class="cl"><span class="s2">        int: The product of a and b.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        labels (numpy.ndarray): Array contains the cluster index for each pixel 
+</span></span></span><span class="line"><span class="cl"><span class="s2">        palette (umpy.ndarray): Array of RGB `n_colors` values of the color clusters
+</span></span></span><span class="line"><span class="cl"><span class="s2">		
 </span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">pixels</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">criteria</span> <span class="o">=</span> <span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_EPS</span> <span class="o">+</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_MAX_ITER</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ret</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">kmeans</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">pixels</span><span class="p">),</span> <span class="n">n_colors</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">criteria</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">KMEANS_RANDOM_CENTERS</span>
 </span></span><span class="line"><span class="cl">    <span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">_</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">palette</span> <span class="o">=</span> <span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">counts</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#_, counts = np.unique(labels, return_counts=True)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#palette = palette[np.argsort(counts)[::-1]]</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">labels</span><span class="p">,</span> <span class="n">palette</span>
 </span></span><span class="line"><span class="cl">

@@ -311,15 +311,17 @@ def find_palette(img, n_colors=10):
         n_colors (int): Number of color palettes to return.
 
     Returns:
-        int: The product of a and b.
+        labels (numpy.ndarray): Array contains the cluster index for each pixel 
+        palette (umpy.ndarray): Array of RGB `n_colors` values of the color clusters
+		
     """
     pixels = img.reshape(-1, 3)
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, 0.1)
     ret, labels, palette = cv2.kmeans(
         np.float32(pixels), n_colors, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS
     )
-    _, counts = np.unique(labels, return_counts=True)
-    palette = palette[np.argsort(counts)[::-1]]
+    #_, counts = np.unique(labels, return_counts=True)
+    #palette = palette[np.argsort(counts)[::-1]]
 
     return labels, palette
 
