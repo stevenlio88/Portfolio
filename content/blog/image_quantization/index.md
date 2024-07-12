@@ -6,6 +6,7 @@ tags: [Image Processing, Unsupervised Learning, Python, OpenCV]
 categories: []
 showReadingTime: true
 showTableOfContents: false
+summary: "Exploring image quantization for image processing"
 ---
 
 <center>

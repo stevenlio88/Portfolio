@@ -7,14 +7,14 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2024 Steven Lio</copyright>
-    <lastBuildDate>Fri, 05 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Apr 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>test</title>
-      <link>http://localhost:1313/blog/test/</link>
-      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/test/</guid>
-      <description>ABC #sdf</description>
+      <title>A/B Testing</title>
+      <link>http://localhost:1313/projects/ab_testing/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/ab_testing/</guid>
+      <description>Process of A/B testing for web analytics</description>
     </item>
   </channel>
 </rss>

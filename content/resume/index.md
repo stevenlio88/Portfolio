@@ -7,6 +7,7 @@ showTableOfContents: true
 showComments: false
 ---
 
+
 ## Technical Skills
 
 * Programming Languages:

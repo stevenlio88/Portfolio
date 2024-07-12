@@ -14,14 +14,14 @@
       <link>http://localhost:1313/blog/image_quantization/</link>
       <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/image_quantization/</guid>
-      <description>Introduction #This blog quickly demonstrates the Image Quantization (or Color Quantization) image processing technique.</description>
+      <description>Exploring image quantization for image processing</description>
     </item>
     <item>
       <title>Web Application: Upgoat or Downgoat?</title>
       <link>http://localhost:1313/projects/goat/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/goat/</guid>
-      <description>A browser app to predict Upgoat or Downgoat</description>
+      <description>Image classification in browser</description>
     </item>
     <item>
       <title>Image Segmentation of Coral Baby</title>
@@ -36,6 +36,13 @@
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/photo_photo/</guid>
       <description>Using machine learning algorithms to detect Photo of a Photo</description>
+    </item>
+    <item>
+      <title>A/B Testing</title>
+      <link>http://localhost:1313/projects/ab_testing/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/ab_testing/</guid>
+      <description>Process of A/B testing for web analytics</description>
     </item>
   </channel>
 </rss>

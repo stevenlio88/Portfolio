@@ -6,7 +6,7 @@ tags: [Data Science, Machine Learning, Computer Vision, Python, OpenCV, Javascri
 categories: []
 showReadingTime: true
 showTableOfContents: true
-summary: "A browser app to predict Upgoat or Downgoat"
+summary: "Image classification in browser"
 ---
 
 <img src="goatlike.jpg" style="margin-bottom: 5px;"/>
