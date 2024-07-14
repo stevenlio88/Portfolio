@@ -1,6 +1,6 @@
 ---
 title: "Hello World! 🌎"
-date: 2024-06-24
+date: 2021-01-24
 draft: false
 tags: [Data Science, Linear Algebra, R]
 categories: []

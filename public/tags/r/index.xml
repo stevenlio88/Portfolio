@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2024 Steven Lio</copyright>
-    <lastBuildDate>Mon, 24 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Apr 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/r/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hello World! 🌎</title>
-      <link>http://localhost:1313/blog/hello_world/</link>
-      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/hello_world/</guid>
-      <description>Hello internet, welcome to my personal website 🐣!</description>
-    </item>
     <item>
       <title>A/B Testing</title>
       <link>http://localhost:1313/projects/ab_testing/</link>
@@ -29,6 +22,13 @@
       <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/polyfit/</guid>
       <description>Interactive R Shiny App to Visualize Polynomial Regression</description>
+    </item>
+    <item>
+      <title>Hello World! 🌎</title>
+      <link>http://localhost:1313/blog/hello_world/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/hello_world/</guid>
+      <description>Hello internet, welcome to my personal website 🐣!</description>
     </item>
   </channel>
 </rss>
