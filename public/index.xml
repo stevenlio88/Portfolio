@@ -38,6 +38,13 @@
       <description>Using machine learning algorithms to detect Photo of a Photo</description>
     </item>
     <item>
+      <title>Monte Carlo Simulation</title>
+      <link>http://localhost:1313/blog/mcmc/</link>
+      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/mcmc/</guid>
+      <description>Exploring Monte Carlo Simulation</description>
+    </item>
+    <item>
       <title>A/B Testing</title>
       <link>http://localhost:1313/projects/ab_testing/</link>
       <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>

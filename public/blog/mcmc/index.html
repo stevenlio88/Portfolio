@@ -1,0 +1,1122 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Monte Carlo Simulation &middot; Steven Lio</title>
+    <meta name="title" content="Monte Carlo Simulation &middot; Steven Lio" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.74ad8406faea02f3e186ba5126249aaeed9073629e04b05037b903396b188724.js"
+    integrity="sha256-dK2EBvrqAvPhhrpRJiSaru2Qc2KeBLBQN7kDOWsYhyQ="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.d117412fe190302876127f0bef463c0a7f75a6360ad864a8416a9ebdb8cec411.css"
+    integrity="sha256-0RdBL&#43;GQMCh2En8L70Y8Cn91pjYK2GSoQWqevbjOxBE="
+  />
+  
+    
+    
+    
+  
+  
+  
+    
+    
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9abdfbcc9a5d4d9ed7b5d31ceb05c0294430ec07b1dfec07809754d561269294.js"
+      integrity="sha256-mr37zJpdTZ7XtdMc6wXAKUQw7Aex3&#43;wHgJdU1WEmkpQ="
+      data-copy="Copy"
+      data-copied="Copied"
+    ></script>
+  
+  
+  <meta
+    name="description"
+    content="
+      
+        Exploring Monte Carlo Simulation
+      
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/blog/mcmc/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/blog/mcmc/">
+  <meta property="og:site_name" content="Steven Lio">
+  <meta property="og:title" content="Monte Carlo Simulation">
+  <meta property="og:description" content="Exploring Monte Carlo Simulation">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2022-05-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-10T00:00:00+00:00">
+    <meta property="article:tag" content="Statistics">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Python">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Monte Carlo Simulation">
+  <meta name="twitter:description" content="Exploring Monte Carlo Simulation">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Blog",
+    "name": "Monte Carlo Simulation",
+    "headline": "Monte Carlo Simulation",
+    
+    "abstract": "Exploring Monte Carlo Simulation",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/blog\/mcmc\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Steven Lio"
+    },
+    "copyrightYear": "2022",
+    "dateCreated": "2022-05-10T00:00:00\u002b00:00",
+    "datePublished": "2022-05-10T00:00:00\u002b00:00",
+    
+    "dateModified": "2022-05-10T00:00:00\u002b00:00",
+    
+    "keywords": ["Statistics","Data Science","Python"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1818"
+  }
+  </script>
+
+
+  
+  <meta name="author" content="Steven Lio" />
+  
+    
+      <link href="https://linkedin.com/in/steven-lio" rel="me" />
+    
+      <link href="https://github.com/stevenlio88" rel="me" />
+    
+      <link href="https://stevenlio.medium.com/" rel="me" />
+    
+      <link href="https://www.instagram.com/stevenlio/" rel="me" />
+    
+      <link href="https://www.flickr.com/photos/stevenlio/" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 print:hidden sm:py-10 dark:text-neutral">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >Steven Lio</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/about/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >About</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/resume/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Résumé</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/projects/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Projects</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/blog/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Blog</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                
+                
+                  <button
+                    id="search-button-1"
+                    title="Search (/)"
+                  >
+                    
+                      <span
+                        class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                      ><span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span></span><span
+                        class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                        ></span
+                      >
+                    
+                  </button>
+                
+              
+            </li>
+          
+            
+              
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Monte Carlo Simulation
+      </h1>
+      
+        <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2022-05-10 00:00:00 &#43;0000 UTC">10 May, 2022</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+      
+        
+      
+        
+          
+            <a
+              href="/tags/statistics/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Statistics</a
+            >
+          
+            <a
+              href="/tags/data-science/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Data Science</a
+            >
+          
+            <a
+              href="/tags/python/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Python</a
+            >
+          
+        
+      
+    </div>
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+      
+	  <div class="min-h-0 min-w-0 lg:max-w-screen-lg grow">
+        <center>
+<img src="thumb.jpg", width="50%">
+</center>
+<h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>This blog explores some of the applications of Monte Carlo Simulation.</p>
+<h2 id="monte-carlo-simulation" class="relative group">Monte Carlo Simulation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#monte-carlo-simulation" aria-label="Anchor">#</a></span></h2><p>Monte Carlo Simulation or Monte Carlo methods/experients is a broad class of computational algorithms that
+rely on repeated random sampling to obtain numerical results. The underlying concept is to use randomness to
+solve problems that might be deterministic in principle.</p>
+<p>It is mostly use in problems such as optimization, numerical integration and generating draws from a probability distribution.
+This provides a very powerful tool in science, engineering, artificial intelligence, finance and cryptography etc espcially in
+risk assessment and model the probability of different outcomes in a process that cannot easily be predicted due to the intervention
+of random variables.</p>
+<p>However, its main draws back comes from users has to choose between accuracy and computational cost, the curse of
+dimensionality and the reliability of random number generators.</p>
+<p>The overview of the Monte Carlo methods is as follow:</p>
+<ol>
+<li>Define a domain of possible inputs</li>
+<li>Generate inputs randomly from a probability distribution over the domain</li>
+<li>Perform a deterministic computation of the outpus</li>
+<li>Aggregate the results</li>
+</ol>
+<h2 id="estimating-pi" class="relative group">Estimating Pi <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#estimating-pi" aria-label="Anchor">#</a></span></h2><p>This is the most used example for introduction to the Monte Carlo Simulation - to estimate the value of Pi. i.e. using Monte Carlo Simulation for numerical integration.</p>
+<p>It is known that the circumference is: 2 π r hence π is the ratio of circumference and 2 times of the radius (diameter) of a circle, and the area of a circle is: π r<sup>2</sup>. Where r is the radius of the circle. Therefore, the area of a circle of radius 1 is π.</p>
+<p>The idea is to imagine a circle with radius 1 (i.e. diameter of 2) sitting inside a 2 x 2 shaped square. The ratio of the areas between the the circle and the square is
+$$ R = \frac{\text{area  of  circle}}{\text{area  of  square}} = \frac{\pi r^2}{2 * 2} = \frac{π}{4} $$</p>
+<p>Hence if we have the ratio of the areas (R) between the circle and the square then we know that
+$$ \pi = 4 * R = 4 * \frac{\text{area of circle}}{\text{area of square}} $$</p>
+<p>One may ask without knowing π how the area of the circle to be calculated then? This is where Monte Carlo Simulation comes in. We can first draw uniformed random samples of dots within the square then count the number of samples that fall within the circle inside the square. By calculating the number of samples fall inside the circle vs. total of random samples generated we can then estimate the value ratio between the two areas, and therefore estimating π.</p>
+<ol>
+<li>Draw n random samples (x, y) coordinates uniformly within the bound of the square</li>
+<li>Collects the samples (x, y) that falls within the the circle (x<sup>2</sup> + y<sup>2</sup> &lt;= r<sup>2</sup> = 1)</li>
+<li>Calculate the ratio (R) of samples inside the circle vs n</li>
+<li>Multiply the ratio (R) by 4 to get the estimated value of π</li>
+</ol>
+<details>
+  <summary><u>Click me to see the implementation in Python:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">estimate_pi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Monte Carlo Simulation: Estimate pi
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        n (int): Number of samples
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        x (list): List of randomly generated x coordinates
+</span></span></span><span class="line"><span class="cl"><span class="s2">        y (list): List of randomly generated y coordinates
+</span></span></span><span class="line"><span class="cl"><span class="s2">        inside_circle (list): List of boolean values indicates if the x, y pairs inside the unit circle
+</span></span></span><span class="line"><span class="cl"><span class="s2">        pi_estimate (float): Estimate of Pi
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inside_circle</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pi_estimate</span> <span class="o">=</span> <span class="p">(</span><span class="n">inside_circle</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inside_circle</span><span class="p">,</span> <span class="n">pi_estimate</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">i</span> <span class="o">=</span> <span class="mi">1000</span>
+</span></span><span class="line"><span class="cl"><span class="n">pi_estimates</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inside_circle</span><span class="p">,</span> <span class="n">pi_estimate</span> <span class="o">=</span> <span class="n">estimate_pi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pi_estimates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pi_estimate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Sampling Process #</span>
+</span></span><span class="line"><span class="cl"><span class="c1">####################</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Points inside the circle</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">inside_circle</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="n">inside_circle</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;markers&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;blue&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Inside: </span><span class="si">{</span><span class="n">inside_circle</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">legendgroup</span><span class="o">=</span><span class="s2">&#34;1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Points outside the circle</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="o">~</span><span class="n">inside_circle</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">inside_circle</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;markers&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Outside: </span><span class="si">{</span><span class="o">~</span><span class="n">inside_circle</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">legendgroup</span><span class="o">=</span><span class="s2">&#34;1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Add a circle to the plot</span>
+</span></span><span class="line"><span class="cl"><span class="n">circle</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;green&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="o">=</span><span class="s2">&#34;Circle&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">legendgroup</span><span class="o">=</span><span class="s2">&#34;1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">scaleanchor</span><span class="o">=</span><span class="s2">&#34;y&#34;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">scaleratio</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">scaleanchor</span><span class="o">=</span><span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">scaleratio</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span><span class="o">=-</span><span class="mf">1.1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xref</span><span class="o">=</span><span class="s2">&#34;paper&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">yref</span><span class="o">=</span><span class="s2">&#34;paper&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Outside: </span><span class="si">{</span><span class="p">(</span><span class="o">~</span><span class="n">inside_circle</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xanchor</span><span class="o">=</span><span class="s2">&#34;left&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span><span class="o">=-</span><span class="mf">1.2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xref</span><span class="o">=</span><span class="s2">&#34;paper&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">yref</span><span class="o">=</span><span class="s2">&#34;paper&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Inside: </span><span class="si">{</span><span class="n">inside_circle</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;blue&#34;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xanchor</span><span class="o">=</span><span class="s2">&#34;left&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Monte Carlo Simulation for Estimating π&lt;br&gt;(Estimated π = </span><span class="si">{</span><span class="n">inside_circle</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">; = </span><span class="si">{</span><span class="n">pi_estimates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div></details>
+<center>
+<img src="simulation.gif">
+</center>
+<p>The process illustrated above uses Monte Carlo Simulation to estimate the value of π through numerical integration.
+As expected, more samples improves the estimates. Theoretically with unlimited samples, the ratio will equal to the true value of π.
+However, in reality it is not possible to achieve this, and the estimates only stablized around the true value.</p>
+<p>This simple simulation requires taking approximately 10k random samples to generate an estimate. One simulation
+cannot guarantee finding the true value. In real-life scenarios, more complex simulations require more samples and calculations.</p>
+<p>Using statistics, we can consider each simulation estimate as a random variable. Instead of relying on one simulation result, we can rerun the simulations with a fixed number of samples. By constructing a confidence interval from all the simulation results, we can estimate the range within which the true value is likely to fall, rather than expecting to obtain the exact true value.</p>
+<h2 id="stock-prices" class="relative group">Stock Prices <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#stock-prices" aria-label="Anchor">#</a></span></h2><p>Here is an illustration of another application of Monte Carlo Simulation in estimaing future stock values. This simulation used the daily stock price of Google (GOOG) from Jan 1, 2010 to Jan 31, 2021 and ran 1,000 simulations to predict future stock values for 252 trading days. The results will be compared against the actual stock values from Feb 1, 2021 to Jan 31, 2022.</p>
+<p>The simulation predicts what would happened over 252 trading days after investing $10,000 in GOOG on Feb 1, 2021, i.e. what the portfolio would be worth in 252 trading days. The random samples are generated using a simple Normal Distribution to model the daily percentage changes in the adjusted close price of the stock. The Normal Distribution is based on the mean and variances of the percentage change in the adjusted close prices from the period Jan 1, 2010 to Jan 31, 2021.</p>
+<p>Here are the simulation results:</p>
+<center>
+<img src="simulation2.gif">
+</center>
+<p>The gray lines represent 1,000 simulation runs on the portfolio during the 252 trading days. The red line shows the average of all simulations and the 95% confidence intervals of the daily values are shaded in blue.</p>
+<p>The point of this simulation is not to predict the exact stock price on any given day but to provide insight into the ranges of the most likely outcomes and risks based on our assumptions about the randomness of this particular stock prices.</p>
+<p>As expected, the variance of the predictions increases as we project further into the future. This can be seen in the widening of the percentile ranges towards the end of the 252 days. On the 252nd day, we would expected that the average simulated portfolio value to be $14,065.01 (+40.7%), while the actual value was $14,020.51, an overestimated for $44.5.</p>
+<p>It is important to note that this simulation is based on several assumptions:</p>
+<ol>
+<li>Percentage changes in the stock prices are Normally distributed</li>
+<li>The distribution follows the mean and variances from historical percentage changes in stock prices (11 years in this case)</li>
+<li>Percentage changes in stock prices are truly random</li>
+<li>1000 simulations are sufficient</li>
+</ol>
+<p>If all these assumptions held true, predicting stock prices would be purely gambling, which it obviously isn&rsquo;t, or is it ? ( ͡° ͜ʖ ͡°)</p>
+<p>From this simulation on Google&rsquo;s stock prices, it appears that the simulation did a fairly good job of estimating the future stock
+prices. The average of these simulations was very close to the actual prices at the end of the 252 trading days, and 95% of these simulations captured the true values. However, for most of the period, the simulation averages were overestimating the true value (the red line above the green line but still close).</p>
+<p>This was due to Google&rsquo;s stock prices being relatively stable (not volatile) during this period. The same prediction for more volatile stocks may not be applicable.</p>
+<p>Actual simulations in the real-world would be more complex, involving more sophisticated models and additional auxillary data.</p>
+<details>
+  <summary><u>Click me to see the implementation in Python:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">imageio</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Download historical data for a stock (e.g., S&amp;P 500 index)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ticker</span> <span class="o">=</span> <span class="s2">&#34;GOOG&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s2">&#34;2010-01-01&#34;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;2022-01-31&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span><span class="p">[</span><span class="s2">&#34;Returns&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&#34;Adj Close&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate the mean and standard deviation of daily returns</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_return</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s2">&#34;2020-02-01&#34;</span><span class="p">,</span> <span class="s2">&#34;2021-01-31&#34;</span><span class="p">)][</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Returns&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_return</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s2">&#34;2020-02-01&#34;</span><span class="p">,</span> <span class="s2">&#34;2021-01-31&#34;</span><span class="p">)][</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Returns&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Monte Carlo simulation parameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000</span>
+</span></span><span class="line"><span class="cl"><span class="n">num_days</span> <span class="o">=</span> <span class="mi">252</span>  <span class="c1"># Number of trading days in a year</span>
+</span></span><span class="line"><span class="cl"><span class="n">initial_investment</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Initial investment amount</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize an array to store the simulated portfolio values</span>
+</span></span><span class="line"><span class="cl"><span class="n">simulated_portfolios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_simulations</span><span class="p">,</span> <span class="n">num_days</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Generate daily returns using a normal distribution</span>
+</span></span><span class="line"><span class="cl">    <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean_return</span><span class="p">,</span> <span class="n">std_return</span><span class="p">,</span> <span class="n">num_days</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Simulate the portfolio value over time</span>
+</span></span><span class="line"><span class="cl">    <span class="n">portfolio_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_days</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">portfolio_value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">initial_investment</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_days</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">portfolio_value</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">portfolio_value</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">daily_returns</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">simulated_portfolios</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">portfolio_value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate the mean and 5th/95th percentiles of the final portfolio values</span>
+</span></span><span class="line"><span class="cl"><span class="n">final_values</span> <span class="o">=</span> <span class="n">simulated_portfolios</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">mean_final_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">final_values</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">percentile_5th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">final_values</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">percentile_95th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">final_values</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">actual_portfolio_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_days</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">actual_portfolio_value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">initial_investment</span>
+</span></span><span class="line"><span class="cl"><span class="n">actual_daily_returns</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s2">&#34;2021-02-02&#34;</span><span class="p">,</span> <span class="s2">&#34;2022-01-31&#34;</span><span class="p">)][</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Returns&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_days</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">actual_portfolio_value</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">actual_portfolio_value</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span> <span class="o">+</span> <span class="n">actual_daily_returns</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prepare data for Plotly</span>
+</span></span><span class="line"><span class="cl"><span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_days</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">simulated_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">simulated_portfolios</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&#34;Day </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&#34;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">days</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">simulated_data</span><span class="p">[</span><span class="s2">&#34;Simulation&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Melt the DataFrame to long format for Plotly</span>
+</span></span><span class="line"><span class="cl"><span class="n">long_format</span> <span class="o">=</span> <span class="n">simulated_data</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id_vars</span><span class="o">=</span><span class="s2">&#34;Simulation&#34;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&#34;Day&#34;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">&#34;Portfolio Value&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Convert &#39;Day&#39; to an integer for plotting</span>
+</span></span><span class="line"><span class="cl"><span class="n">long_format</span><span class="p">[</span><span class="s2">&#34;Day&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">long_format</span><span class="p">[</span><span class="s2">&#34;Day&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&#34;(\d+)&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mean_value</span> <span class="o">=</span> <span class="n">long_format</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;Day&#34;</span><span class="p">)[</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">percentile_5th</span> <span class="o">=</span> <span class="n">long_format</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;Day&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">min_val</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">,</span> <span class="s2">&#34;min&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">percentile_05</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">percentile_95th</span> <span class="o">=</span> <span class="n">long_format</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;Day&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">min_val</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">,</span> <span class="s2">&#34;min&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">percentile_95</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create the initial plot with the first frame</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add traces for each simulation</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">sim</span> <span class="ow">in</span> <span class="n">long_format</span><span class="p">[</span><span class="s2">&#34;Simulation&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sim_data</span> <span class="o">=</span> <span class="n">long_format</span><span class="p">[</span><span class="n">long_format</span><span class="p">[</span><span class="s2">&#34;Simulation&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sim</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span><span class="o">=</span><span class="n">sim_data</span><span class="p">[</span><span class="s2">&#34;Day&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">y</span><span class="o">=</span><span class="n">sim_data</span><span class="p">[</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;Simulation </span><span class="si">{</span><span class="n">sim</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add the 5th percentile line</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">days</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">percentile_5th</span><span class="p">[</span><span class="s2">&#34;percentile_05&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="s2">&#34;5th Percentile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;blue&#34;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s2">&#34;dash&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add the 95th percentile line</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">days</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">percentile_95th</span><span class="p">[</span><span class="s2">&#34;percentile_95&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="s2">&#34;95th Percentile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;blue&#34;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s2">&#34;dash&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add the filled area between the 5th and 95th percentiles</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">days</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">percentile_95th</span><span class="p">[</span><span class="s2">&#34;percentile_95&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">days</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">percentile_5th</span><span class="p">[</span><span class="s2">&#34;percentile_05&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fill</span><span class="o">=</span><span class="s2">&#34;tonexty&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fillcolor</span><span class="o">=</span><span class="s2">&#34;rgba(173, 216, 230, 0.3)&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="s2">&#34;5th-95th Percentile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">days</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">mean_value</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="s2">&#34;Average&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;red&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">days</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">=</span><span class="n">actual_portfolio_value</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;lines&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="o">=</span><span class="s2">&#34;Actual Values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&#34;green&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Update layout with animation settings</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span><span class="o">=</span><span class="s2">&#34;Monte Carlo Simulation of Portfolio Values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title_x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;Day&#34;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">days</span><span class="p">)]),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">yaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;Portfolio Value&#34;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">simulated_portfolios</span><span class="o">.</span><span class="n">max</span><span class="p">()]),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div></details>
+
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+      
+      
+        
+        
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+      
+    >
+      
+      
+      
+      
+      <img
+        width="512"
+        height="512"
+        class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+        alt="Steven Lio"
+        loading="lazy" decoding="async"
+        
+          src="/img/android-chrome-512x512.png"
+        
+      />
+    </picture>
+  
+
+
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Steven Lio
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">M.Sc. in Data Science | Data Scientist &amp; ML Engineer | Data Analyst</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://linkedin.com/in/steven-lio"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://github.com/stevenlio88"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://stevenlio.medium.com/"
+          target="_blank"
+          aria-label="Medium"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.instagram.com/stevenlio/"
+          target="_blank"
+          aria-label="Instagram"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.flickr.com/photos/stevenlio/"
+          target="_blank"
+          aria-label="Flickr"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+            <div class="pt-3">
+              <script src="https://utteranc.es/client.js"
+repo="stevenlio88/Portfolio"
+issue-term="pathname"
+label="comment"
+theme="preferred-color-scheme"
+crossorigin="anonymous"
+async>
+</script>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+    <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex list-none flex-col sm:flex-row">
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.linkedin.com/in/steven-lio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://github.com/stevenlio88"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://stevenlio.medium.com/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.instagram.com/stevenlio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.flickr.com/photos/stevenlio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="/resume/"
+                title=""
+                
+                ><span
+                    class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                    >Résumé</span
+                  >
+                </a
+              >
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            © 2024 Steven Lio
+        </p>
+      
+      
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex h-12 w-12 items-center justify-center dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="hidden h-12 w-12 items-center justify-center dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm sm:p-6 md:p-[10vh] lg:p-[12vh] dark:bg-neutral-900/50"
+  data-url="http://localhost:1313/"
+>
+  <div
+    id="search-modal"
+    class="top-20 mx-auto flex min-h-0 w-full max-w-3xl flex-col rounded-md border border-neutral-200 bg-neutral shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex flex-none items-center justify-between px-2">
+      <form class="flex min-w-0 flex-auto items-center">
+        <div class="flex h-8 w-8 items-center justify-center text-neutral-400">
+          <span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="mx-1 flex h-12 flex-auto appearance-none bg-transparent focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex h-8 w-8 items-center justify-center text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto overflow-auto px-2">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+	
+	
+	<script type="text/javascript" id="MathJax-script" async
+	  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+
+	
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['\\(','\\)']],
+		displayMath: [['$$','$$'], ['\[','\]']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { equationNumbers: { autoNumber: "AMS" },
+			 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	  }
+	});
+	</script>
+
+	<script src="/js/goat.js"></script>
+  </body>
+</html>
