@@ -13,9 +13,10 @@ showComments: false
 * Programming Languages:
 	* [{{<skills>}}Python{{</skills>}}](https://www.python.org/), [{{<skills>}}R{{</skills>}}](https://www.r-project.org/), [{{<skills>}}SQL{{</skills>}}](https://en.wikipedia.org/wiki/SQL)
 	* [{{<skills>}}C#{{</skills>}}](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), [{{<skills>}}VB.NET{{</skills>}}](https://en.wikipedia.org/wiki/Visual_Basic_(.NET)), [{{<skills>}}.Net Development{{</skills>}}](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet)
-	* [{{<skills>}}Html{{</skills>}}](https://www.w3schools.com/html/), [{{<skills>}}CSS{{</skills>}}](https://www.w3schools.com/css/)
+	* [{{<skills>}}Javascript{{</skills>}}](https://www.w3schools.com/js/), [{{<skills>}}Html{{</skills>}}](https://www.w3schools.com/html/), [{{<skills>}}CSS{{</skills>}}](https://www.w3schools.com/css/)
 * Machine Learning Libraries:
 	* [{{<skills>}}PyTorch{{</skills>}}](https://pytorch.org/), [{{<skills>}}TensorFlow{{</skills>}}](https://www.tensorflow.org/), [{{<skills>}}scikit-learn{{</skills>}}](https://scikit-learn.org/stable/), [{{<skills>}}SciPy{{</skills>}}](https://scipy.org/), [{{<skills>}}pandas{{</skills>}}](https://pandas.pydata.org/), [{{<skills>}}numpy{{</skills>}}](https://numpy.org/), [{{<skills>}}OpenCV{{</skills>}}](https://opencv.org/), [{{<skills>}}Pillow{{</skills>}}](https://pillow.readthedocs.io/en/stable/)
+	* [{{<skills>}}ONNX{{</skills>}}](https://onnx.ai/), [{{<skills>}}sklearn-onnx{{</skills>}}](https://onnx.ai/sklearn-onnx/), [{{<skills>}}Transformers{{</skills>}}](https://huggingface.co/docs/transformers/en/installation), [{{<skills>}}spaCy{{</skills>}}](https://spacy.io/)
 * Data Visualization: 
 	* [{{<skills>}}Dash{{</skills>}}](https://dash.plotly.com/), [{{<skills>}}Shiny{{</skills>}}](https://www.rstudio.com/products/shiny/), [{{<skills>}}Plotly{{</skills>}}](https://plotly.com/), [{{<skills>}}Vega-Altair{{</skills>}}](https://altair-viz.github.io/), [{{<skills>}}matplotlib{{</skills>}}](https://matplotlib.org/), [{{<skills>}}ggplot{{</skills>}}](https://ggplot2.tidyverse.org/index.html)
 	* [{{<skills>}}Tableau{{</skills>}}](https://www.tableau.com/), [{{<skills>}}PowerBI{{</skills>}}](https://www.microsoft.com/en-ca/power-platform/products/power-bi/desktop)
