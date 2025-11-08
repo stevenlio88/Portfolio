@@ -15,15 +15,15 @@ showComments: false
 	* [{{<skills>}}C#{{</skills>}}](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), [{{<skills>}}VB.NET{{</skills>}}](https://en.wikipedia.org/wiki/Visual_Basic_(.NET)), [{{<skills>}}.Net Development{{</skills>}}](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet)
 	* [{{<skills>}}Javascript{{</skills>}}](https://www.w3schools.com/js/), [{{<skills>}}Html{{</skills>}}](https://www.w3schools.com/html/), [{{<skills>}}CSS{{</skills>}}](https://www.w3schools.com/css/)
 * Machine Learning Libraries:
-	* [{{<skills>}}PyTorch{{</skills>}}](https://pytorch.org/), [{{<skills>}}TensorFlow{{</skills>}}](https://www.tensorflow.org/), [{{<skills>}}scikit-learn{{</skills>}}](https://scikit-learn.org/stable/), [{{<skills>}}SciPy{{</skills>}}](https://scipy.org/), [{{<skills>}}pandas{{</skills>}}](https://pandas.pydata.org/), [{{<skills>}}numpy{{</skills>}}](https://numpy.org/), [{{<skills>}}OpenCV{{</skills>}}](https://opencv.org/), [{{<skills>}}Pillow{{</skills>}}](https://pillow.readthedocs.io/en/stable/)
+	* [{{<skills>}}PyTorch{{</skills>}}](https://pytorch.org/), [{{<skills>}}TensorFlow{{</skills>}}](https://www.tensorflow.org/), [{{<skills>}}scikit-learn{{</skills>}}](https://scikit-learn.org/stable/), [{{<skills>}}DSPy{{</skills>}}](https://dspy.ai/), [{{<skills>}}SciPy{{</skills>}}](https://scipy.org/), [{{<skills>}}pandas{{</skills>}}](https://pandas.pydata.org/), [{{<skills>}}numpy{{</skills>}}](https://numpy.org/), [{{<skills>}}OpenCV{{</skills>}}](https://opencv.org/), [{{<skills>}}Pillow{{</skills>}}](https://pillow.readthedocs.io/en/stable/)
 	* [{{<skills>}}ONNX{{</skills>}}](https://onnx.ai/), [{{<skills>}}sklearn-onnx{{</skills>}}](https://onnx.ai/sklearn-onnx/), [{{<skills>}}Transformers{{</skills>}}](https://huggingface.co/docs/transformers/en/installation), [{{<skills>}}spaCy{{</skills>}}](https://spacy.io/)
 * Data Visualization: 
-	* [{{<skills>}}Dash{{</skills>}}](https://dash.plotly.com/), [{{<skills>}}Shiny{{</skills>}}](https://www.rstudio.com/products/shiny/), [{{<skills>}}Plotly{{</skills>}}](https://plotly.com/), [{{<skills>}}Vega-Altair{{</skills>}}](https://altair-viz.github.io/), [{{<skills>}}matplotlib{{</skills>}}](https://matplotlib.org/), [{{<skills>}}ggplot{{</skills>}}](https://ggplot2.tidyverse.org/index.html)
+	* [{{<skills>}}Streamlit{{</skills>}}](https://streamlit.io/), [{{<skills>}}Dash{{</skills>}}](https://dash.plotly.com/), [{{<skills>}}Shiny{{</skills>}}](https://www.rstudio.com/products/shiny/), [{{<skills>}}Plotly{{</skills>}}](https://plotly.com/), [{{<skills>}}Vega-Altair{{</skills>}}](https://altair-viz.github.io/), [{{<skills>}}matplotlib{{</skills>}}](https://matplotlib.org/), [{{<skills>}}ggplot{{</skills>}}](https://ggplot2.tidyverse.org/index.html)
 	* [{{<skills>}}Tableau{{</skills>}}](https://www.tableau.com/), [{{<skills>}}PowerBI{{</skills>}}](https://www.microsoft.com/en-ca/power-platform/products/power-bi/desktop)
 * Software Development:
-	* [{{<skills>}}Git{{</skills>}}](https://git-scm.com/), [{{<skills>}}Github{{</skills>}}](https://github.com/stevenlio88), [{{<skills>}}Jira{{</skills>}}](https://www.atlassian.com/software/jira), [{{<skills>}}Jenkins{{</skills>}}](https://www.jenkins.io/), [{{<skills>}}Docker{{</skills>}}](https://www.docker.com/), [{{<skills>}}PowerShell{{</skills>}}](https://learn.microsoft.com/en-us/powershell/), [{{<skills>}}bash{{</skills>}}](https://www.gnu.org/software/bash/)
+	* [{{<skills>}}Git{{</skills>}}](https://git-scm.com/), [{{<skills>}}Github{{</skills>}}](https://github.com/stevenlio88), [{{<skills>}}Airflow{{</skills>}}](https://airflow.apache.org/), [{{<skills>}}Docker{{</skills>}}](https://www.docker.com/),	[{{<skills>}}Jira{{</skills>}}](https://www.atlassian.com/software/jira), [{{<skills>}}Jenkins{{</skills>}}](https://www.jenkins.io/),  [{{<skills>}}PowerShell{{</skills>}}](https://learn.microsoft.com/en-us/powershell/), [{{<skills>}}bash{{</skills>}}](https://www.gnu.org/software/bash/)
 * Other tools:
-	* [{{<skills>}}Microsoft SQL Server{{</skills>}}](https://en.wikipedia.org/wiki/Microsoft_SQL_Server), [{{<skills>}}Visual Studio{{</skills>}}](https://visualstudio.microsoft.com/)
+	* [{{<skills>}}Snowflake{{</skills>}}](https://www.snowflake.com/en/), [{{<skills>}}Microsoft SQL Server{{</skills>}}](https://en.wikipedia.org/wiki/Microsoft_SQL_Server), [{{<skills>}}Visual Studio{{</skills>}}](https://visualstudio.microsoft.com/), [{{<skills>}}Azure{{</skills>}}](https://azure.microsoft.com/en-ca),
 	* [{{<skills>}}ArcGIS{{</skills>}}](https://www.arcgis.com/index.html), [{{<skills>}}QGIS{{</skills>}}](https://www.qgis.org/en/site/)
 	* [{{<skills>}}SAS EG{{</skills>}}](https://www.sas.com/en_ca/home.html), [{{<skills>}}MATLAB{{</skills>}}](https://www.mathworks.com/products/matlab.html), [{{<skills>}}MicroStrategy{{</skills>}}](https://www.microstrategy.com/)
 	* [{{<skills>}}Power Automate Desktop{{</skills>}}](https://www.microsoft.com/en-ca/power-platform/products/power-automate), [{{<skills>}}UiPath{{</skills>}}](https://www.uipath.com/), [{{<skills>}}Automation 360{{</skills>}}](https://www.automationanywhere.com/products/automation-360), [{{<skills>}}BluePrism{{</skills>}}](https://www.blueprism.com/)
@@ -36,17 +36,15 @@ showComments: false
 
 ## Professional Experience
 
+<img src="jobs/niq.jpeg" alt="NielsenIQ" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
+
+**Data Scientist** · [NielsenIQ](https://nielseniq.com/global/en/)<br>
+<kbd>Sep, 2024 – Present</kbd>
+
 <img src="jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
 **Data Scientist** · [Blueprint Software System](https://www.blueprintsys.com/)<br>
-<kbd>Sep, 2022 – Jun, 2024</kbd>
-
-
-<img src="jobs/bp.jpeg" alt="Blueprint Software System" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
-
-**Quality Assurance Business Analyst** · [Blueprint Software System](https://www.blueprintsys.com/)<br>
-<kbd>Apr, 2021 – Aug, 2022</kbd>
-
+<kbd>Apr, 2021 – Sep, 2024</kbd>
 
 <img src="jobs/bell.jpeg" alt="Bell Mobility" width="60px" class="rounded-md" style="float: left; margin: 10px 5% 0 0;" />
 
