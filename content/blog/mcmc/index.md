@@ -201,8 +201,7 @@ It is important to note that this simulation is based on several assumptions:
 
 If all these assumptions held true, predicting stock prices would be purely gambling, which it obviously isn't, or is it ? ( ͡° ͜ʖ ͡°)
 
-From this simulation on Google's stock prices, it appears that the simulation did a fairly good job of estimating the future stock
-prices. The average of these simulations was very close to the actual prices at the end of the 252 trading days, and 95% of these simulations captured the true values. However, for most of the period, the simulation averages were overestimating the true value (the red line above the green line but still close). 
+From this simulation on Google's stock prices, it appears that the simulation did a fairly good job of estimating the future portfolio's value. The average of these simulations was very close to the actual prices at the end of the 252 trading days, and 95% of these simulations captured the true values. However, for most of the period, the simulation averages were underestimating the true value (the red line below the green line but still close). 
 
 This was due to Google's stock prices being relatively stable (not volatile) during this period. The same prediction for more volatile stocks may not be applicable.
 
