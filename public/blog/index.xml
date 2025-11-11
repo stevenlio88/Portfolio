@@ -2,32 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Steven Lio</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>http://localhost:55139/blog/</link>
     <description>Recent content in Blog on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
-    <lastBuildDate>Fri, 05 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:55139/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring Modular LLM pipeline with DSPy</title>
+      <link>http://localhost:55139/blog/dspy/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55139/blog/dspy/</guid>
+      <description>LLM agent development with DSPy</description>
+    </item>
     <item>
       <title>Image Quantization</title>
-      <link>http://localhost:1313/blog/image_quantization/</link>
+      <link>http://localhost:55139/blog/image_quantization/</link>
       <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/image_quantization/</guid>
+      <guid>http://localhost:55139/blog/image_quantization/</guid>
       <description>Exploring image quantization for image processing</description>
     </item>
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:1313/blog/mcmc/</link>
+      <link>http://localhost:55139/blog/mcmc/</link>
       <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/mcmc/</guid>
+      <guid>http://localhost:55139/blog/mcmc/</guid>
       <description>Exploring Monte Carlo Simulation</description>
     </item>
     <item>
       <title>Hello World! 🌎</title>
-      <link>http://localhost:1313/blog/hello_world/</link>
+      <link>http://localhost:55139/blog/hello_world/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/hello_world/</guid>
+      <guid>http://localhost:55139/blog/hello_world/</guid>
       <description>Hello internet, welcome to my personal website 🐣!</description>
     </item>
   </channel>

@@ -2,88 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Steven Lio</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:55139/</link>
     <description>Recent content on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
-    <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:55139/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring Modular LLM pipeline with DSPy</title>
+      <link>http://localhost:55139/blog/dspy/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55139/blog/dspy/</guid>
+      <description>LLM agent development with DSPy</description>
+    </item>
     <item>
       <title>Stay tuned</title>
-      <link>http://localhost:1313/projects/stay_tuned/</link>
+      <link>http://localhost:55139/projects/stay_tuned/</link>
       <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/stay_tuned/</guid>
+      <guid>http://localhost:55139/projects/stay_tuned/</guid>
       <description>More projects is being curated here . . .</description>
     </item>
     <item>
       <title>Image Quantization</title>
-      <link>http://localhost:1313/blog/image_quantization/</link>
+      <link>http://localhost:55139/blog/image_quantization/</link>
       <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/image_quantization/</guid>
+      <guid>http://localhost:55139/blog/image_quantization/</guid>
       <description>Exploring image quantization for image processing</description>
     </item>
     <item>
       <title>Web Application: Upgoat or Downgoat?</title>
-      <link>http://localhost:1313/projects/goat/</link>
+      <link>http://localhost:55139/projects/goat/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/goat/</guid>
+      <guid>http://localhost:55139/projects/goat/</guid>
       <description>Image classification in browser</description>
     </item>
     <item>
       <title>Image Segmentation of Coral Baby</title>
-      <link>http://localhost:1313/projects/coral_baby/</link>
+      <link>http://localhost:55139/projects/coral_baby/</link>
       <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/coral_baby/</guid>
+      <guid>http://localhost:55139/projects/coral_baby/</guid>
       <description>Process of creating robust image segmentation of coral babies</description>
     </item>
     <item>
       <title>Photo of Photo</title>
-      <link>http://localhost:1313/projects/photo_photo/</link>
+      <link>http://localhost:55139/projects/photo_photo/</link>
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/photo_photo/</guid>
+      <guid>http://localhost:55139/projects/photo_photo/</guid>
       <description>Using machine learning algorithms to detect Photo of a Photo</description>
     </item>
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:1313/blog/mcmc/</link>
+      <link>http://localhost:55139/blog/mcmc/</link>
       <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/mcmc/</guid>
+      <guid>http://localhost:55139/blog/mcmc/</guid>
       <description>Exploring Monte Carlo Simulation</description>
     </item>
     <item>
       <title>A/B Testing</title>
-      <link>http://localhost:1313/projects/ab_testing/</link>
+      <link>http://localhost:55139/projects/ab_testing/</link>
       <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/ab_testing/</guid>
+      <guid>http://localhost:55139/projects/ab_testing/</guid>
       <description>Process of A/B testing for web analytics</description>
     </item>
     <item>
       <title>Polyfit〰️</title>
-      <link>http://localhost:1313/projects/polyfit/</link>
+      <link>http://localhost:55139/projects/polyfit/</link>
       <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/polyfit/</guid>
+      <guid>http://localhost:55139/projects/polyfit/</guid>
       <description>Interactive R Shiny App to Visualize Polynomial Regression</description>
     </item>
     <item>
       <title>Hello World! 🌎</title>
-      <link>http://localhost:1313/blog/hello_world/</link>
+      <link>http://localhost:55139/blog/hello_world/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/hello_world/</guid>
+      <guid>http://localhost:55139/blog/hello_world/</guid>
       <description>Hello internet, welcome to my personal website 🐣!</description>
     </item>
     <item>
       <title>About me</title>
-      <link>http://localhost:1313/about/</link>
+      <link>http://localhost:55139/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
+      <guid>http://localhost:55139/about/</guid>
       <description>A picture of me - Jun, 2024&#xD;Hi!</description>
     </item>
     <item>
       <title>Résumé</title>
-      <link>http://localhost:1313/resume/</link>
+      <link>http://localhost:55139/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/resume/</guid>
+      <guid>http://localhost:55139/resume/</guid>
       <description>Technical Skills # Programming Languages: Python&#xD;, R&#xD;, SQL&#xD;C#&#xD;, VB.</description>
     </item>
   </channel>

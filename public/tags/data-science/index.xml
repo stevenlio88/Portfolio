@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Science on Steven Lio</title>
-    <link>http://localhost:1313/tags/data-science/</link>
+    <link>http://localhost:55139/tags/data-science/</link>
     <description>Recent content in Data Science on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
     <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:55139/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Web Application: Upgoat or Downgoat?</title>
-      <link>http://localhost:1313/projects/goat/</link>
+      <link>http://localhost:55139/projects/goat/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/goat/</guid>
+      <guid>http://localhost:55139/projects/goat/</guid>
       <description>Image classification in browser</description>
     </item>
     <item>
       <title>Photo of Photo</title>
-      <link>http://localhost:1313/projects/photo_photo/</link>
+      <link>http://localhost:55139/projects/photo_photo/</link>
       <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/photo_photo/</guid>
+      <guid>http://localhost:55139/projects/photo_photo/</guid>
       <description>Using machine learning algorithms to detect Photo of a Photo</description>
     </item>
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:1313/blog/mcmc/</link>
+      <link>http://localhost:55139/blog/mcmc/</link>
       <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/mcmc/</guid>
+      <guid>http://localhost:55139/blog/mcmc/</guid>
       <description>Exploring Monte Carlo Simulation</description>
     </item>
     <item>
       <title>A/B Testing</title>
-      <link>http://localhost:1313/projects/ab_testing/</link>
+      <link>http://localhost:55139/projects/ab_testing/</link>
       <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/ab_testing/</guid>
+      <guid>http://localhost:55139/projects/ab_testing/</guid>
       <description>Process of A/B testing for web analytics</description>
     </item>
     <item>
       <title>Polyfit〰️</title>
-      <link>http://localhost:1313/projects/polyfit/</link>
+      <link>http://localhost:55139/projects/polyfit/</link>
       <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/polyfit/</guid>
+      <guid>http://localhost:55139/projects/polyfit/</guid>
       <description>Interactive R Shiny App to Visualize Polynomial Regression</description>
     </item>
     <item>
       <title>Hello World! 🌎</title>
-      <link>http://localhost:1313/blog/hello_world/</link>
+      <link>http://localhost:55139/blog/hello_world/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/hello_world/</guid>
+      <guid>http://localhost:55139/blog/hello_world/</guid>
       <description>Hello internet, welcome to my personal website 🐣!</description>
     </item>
   </channel>
