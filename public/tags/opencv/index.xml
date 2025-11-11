@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OpenCV on Steven Lio</title>
-    <link>http://localhost:55139/tags/opencv/</link>
+    <link>http://localhost:1313/tags/opencv/</link>
     <description>Recent content in OpenCV on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
     <lastBuildDate>Fri, 05 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:55139/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Image Quantization</title>
-      <link>http://localhost:55139/blog/image_quantization/</link>
+      <link>http://localhost:1313/blog/image_quantization/</link>
       <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55139/blog/image_quantization/</guid>
+      <guid>http://localhost:1313/blog/image_quantization/</guid>
       <description>Exploring image quantization for image processing</description>
     </item>
     <item>
       <title>Web Application: Upgoat or Downgoat?</title>
-      <link>http://localhost:55139/projects/goat/</link>
+      <link>http://localhost:1313/projects/goat/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55139/projects/goat/</guid>
+      <guid>http://localhost:1313/projects/goat/</guid>
       <description>Image classification in browser</description>
     </item>
     <item>
       <title>Image Segmentation of Coral Baby</title>
-      <link>http://localhost:55139/projects/coral_baby/</link>
+      <link>http://localhost:1313/projects/coral_baby/</link>
       <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55139/projects/coral_baby/</guid>
+      <guid>http://localhost:1313/projects/coral_baby/</guid>
       <description>Process of creating robust image segmentation of coral babies</description>
     </item>
   </channel>

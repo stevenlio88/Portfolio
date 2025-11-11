@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistics on Steven Lio</title>
-    <link>http://localhost:55139/tags/statistics/</link>
+    <link>http://localhost:1313/tags/statistics/</link>
     <description>Recent content in Statistics on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
     <lastBuildDate>Tue, 10 May 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:55139/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monte Carlo Simulation</title>
-      <link>http://localhost:55139/blog/mcmc/</link>
+      <link>http://localhost:1313/blog/mcmc/</link>
       <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55139/blog/mcmc/</guid>
+      <guid>http://localhost:1313/blog/mcmc/</guid>
       <description>Exploring Monte Carlo Simulation</description>
     </item>
     <item>
       <title>A/B Testing</title>
-      <link>http://localhost:55139/projects/ab_testing/</link>
+      <link>http://localhost:1313/projects/ab_testing/</link>
       <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55139/projects/ab_testing/</guid>
+      <guid>http://localhost:1313/projects/ab_testing/</guid>
       <description>Process of A/B testing for web analytics</description>
     </item>
   </channel>

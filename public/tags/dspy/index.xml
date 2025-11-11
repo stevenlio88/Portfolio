@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DSPy on Steven Lio</title>
-    <link>http://localhost:55139/tags/dspy/</link>
+    <link>http://localhost:1313/tags/dspy/</link>
     <description>Recent content in DSPy on Steven Lio</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
     <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:55139/tags/dspy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/dspy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exploring Modular LLM pipeline with DSPy</title>
-      <link>http://localhost:55139/blog/dspy/</link>
+      <link>http://localhost:1313/blog/dspy/</link>
       <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:55139/blog/dspy/</guid>
+      <guid>http://localhost:1313/blog/dspy/</guid>
       <description>LLM agent development with DSPy</description>
     </item>
   </channel>
