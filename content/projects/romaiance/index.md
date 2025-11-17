@@ -26,7 +26,7 @@ and the original project write up submission on [Kaggle](https://www.kaggle.com/
 
 ---
 
-## Why Build RomIance?
+## Why Build RomAIance?
 
 Online dating platforms give users endless choices but very little guidance. Many people struggle to:
 
