@@ -21,8 +21,8 @@ During the [5-Day AI Agents Intensive Course with Google](https://www.kaggle.com
 While the project is intentionally small in scope, it explores a big idea:
 >What if AI agents collaborated to bring a personalized, human-like touch to the entire matchmaking process?
 
-
 Full code and technical details can be found here on GitHub: https://github.com/stevenlio88/RomAIance
+and project write up on Kaggle: https://www.kaggle.com/competitions/agents-intensive-capstone-project/writeups/romaiance-ai-powered-match-making
 
 ## Why Build RomIance?
 
