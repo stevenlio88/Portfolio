@@ -16,7 +16,9 @@ showComments: false
 	* [{{<skills>}}Javascript{{</skills>}}](https://www.w3schools.com/js/), [{{<skills>}}Html{{</skills>}}](https://www.w3schools.com/html/), [{{<skills>}}CSS{{</skills>}}](https://www.w3schools.com/css/)
 * Machine Learning Libraries:
 	* [{{<skills>}}PyTorch{{</skills>}}](https://pytorch.org/), [{{<skills>}}TensorFlow{{</skills>}}](https://www.tensorflow.org/), [{{<skills>}}scikit-learn{{</skills>}}](https://scikit-learn.org/stable/), [{{<skills>}}DSPy{{</skills>}}](https://dspy.ai/), [{{<skills>}}SciPy{{</skills>}}](https://scipy.org/), [{{<skills>}}pandas{{</skills>}}](https://pandas.pydata.org/), [{{<skills>}}numpy{{</skills>}}](https://numpy.org/), [{{<skills>}}OpenCV{{</skills>}}](https://opencv.org/), [{{<skills>}}Pillow{{</skills>}}](https://pillow.readthedocs.io/en/stable/)
-	* [{{<skills>}}ONNX{{</skills>}}](https://onnx.ai/), [{{<skills>}}sklearn-onnx{{</skills>}}](https://onnx.ai/sklearn-onnx/), [{{<skills>}}Transformers{{</skills>}}](https://huggingface.co/docs/transformers/en/installation), [{{<skills>}}spaCy{{</skills>}}](https://spacy.io/)
+	* [{{<skills>}}ONNX{{</skills>}}](https://onnx.ai/), [{{<skills>}}sklearn-onnx{{</skills>}}](https://onnx.ai/sklearn-onnx/), [{{<skills>}}spaCy{{</skills>}}](https://spacy.io/)
+* AI Development:
+	* [{{<skills>}}Transformers{{</skills>}}](https://huggingface.co/docs/transformers/en/installation), [{{<skills>}}PaddleOCR{{</skills>}}](https://github.com/PaddlePaddle/PaddleOCR), [{{<skills>}}Google ADK{{</skills>}}](https://google.github.io/adk-docs/), [{{<skills>}}DSPy{{</skills>}}](https://dspy.ai/), [{{<skills>}}LangChain{{</skills>}}](https://www.langchain.com/)
 * Data Visualization: 
 	* [{{<skills>}}Streamlit{{</skills>}}](https://streamlit.io/), [{{<skills>}}Dash{{</skills>}}](https://dash.plotly.com/), [{{<skills>}}Shiny{{</skills>}}](https://www.rstudio.com/products/shiny/), [{{<skills>}}Plotly{{</skills>}}](https://plotly.com/), [{{<skills>}}Vega-Altair{{</skills>}}](https://altair-viz.github.io/), [{{<skills>}}matplotlib{{</skills>}}](https://matplotlib.org/), [{{<skills>}}ggplot{{</skills>}}](https://ggplot2.tidyverse.org/index.html)
 	* [{{<skills>}}Tableau{{</skills>}}](https://www.tableau.com/), [{{<skills>}}PowerBI{{</skills>}}](https://www.microsoft.com/en-ca/power-platform/products/power-bi/desktop)
@@ -87,14 +89,13 @@ showComments: false
 <kbd>Nov, 2025</kbd>
 
 * RomAIance is an interactive AI-powered matchmaking application that uses a Multi-Agent System (Google-ADK) to help users build structured dating profiles, find compatible matches, and compose personalized messages. It was developed as the capstone project for the [5-Day AI Agents Intensive Course with Google](https://www.kaggle.com/learn-guide/5-day-agents) course.
-* [GitHub Repo](https://github.com/stevenlio88/RomAIance)
-
+* [Project Page](/projects/romaiance), [{{< icon "github" >}} GitHub](https://github.com/stevenlio88/RomAIance)
 
 **Image Segmentation of Coral Baby** · Personal Project<br>
 <kbd>Jan, 2023 - Jun, 2023</kbd>
 
 * Developed an image segmentation model using a [U-Net](https://en.wikipedia.org/wiki/U-Net#:~:text=U%2DNet%20is%20a%20convolutional,of%20the%20University%20of%20Freiburg.) architecture with [ResNet](https://en.wikipedia.org/wiki/Residual_neural_network) backbone, transfer learning using pre-trained weights from [ImageNet](https://www.image-net.org/) to highlight area of coral babies in images of coral frags
-
+* [Project Page](/projects/coral_baby)
 
 **Photo of Photo** · Trusting Pixels Inc.<br>
 <kbd>May, 2022 - Jun, 2022</kbd>
