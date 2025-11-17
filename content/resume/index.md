@@ -83,6 +83,13 @@ showComments: false
 
 ## Projects
 
+**RomAIance - AI Powered Match Making** · Personal Project<br>
+<kbd>Nov, 2025</kbd>
+
+* RomAIance is an interactive AI-powered matchmaking application that uses a Multi-Agent System (Google-ADK) to help users build structured dating profiles, find compatible matches, and compose personalized messages. It was developed as the capstone project for the [5-Day AI Agents Intensive Course with Google](https://www.kaggle.com/learn-guide/5-day-agents) course.
+* [GitHub Repo](https://github.com/stevenlio88/RomAIance)
+
+
 **Image Segmentation of Coral Baby** · Personal Project<br>
 <kbd>Jan, 2023 - Jun, 2023</kbd>
 

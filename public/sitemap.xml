@@ -12,6 +12,10 @@
     
   
     
+  
+    
+  
+    
       <url>
             <loc>http://localhost:1313/blog/</loc>
             <lastmod>2025-11-10T00:00:00+00:00</lastmod>
@@ -34,21 +38,21 @@
     
   
     
-  
-    
-  
-    
       <url>
             <loc>http://localhost:1313/projects/</loc>
-            <lastmod>2024-07-30T00:00:00+00:00</lastmod>
+            <lastmod>2025-11-10T00:00:00+00:00</lastmod>
           </url>
     
   
     
+  
+    
       <url>
-            <loc>http://localhost:1313/projects/stay_tuned/</loc>
-            <lastmod>2024-07-30T00:00:00+00:00</lastmod>
+            <loc>http://localhost:1313/projects/romaiance/</loc>
+            <lastmod>2025-11-10T00:00:00+00:00</lastmod>
           </url>
+    
+  
     
   
     

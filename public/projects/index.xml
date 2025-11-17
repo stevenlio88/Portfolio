@@ -7,14 +7,14 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
-    <lastBuildDate>Tue, 30 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Stay tuned</title>
-      <link>http://localhost:1313/projects/stay_tuned/</link>
-      <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/stay_tuned/</guid>
-      <description>More projects is being curated here . . .</description>
+      <title>RomAIance</title>
+      <link>http://localhost:1313/projects/romaiance/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/romaiance/</guid>
+      <description>An AI-powered matchmaking assistant (Google ADK) that personalizes profiles, compatibility, and messaging for users</description>
     </item>
     <item>
       <title>Web Application: Upgoat or Downgoat?</title>

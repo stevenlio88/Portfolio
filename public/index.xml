@@ -17,11 +17,11 @@
       <description>LLM agent development with DSPy</description>
     </item>
     <item>
-      <title>Stay tuned</title>
-      <link>http://localhost:1313/projects/stay_tuned/</link>
-      <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/stay_tuned/</guid>
-      <description>More projects is being curated here . . .</description>
+      <title>RomAIance</title>
+      <link>http://localhost:1313/projects/romaiance/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/romaiance/</guid>
+      <description>An AI-powered matchmaking assistant (Google ADK) that personalizes profiles, compatibility, and messaging for users</description>
     </item>
     <item>
       <title>Image Quantization</title>
