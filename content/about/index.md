@@ -10,7 +10,7 @@ showComments: false
 <center>
 	{{< figure
 		src="me.jpg"
-		alt="Data Scientist | Machine Learning Engineer | Data Analyst"
+		alt="Data Scientist | Machine Learning Engineer | Agentic AI Developer | Data Analyst"
 		caption="A picture of me - Jun, 2024"
 		class="resized-image"
 	>}}
@@ -23,20 +23,20 @@ I moved to **Canada** in 2007 and currently living in **Toronto, Ontario**.
 
 I received my **Master of Data Science** from [**University of British Columbia (Canada)**](https://masterdatascience.ubc.ca/) and my **Bachelor of Science degree in Statistics** from [**McMaster University (Canada)**](https://scce.science.mcmaster.ca/). 
 
-With **over 6 years of professional experience**, I specialized in developing data-driven solutions and workflows to **extract actionable 
-insights** that support strategic decision-making for cross-functional teams in **Government, Telecom, Retail and Software industries**. 
+With **over 7 years of professional experience**, I specialized in developing data-driven solutions and workflows to **extract actionable 
+insights** that support strategic decision-making for cross-functional teams in **Government, Telecom, Retail and Software industries**.
 I possess a natural curiousity and a keen eye for detail when analyzing data, enabling me to find the optimal solutions for finding data-driven solutions and drive business decisions.
 
-Proficient in **Python** and **R**, I excel in creating end-to-end machine learning workflows for data science projects. 
-My expertise includes developing **efficient data pipelines**, conducting **feature engineering**, **implementing machine learning models** and **building interactive visualization applications**. Like this one [here](https://stevenlio.shinyapps.io/polyfit/).
+Proficient in **Python** and **R**, I excel in creating end-to-end machine learning workflows for complex data science projects. 
+My expertise spans developing **efficient data pipelines**, performing **feature engineering**, **implementing machine learning models** and **building interactive visualization applications**. Like this one [here](https://stevenlio.shinyapps.io/polyfit/).
 
-I have practical experience tackling real-world challenges by applying machine learning algorithms for a variety of tasks. These include **classification, clustering, 
-statistical inference, regression modeling, time series modeling**, all aimed at enhancing analytical insights and decision-making process. 
-I have also developed advanced machine learning models such as **implementing and training neural networks (CNN)** for **image classification, segmentation, computer vision** tasks. 
-My expertise extends to writing complex **SQL** queries for **processing and aggregating large datasets**, and **designing robust data ETL processes**. 
+I have applied practical machine learning to real-world challenges across **classification, clustering, statistical inference, regression and time series modeling**, delivering actionable insights to support data-driven decision-making. I have also developed advanced models, including **CNNs for image classification** and **segmentation** and **computer vision task (Object detection, Segmentation, Classification etc.)**.
 
-My advanced data analytics have supported marketing strategy research in areas such as **Predicting Customer Value**, **Customer Segmentation**, **Sentiment Analysis**, 
-**Market Potential and Shares Estimation**, **Competitor Analysis**, **Optimizing Sales Channels**. 
+More recently, I have worked on **LLM-based** and **Agentic AI systems**, designing and building **multi-agent systems** with tools like **Google ADK, DSPy, and LangChain**. Creating interactive applications for Human-In-The-Loop model training etc.
+
+Additionally, I am skilled in **SQL** for **large-scale data processing**, **ETL pipeline design**, **feature engineering**, and **ensuring data quality and integraity** for complex datasets..
+
+My advanced data analytics have supported marketing strategy research in areas such as **Predicting Customer Value**, **Customer Segmentation**, **Sentiment Analysis**, **Market Potential and Shares Estimation**, **Competitor Analysis**, **Optimizing Sales Channels**. Leveraging hypothesis testings (**A/B Testing**) to help steer software development directions for UI/UX and model performance.
 
 ---
 

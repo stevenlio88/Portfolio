@@ -9,7 +9,7 @@ description: Personal site of Steven Lio
 
 <!---Hi there! 你好! Welcome to my personal website! 👋 --->
 
-I specialize in developing tools and implementing advanced **Machine Learning** solutions to tackle challenges within **Data Science** and **Data-Driven Analytics**.
+I specialize in developing tools and implementing advanced **Machine Learning** and AI solutions to tackle challenges within **Data Science** and **Data-Driven Analytics**.
 
 
 {{<button href="about/" target="_self">}}
