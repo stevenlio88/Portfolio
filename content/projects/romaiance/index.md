@@ -21,8 +21,10 @@ During the [5-Day AI Agents Intensive Course with Google](https://www.kaggle.com
 While the project is intentionally small in scope, it explores a big idea:
 >What if AI agents collaborated to bring a personalized, human-like touch to the entire matchmaking process?
 
-Full code and technical details can be found here on GitHub: https://github.com/stevenlio88/RomAIance
-and project write up on Kaggle: https://www.kaggle.com/competitions/agents-intensive-capstone-project/writeups/romaiance-ai-powered-match-making
+Full code and technical details are available on [GitHub](https://github.com/stevenlio88/RomAIance)
+and the original project write up submission on [Kaggle](https://www.kaggle.com/competitions/agents-intensive-capstone-project/writeups/romaiance-ai-powered-match-making).
+
+---
 
 ## Why Build RomIance?
 
@@ -78,6 +80,8 @@ Google ADK's orchestration enables a clean, modular structure:
 
 This architecture mirrors how human matchmaking might work - different "experts" contributing where they're strongest.
 
+---
+
 ## Key Influences and Design Choices
 
 ### Multi-Agent Reasoning
@@ -98,6 +102,8 @@ Most of these limitations stem from the LLM's inherent randomness and its challe
 
 The limitations and caveats are documented in the repo as areas for future improvement.
 
+---
+
 ## What I Learned
 
 Building RomAIance offered hands-on insights into working with LLMs and multi-agent systems. Key takeaways included:
@@ -110,6 +116,7 @@ Building RomAIance offered hands-on insights into working with LLMs and multi-ag
 
 Overall, the project emphasized that applied AI is as much about designing thoughtful interactions and processes as it is about model performance.
 
+---
 
 ## Final Thoughts
 
