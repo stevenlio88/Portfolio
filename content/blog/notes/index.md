@@ -2,10 +2,10 @@
 title: "Notes"
 date: 2021-03-19
 draft: false
-tags: [Statistics, Python, SQL]
+tags: [Statistics, Machine Learning, Python, SQL]
 categories: []
 showReadingTime: true
-showTableOfContents: false
+showTableOfContents: true
 summary: "General Notes"
 ---
 
