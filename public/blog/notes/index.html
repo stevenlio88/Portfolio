@@ -1,0 +1,1440 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Notes &middot; Steven Lio</title>
+    <meta name="title" content="Notes &middot; Steven Lio" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.74ad8406faea02f3e186ba5126249aaeed9073629e04b05037b903396b188724.js"
+    integrity="sha256-dK2EBvrqAvPhhrpRJiSaru2Qc2KeBLBQN7kDOWsYhyQ="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.d117412fe190302876127f0bef463c0a7f75a6360ad864a8416a9ebdb8cec411.css"
+    integrity="sha256-0RdBL&#43;GQMCh2En8L70Y8Cn91pjYK2GSoQWqevbjOxBE="
+  />
+  
+    
+    
+    
+  
+  
+  
+    
+    
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9abdfbcc9a5d4d9ed7b5d31ceb05c0294430ec07b1dfec07809754d561269294.js"
+      integrity="sha256-mr37zJpdTZ7XtdMc6wXAKUQw7Aex3&#43;wHgJdU1WEmkpQ="
+      data-copy="Copy"
+      data-copied="Copied"
+    ></script>
+  
+  
+  <meta
+    name="description"
+    content="
+      
+        General Notes
+      
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/blog/notes/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/blog/notes/">
+  <meta property="og:site_name" content="Steven Lio">
+  <meta property="og:title" content="Notes">
+  <meta property="og:description" content="General Notes">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2021-03-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-03-19T00:00:00+00:00">
+    <meta property="article:tag" content="Statistics">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="SQL">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Notes">
+  <meta name="twitter:description" content="General Notes">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Blog",
+    "name": "Notes",
+    "headline": "Notes",
+    
+    "abstract": "General Notes",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/blog\/notes\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Steven Lio"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-03-19T00:00:00\u002b00:00",
+    "datePublished": "2021-03-19T00:00:00\u002b00:00",
+    
+    "dateModified": "2021-03-19T00:00:00\u002b00:00",
+    
+    "keywords": ["Statistics","Python","SQL"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "3302"
+  }
+  </script>
+
+
+  
+  <meta name="author" content="Steven Lio" />
+  
+    
+      <link href="https://linkedin.com/in/steven-lio" rel="me" />
+    
+      <link href="https://github.com/stevenlio88" rel="me" />
+    
+      <link href="https://stevenlio.medium.com/" rel="me" />
+    
+      <link href="https://www.instagram.com/stevenlio/" rel="me" />
+    
+      <link href="https://www.flickr.com/photos/stevenlio/" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 print:hidden sm:py-10 dark:text-neutral">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >Steven Lio</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/about/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >About</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/resume/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Résumé</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/projects/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Projects</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/blog/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Blog</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                
+                
+                  <button
+                    id="search-button-1"
+                    title="Search (/)"
+                  >
+                    
+                      <span
+                        class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                      ><span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span></span><span
+                        class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                        ></span
+                      >
+                    
+                  </button>
+                
+              
+            </li>
+          
+            
+              
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Notes
+      </h1>
+      
+        <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-03-19 00:00:00 &#43;0000 UTC">19 Mar, 2021</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">16 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+      
+        
+      
+        
+          
+            <a
+              href="/tags/statistics/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Statistics</a
+            >
+          
+            <a
+              href="/tags/python/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Python</a
+            >
+          
+            <a
+              href="/tags/sql/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >SQL</a
+            >
+          
+        
+      
+    </div>
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+      
+	  <div class="min-h-0 min-w-0 lg:max-w-screen-lg grow">
+        <center>
+<img src="knowledge.jpg" width="50%">
+</center>
+<h1 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h1><p>This blog contains general notes (definitions, code snippets, useful resources etc.) that I found worthy to keep.</p>
+<h1 id="statistics" class="relative group">Statistics <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#statistics" aria-label="Anchor">#</a></span></h1><h3 id="hypothesis-testing" class="relative group">Hypothesis Testing <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#hypothesis-testing" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Error Type</th>
+<th>Description</th>
+<th>H<sub>0</sub> Status</th>
+<th>Test Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type I (α)</td>
+<td>False Positiive (Mistakenly rejecting H<sub>0</sub>)</td>
+<td>H<sub>0</sub> is True</td>
+<td>Rejected H<sub>0</sub></td>
+</tr>
+<tr>
+<td>Type II (β)</td>
+<td>False Negative (Mistakenly failing to reject H<sub>0</sub>)</td>
+<td>H<sub>0</sub> is False</td>
+<td>Failed to Reject H<sub>0</sub></td>
+</tr>
+</tbody>
+</table>
+<p>The <em>p-value</em> is a number that quantifies the evidence against a null hypothesis (H<sub>0</sub>) in a statistical test. It measures how likely it is to observe the test results (or more extreme results) <em>if the null hypothesis were true</em>.</p>
+<p>The significant level (<em>α</em>) is the maximum probability of making a Type I error - <em>incorrectly rejecting true H<sub>0</sub></em> that we are willing to tolerate.</p>
+<p><strong>Logical Basis</strong></p>
+<ol>
+<li>Start with the Assumption (H<sub>0</sub>): In hypothesis testing, always start by assuming the null hypothesis (H<sub>0</sub>) is true. The H<sub>0</sub> usually represents no effect, no difference, or no change (e.g. &ldquo;The new website design, Variant B, has the same conversion rate as the old design, Variant A&rdquo;).</li>
+<li>Calculate the P-Value: Based on the sample data, the statistical test calculates the p-value.</li>
+<li>The Decision:
+<ul>
+<li>Small p-value (e.g. <em>p</em> &lt;= 0.05): This means the observed data would be very unlikely if H<sub>0</sub> were true. Therefore, the data provides strong evidence against H<sub>0</sub>, leading to reject H<sub>0</sub> in favor of the alternative hypothesis (H<sub>a</sub>).</li>
+<li>Large p-value (e.g. <em>p</em> &gt; 0.05): This means the observed data is reasonably likely if H<sub>0</sub> were true. It is said that fail to reject H<sub>0</sub> because there isn&rsquo;t have sufficient evidence to conclude an effect exists.</li>
+</ul>
+</li>
+</ol>
+<p><strong>P-Value and Statistical Errors</strong>
+The p-value is directly relevant to the risk of committing a Type I Error, which is controlled by the significance level (α).</p>
+<h3 id="power-of-the-test" class="relative group">Power of the test <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#power-of-the-test" aria-label="Anchor">#</a></span></h3><p><strong>Power</strong> is the probability of detecting an effect (i.e. rejecting the null hypothesis) given that some prespecified effect actually exists using a given test in a given context. The <strong>power of the test</strong> is the probability that the test correctly rejects the null hypothesis (H<sub>0</sub>) when the alternative hypothesis (H<sub>a</sub>) is true. It is commonly denoted by 1 - β, where β is the probability of making a Type II error.</p>
+<p>The power of a test (1-β) is highly dependent on the <strong>effect size</strong> and the constraints on the <strong>sample size (<em>n</em>)</strong>.</p>
+<p><strong>1. Small Sample Sizes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Challenge</th>
+<th>Impact on Power</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small Sample Size (<em>n</em>)</td>
+<td>Limited subjects available.</td>
+<td>Low Power. The test is unlikely to detect a true difference, leading to a high β (Type II Error/False Negative).</td>
+<td>Increase α (e.g. from 0.05 to 0.10) to reduce β, but this increases the risk of a false claim. i.e. it will be easier to reject H<sub>0</sub> when it is true.</td>
+</tr>
+<tr>
+<td>Variability (Standard Deviation, σ)</td>
+<td>High patient variability in response.</td>
+<td>Low Power. High σ requires a larger <em>n</em> to compensate.</td>
+<td>Use a within-subjects design or highly controlled settings to minimize variability.</td>
+</tr>
+<tr>
+<td>Effect Size (δ)</td>
+<td>The difference in efficacy might be small.</td>
+<td>Low Power. Smaller differences are harder to detect.</td>
+<td>Focus on finding a large effect size first (e.g. comparing a very effective drug to a placebo).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. Rare / Unlikely Events</strong></p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Challenge</th>
+<th>Impact on Power</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event Rarity</td>
+<td>The &ldquo;signal&rdquo; (fraud) is buried in the &ldquo;noise&rdquo; (normal transactions).</td>
+<td>Low Power (if you use a simple random sample).</td>
+<td>Use imbalanced data techniques (e.g. oversampling the rare class), or use a case-control study design to enrich the sample with the rare event. Look into <a href="https://en.wikipedia.org/wiki/Synthetic_minority_oversampling_technique" target="_blank" rel="noreferrer">SMOTE</a></td>
+</tr>
+<tr>
+<td>High Stakes (α)</td>
+<td>A false positive (α, flagging a legitimate customer as fraudulent) is costly and damaging.</td>
+<td>Need to decrease α (e.g. from 0.05 to 0.001), which decreases power.</td>
+<td>Accept the lower power (higher β) to prioritize minimizing the Type I Error (False Alarm). This means some fraud will be missed (β) but most customers maybe happier.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="multiple-hypothesis-testing-adjustments" class="relative group">Multiple Hypothesis Testing Adjustments <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#multiple-hypothesis-testing-adjustments" aria-label="Anchor">#</a></span></h3><p>When performing multiple statistical tests (e.g. testing 10 different variants in one A/B test, or testing one variant on 5 different metrics), the overall probability of getting at least one false positive (Type I Error) across all tests, known as the <strong>Family-Wise Error Rate (FWER)</strong>, increases dramatically.</p>
+<p>The two main adjustment approaches are Family-Wise Error Rate (FWER) control and False Discovery Rate (FDR) control.</p>
+<h3 id="1-family-wise-error-rate-fwer-control" class="relative group">1. Family-Wise Error Rate (FWER) Control <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#1-family-wise-error-rate-fwer-control" aria-label="Anchor">#</a></span></h3><p>This aims to control the probability of making even one Type I error among the entire family of tests.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Goal</th>
+<th>Adjustment</th>
+<th>Difference</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bonferroni Correction</td>
+<td>Control FWER &lt;= α</td>
+<td>Adjusts α: New α&rsquo; = α / n (where <em>n</em> is the number of tests).</td>
+<td><strong>Most Conservative.</strong> Simple to calculate but has the lowest statistical power (most likely to cause a Type II error).</td>
+<td>For <em>n = 5</em> tests and α = 0.05, only reject H<sub>0</sub> if <em>p</em> &lt;= 0.05 / 5 = 0.01.</td>
+</tr>
+<tr>
+<td>Holm-Bonferroni (or Holm)</td>
+<td>Control FWER &lt;= α</td>
+<td>Step-down procedure: Orders <em>p</em>-values and tests against progressively less stringent thresholds.</td>
+<td><strong>Less Conservative (More Powerful)</strong> than Bonferroni, as it rejects more true alternatives.</td>
+<td>The smallest <em>p</em>-value is tested against α / n, the second smallest against α/(n-1), and so on.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-false-discovery-rate-fdr-control" class="relative group">2. False Discovery Rate (FDR) Control <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#2-false-discovery-rate-fdr-control" aria-label="Anchor">#</a></span></h3><p>This aims to control the expected proportion of false positives among all rejected hypotheses (discoveries). It is a less strict approach than FWER control, allowing for more false positives in trade for greater power to find true effects.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Goal</th>
+<th>Definition</th>
+<th>Difference</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Benjamini-Hochberg (B-H)</td>
+<td>Control FDR &lt;= <em>q</em> (The desired FDR level, often <em>q</em> = 0.05)</td>
+<td>Controls the expected proportion of false rejections (discoveries).</td>
+<td>Less Conservative (Highest Power). Widely used in large-scale testing (like genomics, data mining) where a few false positives are acceptable.</td>
+<td>An FDR of 0.05 means that to expect at most 5% of the total significant findings to be false positives.</td>
+</tr>
+</tbody>
+</table>
+<p>The key difference is the target:</p>
+<ul>
+<li>
+<p>FWER Control (Bonferroni, Holm): Focuses on the chance of making a single mistake in the entire set of tests. (High confidence that all significant results are true.)</p>
+</li>
+<li>
+<p>FDR Control (Benjamini-Hochberg): Focuses on the proportion of mistakes among the discoveries. (High confidence that most of the significant results are true.)</p>
+</li>
+</ul>
+<h3 id="bayesian-hypothesis-testing" class="relative group">Bayesian Hypothesis Testing <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#bayesian-hypothesis-testing" aria-label="Anchor">#</a></span></h3><p>Bayesian hypothesis testing is fundamentally about updating the degree of belief in a hypothesis as new data are collect. It treats the unknown population parameters (like the true conversion rate, <em>p</em>) as random variables with a probability distribution.</p>
+<p>The entire framework is centered on Bayes&rsquo; Theorem:</p>
+<p>$$P(H \mid D) = \frac{P(D \mid H) \times P(H)}{P(D)}$$</p>
+<p>Where:</p>
+<ul>
+<li><strong>P(H | D)</strong>: The Posterior Probability (What we want to know: The probability of the Hypothesis being true given the Data).</li>
+<li><strong>P(D | H)</strong>: The Likelihood (The probability of observing the Data given the Hypothesis).</li>
+<li><strong>P(H)</strong>: The Prior Probability (Our initial belief in the Hypothesis before collecting data).</li>
+<li><strong>P(D)</strong>: The Marginal Likelihood (The probability of the Data itself, which acts as a normalizing constant).</li>
+</ul>
+<p>Key Concepts in Bayesian A/B Testing</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Explanation</th>
+<th>Frequentist Analog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prior Distribution</td>
+<td>The initial belief about the possible value of a parameter (e.g., conversion rate <em>p</em>). This can be non-informative (like a coin flip) or informative (based on historical data).</td>
+<td>N/A (Frequentist starts with the Null Hypothesis).</td>
+</tr>
+<tr>
+<td>Posterior Distribution</td>
+<td>The updated belief in the parameter after observing the data. It is a full probability distribution showing the entire range of likely values for the true parameter.</td>
+<td>Point Estimate and <em>p</em>-value.</td>
+</tr>
+<tr>
+<td>Probability of Superiority</td>
+<td>The direct probability that one variant&rsquo;s true parameter (e.g., p<sub>B</sub>) is greater than another&rsquo;s (p<sub>A</sub>). Calculated by comparing their posterior distributions.</td>
+<td><em>p</em>-value (indirect measure of evidence against the null).</td>
+</tr>
+<tr>
+<td>Credible Interval</td>
+<td>The range of values where the true parameter lies with a certain probability (e.g., &ldquo;There is a 95% chance the true uplift is between <em>X</em> and <em>Y</em>&rdquo;).</td>
+<td>Confidence Interval (tells you what would happen if you repeated the test many times).</td>
+</tr>
+<tr>
+<td>Bayes Factor (BF<sub>10</sub>)</td>
+<td>A ratio quantifying the evidence the data provides for the Alternative Hypothesis (H<sub>a</sub>) relative to the Null Hypothesis (H<sub>0</sub>).</td>
+<td><em>p</em>-value (which only measures evidence against H<sub>0</sub>).</td>
+</tr>
+</tbody>
+</table>
+<p>The Bayes Factor (BF<sub>10</sub>)The Bayes Factor is the Bayesian analogue to the <em>p</em>-value and provides a clear measure of evidence:</p>
+<p>$$\text{BF}_{10} = \frac{P(D \mid H_a)}{P(D \mid H_0)}$$</p>
+<p>The ratio between the probability observing the data given the alternative hypothesis H<sub>a</sub> vs. the probability observing the data given the null hypothesis H<sub>0</sub>.</p>
+<table>
+<thead>
+<tr>
+<th>Bayes Factor (BF<sub>10</sub>​)</th>
+<th>Interpretation (Evidence for H<sub>a</sub>​)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt; 10</td>
+<td>Strong Evidence for the Alternative Hypothesis (H<sub>a</sub> is 10x more likely than H<sub>0</sub>).</td>
+</tr>
+<tr>
+<td>1 to 3</td>
+<td>Anecdotal evidence for H<sub>a</sub>.</td>
+</tr>
+<tr>
+<td>~ 1</td>
+<td>No meaningful evidence; data is ambiguous.</td>
+</tr>
+<tr>
+<td>&lt; 1/3</td>
+<td>Evidence supports the Null Hypothesis (H<sub>0</sub> is 3x more likely than H<sub>a</sub>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Power Analysis in Bayesian Testing</strong></p>
+<p>The concept of statistical power (the long-run probability of correctly rejecting a false H<sub>0</sub>) does not apply in the same way because:</p>
+<ul>
+<li>
+<ol>
+<li>No fixed α: Bayesian testing does not have a fixed Type I error rate (α) defined before seeing the data.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>No fixed <em>n</em> required: Bayesian tests can be monitored continuously (sequential testing) and stopped whenever the evidence (Bayes Factor or Probability of Superiority) crosses a pre-defined decision threshold.</li>
+</ol>
+</li>
+</ul>
+<p>Instead of traditional power analysis, Bayesian practitioners use methods aimed at experiment planning and design:</p>
+<ol>
+<li>Bayes Factor Design Analysis (BFDA)</li>
+</ol>
+<p>BFDA is the Bayesian way to determine the sample size <em>n</em> needed to achieve a desired strength of evidence.</p>
+<ul>
+<li>Goal: Determine the <em>n</em> required to make a decision with a high probability, for a given true effect size.</li>
+<li>Method: Simulate data under the assumption that a true effect exists (e.g., a conversion lift of 1%) and see how many samples (<em>n</em>) are needed for the resulting Bayes Factor (BF<sub>10</sub>) to cross the decision threshold (e.g., BF<sub>10</sub> &gt; 10).</li>
+</ul>
+<ol start="2">
+<li>Sequential Testing (Stopping Rules)
+The most common application in A/B testing is defining a stopping rule based on the results, rather than a fixed <em>n</em>.</li>
+</ol>
+<ul>
+<li>Rule Example: Stop the test as soon as the Probability of Superiority for Variant B remains above 98% for three consecutive days, OR when the Credible Interval for the difference excludes zero entirely.</li>
+<li>Advantage: This allows for early stopping if the effect is large and clear, or continuing if the evidence is ambiguous, making the test much more efficient. This is statistically safe in the Bayesian framework, unlike the frequentist approach which requires complex correction methods to maintain its α guarantee when checking results early.</li>
+</ul>
+<h1 id="machine-learning" class="relative group">Machine Learning <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#machine-learning" aria-label="Anchor">#</a></span></h1><h3 id="synthetic-oversampling-smote" class="relative group">Synthetic Oversampling (SMOTE) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#synthetic-oversampling-smote" aria-label="Anchor">#</a></span></h3><p>To deal with highly imbalanced data (like fraud - minority class) usually leverages an oversampling approaches such as creating synthetic or duplicate samples of the minority class to balance the class distribution, aiming for a 50/50 split for a binary class system for example.</p>
+<p>The two primary methods are:</p>
+<ol>
+<li>Simple Random Oversampling (Duplication)
+<ul>
+<li>Simply duplicating samples from the minority class to increases their representation in the data
+<ul>
+<li>Easy to implement but since copying existing data doesn&rsquo;t add new information and leads to overfitting. In fraud each case are unique and rare.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Synthetic Minority Oversampling Technique (SMOTE)
+<ul>
+<li>For every minority data point, find its <em>k</em>-nearest neighbors and randomly select one of these neighbors.</li>
+<li>Create a new <strong>synthetic</strong> sample along the line segment connecting the original fraud case and its selected neighbor. Then introduce random perturbation to the feature values to create a new point. Repeat till balance reached.
+<ul>
+<li>Creating slightly different but similar enough minority case to reduce the risk of overfitting and making the model more robust. However the if the original minority samples are already noisy and very close to the majority class, SMOTE can generate noisy synthetic samples worsening the decision boundary.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>There is another variants of SMOTE - ADASYN (Adaptive Synthetic Sampling) - similar to SMOTE but it focuses on generating more synthetic data for the minority samples that are harder to learn - those close to the majority decision boundary.</p>
+<p>Any of the oversampling methods should only be performed on the training data set.</p>
+<h1 id="sql" class="relative group">SQL <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#sql" aria-label="Anchor">#</a></span></h1><p>Useful references:</p>
+<ul>
+<li>w3school
+<ul>
+<li><a href="https://www.w3schools.com/sql/" target="_blank" rel="noreferrer">SQL</a></li>
+<li><a href="https://www.w3schools.com/postgresql/" target="_blank" rel="noreferrer">PostgreSQL</a></li>
+</ul>
+</li>
+<li>Snowflake
+<ul>
+<li><a href="https://docs.snowflake.com/en/sql-reference/constructs" target="_blank" rel="noreferrer">SQL</a></li>
+<li><a href="https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql" target="_blank" rel="noreferrer">Cortex-AISQL</a></li>
+</ul>
+</li>
+<li>BigQuery
+<ul>
+<li><a href="https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noreferrer">GoogleSQL</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="analytical--window-functions" class="relative group">Analytical &amp; Window Functions <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#analytical--window-functions" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>General Syntax (T-SQL)</th>
+<th>Snowflake Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common Table Expression (CTE)</td>
+<td>WITH cte_name AS (SELECT &hellip;)</td>
+<td>Same</td>
+<td>Defines a temporary, named result set to simplify complex, multi-step queries.</td>
+</tr>
+<tr>
+<td>Window Functions</td>
+<td>Function() OVER (PARTITION BY col ORDER BY col [frame]);</td>
+<td>Same</td>
+<td>Calculates an aggregate value or ranking over a set of rows while retaining individual row detail.</td>
+</tr>
+<tr>
+<td>Window Framing (Fixed)</td>
+<td>SUM(value) OVER (PARTITION BY group ORDER BY time ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)</td>
+<td>Same</td>
+<td>Defines a fixed rolling window (e.g. a 7-day rolling sum), specifying the exact rows to include relative to the current row.</td>
+</tr>
+<tr>
+<td>Window Framing (Cumulative)</td>
+<td>SUM(value) OVER (PARTITION BY group ORDER BY time ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)</td>
+<td>Same</td>
+<td>Defines an expanding cumulative window, calculating the total from the start of the partition up to the current row (default behavior for SUM and COUNT).</td>
+</tr>
+<tr>
+<td>LAG / LEAD</td>
+<td>LAG(col, offset) OVER (PARTITION BY group ORDER BY time);</td>
+<td>Same</td>
+<td>Accesses column values from the previous (LAG) or next (LEAD) row in a sequence (e.g. finding period-over-period change).</td>
+</tr>
+<tr>
+<td>Ranking</td>
+<td>ROW_NUMBER(), RANK(), DENSE_RANK()</td>
+<td>Same</td>
+<td>Assigns an ordered rank or sequence number. Crucial for &ldquo;Top N&rdquo; or filtering the latest record.</td>
+</tr>
+<tr>
+<td>Percentile Rank</td>
+<td>PERCENT_RANK() OVER (ORDER BY col)</td>
+<td>Same</td>
+<td>Calculates the relative rank of a row within a group as a percentage (ranging from 0 to 1).</td>
+</tr>
+<tr>
+<td>Conditional Logic</td>
+<td>CASE WHEN condition1 THEN result1 ELSE final_result END;</td>
+<td>Same</td>
+<td>Creates derived columns based on conditional expressions (essential for bucketing/flagging data).</td>
+</tr>
+<tr>
+<td>NULL Handling</td>
+<td>COALESCE(col1, col2, &lsquo;Default Value&rsquo;);</td>
+<td>Same</td>
+<td>Returns the first non-null expression in the list.</td>
+</tr>
+<tr>
+<td>Grouping</td>
+<td>GROUP BY col1, col2</td>
+<td>Same</td>
+<td>Aggregates data based on one or more columns.</td>
+</tr>
+<tr>
+<td>Filtering Aggregates</td>
+<td>HAVING COUNT(*) &gt; 10</td>
+<td>Same</td>
+<td>Filters the results after aggregation (i.e., filters groups).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-manipulation--transformation" class="relative group">Data Manipulation &amp; Transformation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#data-manipulation--transformation" aria-label="Anchor">#</a></span></h3><p><strong>Text specifics manipulations:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>General Syntax (T-SQL)</th>
+<th>Snowflake Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LEFT</td>
+<td>LEFT(string, length)</td>
+<td>Same</td>
+<td>Extracts a specified number of characters from the start (left side) of a string.</td>
+</tr>
+<tr>
+<td>RIGHT</td>
+<td>RIGHT(string, length)</td>
+<td>Same</td>
+<td>Extracts a specified number of characters from the end (right side) of a string.</td>
+</tr>
+<tr>
+<td>SUBSTRING / MID</td>
+<td>SUBSTRING(string, start, length) or MID(string, start, length)</td>
+<td>SUBSTRING(string, start, length)</td>
+<td>Extracts a substring of a specified length starting at a specified position.</td>
+</tr>
+<tr>
+<td>LENGTH / LEN</td>
+<td>LENGTH(string) (PostgreSQL) LEN(string) (T-SQL)</td>
+<td>LENGTH(string)</td>
+<td>Returns the number of characters in a string.</td>
+</tr>
+<tr>
+<td>POSITION / INSTR</td>
+<td>POSITION(substring IN string) (PostgreSQL)</td>
+<td>POSITION(substring, string)</td>
+<td>Returns the starting position of the first occurrence of a substring within a string. Used with SUBSTRING for complex parsing.</td>
+</tr>
+<tr>
+<td>TRIM</td>
+<td>TRIM(string)</td>
+<td>Same</td>
+<td>Removes leading and trailing whitespace.</td>
+</tr>
+<tr>
+<td>REPLACE</td>
+<td>REPLACE(string, old_string, new_string)</td>
+<td>Same</td>
+<td>Replaces all occurrences of a specified substring with another string.</td>
+</tr>
+<tr>
+<td>SPLIT_PART</td>
+<td>Varies by platform, often complex SUBSTRING + POSITION logic.</td>
+<td>SPLIT_PART(string, delimiter, part_number)</td>
+<td>Highly useful Snowflake function that splits a string by a delimiter and returns the Nth part. Simplifies tokenization.</td>
+</tr>
+<tr>
+<td>ILIKE / LIKE</td>
+<td>LIKE is standard. ILIKE is common in PostgreSQL and Snowflake.</td>
+<td>ILIKE</td>
+<td>Case-insensitive (ILIKE) or case-sensitive (LIKE) pattern matching using wildcards (% for any string, _ for any single character).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Date and Time specifics manipulations:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>General Syntax (T-SQL)</th>
+<th>Snowflake Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE_TRUNC</td>
+<td>DATE_TRUNC(&lsquo;month&rsquo;, date_col)</td>
+<td>Same</td>
+<td>Truncates a timestamp/date to the start of a specified interval (e.g. year, month, week). Essential for aggregation.</td>
+</tr>
+<tr>
+<td>DATEDIFF</td>
+<td>DATEDIFF(interval, start_date, end_date)</td>
+<td>DATEDIFF(part, date1, date2)</td>
+<td>Returns the difference between two dates/timestamps in the specified time part (e.g. &lsquo;day&rsquo;, &lsquo;hour&rsquo;).</td>
+</tr>
+<tr>
+<td>DATEADD</td>
+<td>DATEADD(interval, number, date)</td>
+<td>DATEADD(part, value, date)</td>
+<td>Adds a specified number of time units to a date/timestamp. Used to create rolling windows or future projections.</td>
+</tr>
+<tr>
+<td>Date Parts</td>
+<td>MONTH(date), YEAR(date), DAYOFWEEK(date)</td>
+<td>MONTH(date), YEAR(date), DAYOFWEEK(date)</td>
+<td>Extracts a specific part of a date/timestamp. Snowflake also offers DAYOFWEEK, DAYOFMONTH, WEEKOFYEAR, etc.</td>
+</tr>
+<tr>
+<td>Current Date/Time</td>
+<td>GETDATE() (T-SQL) NOW() (PostgreSQL)</td>
+<td>CURRENT_DATE(), CURRENT_TIMESTAMP()</td>
+<td>Returns the current system date or timestamp.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other datatypes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>General Syntax (T-SQL)</th>
+<th>Snowflake Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON/Semi-Structured Data Access</td>
+<td>JSON_VALUE(col, &lsquo;$.field&rsquo;) (T-SQL) or col-&gt;&lsquo;field&rsquo; (PostgreSQL)</td>
+<td>col:field_name::type or GET(col, &lsquo;field_name&rsquo;)</td>
+<td>Accesses fields within VARIANT, ARRAY, or OBJECT columns using native, simple syntax.</td>
+</tr>
+<tr>
+<td>Flattening Arrays/JSON</td>
+<td>Requires complex lateral joins or custom functions.</td>
+<td>SELECT t.*, f.value FROM table t, LATERAL FLATTEN(INPUT =&gt; t.array_col) f;</td>
+<td>FLATTEN is a powerful table function that converts elements within a semi-structured array or object into separate rows, allowing easy analysis.</td>
+</tr>
+<tr>
+<td>Parsing JSON</td>
+<td>Varies by platform.</td>
+<td>PARSE_JSON(&rsquo;{&ldquo;key&rdquo;: &ldquo;value&rdquo;}&rsquo;)</td>
+<td>Converts a string representation of JSON text into a storable VARIANT data type.</td>
+</tr>
+<tr>
+<td>Geospatial Distance</td>
+<td>Varies (e.g. ST_Distance in PostGIS).</td>
+<td>ST_DISTANCE(point1, point2) (requires GEOGRAPHY data type)</td>
+<td>Calculates the distance between two geospatial points on the Earth&rsquo;s surface.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced-data-manipulation--transformation" class="relative group">Advanced Data Manipulation &amp; Transformation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#advanced-data-manipulation--transformation" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>General Syntax (T-SQL)</th>
+<th>Snowflake Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PIVOT (Row to Column)</td>
+<td>Often requires complex CASE statements with GROUP BY.</td>
+<td>SELECT * FROM table PIVOT(SUM(val) FOR col_to_pivot IN (&lsquo;A&rsquo;, &lsquo;B&rsquo;));</td>
+<td>Converts unique row values from one column into new columns (long to wide format).</td>
+</tr>
+<tr>
+<td>UNPIVOT (Column to Row)</td>
+<td>Often requires many UNION ALL statements.</td>
+<td>UNPIVOT(value_col FOR name_col IN (col1, col2, &hellip;))</td>
+<td>Converts columns (wide format) into rows (long format) for easier comparison or model input.</td>
+</tr>
+<tr>
+<td>JSON Access (Dot Notation)</td>
+<td>Varies by platform (-&gt;, ::json, JSON_VALUE).</td>
+<td>col:field_name::type</td>
+<td>Accesses fields within VARIANT, ARRAY, or OBJECT columns using simple dot notation.</td>
+</tr>
+<tr>
+<td>JSON Access (GET Function)</td>
+<td>Varies by platform.</td>
+<td>GET(variant_col, &lsquo;key_name&rsquo;)</td>
+<td>Accesses an element in a semi-structured type (Variant, Object, or Array) by name or index.</td>
+</tr>
+<tr>
+<td>Flattening Arrays/JSON</td>
+<td>Requires complex lateral joins or custom functions.</td>
+<td>SELECT * FROM t, LATERAL FLATTEN(INPUT =&gt; t.array_col);</td>
+<td>FLATTEN is a powerful table function that converts elements within a semi-structured array or object into separate rows.</td>
+</tr>
+<tr>
+<td>Upsert (Atomic DML)</td>
+<td>Varies greatly (ON CONFLICT in PostgreSQL, MERGE in T-SQL).</td>
+<td>MERGE INTO target USING source ON join_condition &hellip;</td>
+<td>Performs an atomic update, insert, or delete based on matching keys.</td>
+</tr>
+<tr>
+<td>Type Casting</td>
+<td>CAST(col AS DECIMAL(10, 2)) or col::DECIMAL(10, 2)</td>
+<td>col::DECIMAL(10, 2) or CAST(col AS DECIMAL(10, 2))</td>
+<td>Explicitly converts data from one type to another.</td>
+</tr>
+<tr>
+<td>Manual Binning (Fixed Width/Range)</td>
+<td>CASE WHEN price &lt; 100 THEN &lsquo;Low&rsquo; WHEN price &lt; 500 THEN &lsquo;Medium&rsquo; ELSE &lsquo;High&rsquo; END AS price_category</td>
+<td>Same (Uses the fundamental CASE expression)</td>
+<td>Divides data into custom, fixed-range categories based on business rules or expert judgment (e.g. age groups, income brackets).</td>
+</tr>
+<tr>
+<td>Quantile Binning (Equal Count)</td>
+<td>NTILE(4) OVER (ORDER BY numeric_col) AS quartile</td>
+<td>NTILE(N) OVER (ORDER BY numeric_col)</td>
+<td>Divides data into <em>n</em> bins containing roughly equal numbers of rows (e.g. quartiles, deciles). This method is used to manage outliers and create relative rankings.</td>
+</tr>
+<tr>
+<td>Percentile Value</td>
+<td>PERCENTILE_CONT(P) WITHIN GROUP (ORDER BY col)</td>
+<td>Same</td>
+<td>Calculates the percentile value (P) of a column. CONT interpolates for non-existent values, DISC returns an actual value from the column.</td>
+</tr>
+<tr>
+<td>Numeric Binning</td>
+<td>ROUND(scores / N) * N</td>
+<td>Same</td>
+<td>Rounding method of numerical value binning, in general N is the size of the fixed-width bins which will bin numerical values to the <em>Nearest</em> (FLOOR - downward, CEIL - upward) bin. e.g. ROUND(13.2 / 5) * 5 = 13, ROUND(13.2 / 10) * 5 = 10 and CEIL(13.2 / 5) * 5 = 15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-definition--context" class="relative group">Data Definition &amp; Context <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#data-definition--context" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>General Syntax (T-SQL)</th>
+<th>Snowflake Syntax</th>
+<th>purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context Switching</td>
+<td>USE database_name; (T-SQL)</td>
+<td>USE WAREHOUSE compute_wh; USE DATABASE data_db; USE SCHEMA reporting_schema;</td>
+<td>Sets the current active Virtual Warehouse (compute resource) and the database/schema context. Crucial for Snowflake performance and cost management.</td>
+</tr>
+<tr>
+<td>Creating a Table</td>
+<td>CREATE TABLE table_name (col1 INT, col2 VARCHAR);</td>
+<td>Same</td>
+<td>Creates a new table structure.</td>
+</tr>
+<tr>
+<td>Creating a Table from a Query</td>
+<td>CREATE TABLE table_name AS SELECT &hellip;;</td>
+<td>CREATE TABLE table_name AS SELECT &hellip;; or CREATE OR REPLACE TABLE &hellip;</td>
+<td>Creates and populates a new table structure based on the results of a query (often used for permanent staging/intermediate tables).</td>
+</tr>
+<tr>
+<td>Delete with conditions</td>
+<td>DELETE FROM table_name WHERE condition;</td>
+<td>Same</td>
+<td>Removes rows from a table based on a specified condition. If no WHERE clause is provided, all rows are deleted.</td>
+</tr>
+<tr>
+<td>Removing All Data</td>
+<td>TRUNCATE TABLE table_name;</td>
+<td>Same</td>
+<td>Removes all rows from a table quickly and efficiently without affecting the table structure.</td>
+</tr>
+<tr>
+<td>MERGE INTO (Upsert)</td>
+<td>MERGE INTO target t USING source s ON t.id = s.id WHEN MATCHED THEN UPDATE SET &hellip; WHEN NOT MATCHED THEN INSERT &hellip; / WHEN NOT MATCHED BY source THEN DELETE;</td>
+<td>Same</td>
+<td>Performs an atomic &ldquo;Upsert&rdquo; (Update or Insert) operation. Crucial for synchronizing a target table with a staging table in a single, efficient transaction.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="python" class="relative group">Python <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#python" aria-label="Anchor">#</a></span></h1><h2 id="wip" class="relative group">WIP <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#wip" aria-label="Anchor">#</a></span></h2>
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+      
+      
+        
+        
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+      
+    >
+      
+      
+      
+      
+      <img
+        width="512"
+        height="512"
+        class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+        alt="Steven Lio"
+        loading="lazy" decoding="async"
+        
+          src="/img/android-chrome-512x512.png"
+        
+      />
+    </picture>
+  
+
+
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Steven Lio
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">M.Sc. in Data Science | Data Scientist &amp; ML Engineer | Agentic AI Developer | Data Analyst</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://linkedin.com/in/steven-lio"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://github.com/stevenlio88"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://stevenlio.medium.com/"
+          target="_blank"
+          aria-label="Medium"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.instagram.com/stevenlio/"
+          target="_blank"
+          aria-label="Instagram"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.flickr.com/photos/stevenlio/"
+          target="_blank"
+          aria-label="Flickr"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+            <div class="pt-3">
+              <script src="https://utteranc.es/client.js"
+repo="stevenlio88/Portfolio"
+issue-term="pathname"
+label="comment"
+theme="preferred-color-scheme"
+crossorigin="anonymous"
+async>
+</script>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+    <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex list-none flex-col sm:flex-row">
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.linkedin.com/in/steven-lio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://github.com/stevenlio88"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://stevenlio.medium.com/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.instagram.com/stevenlio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.flickr.com/photos/stevenlio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="/resume/"
+                title=""
+                
+                ><span
+                    class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                    >Résumé</span
+                  >
+                </a
+              >
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            © 2025 Steven Lio
+        </p>
+      
+      
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex h-12 w-12 items-center justify-center dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="hidden h-12 w-12 items-center justify-center dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm sm:p-6 md:p-[10vh] lg:p-[12vh] dark:bg-neutral-900/50"
+  data-url="http://localhost:1313/"
+>
+  <div
+    id="search-modal"
+    class="top-20 mx-auto flex min-h-0 w-full max-w-3xl flex-col rounded-md border border-neutral-200 bg-neutral shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex flex-none items-center justify-between px-2">
+      <form class="flex min-w-0 flex-auto items-center">
+        <div class="flex h-8 w-8 items-center justify-center text-neutral-400">
+          <span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="mx-1 flex h-12 flex-auto appearance-none bg-transparent focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex h-8 w-8 items-center justify-center text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto overflow-auto px-2">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+	
+	
+	<script type="text/javascript" id="MathJax-script" async
+	  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+
+	
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['\\(','\\)']],
+		displayMath: [['$$','$$'], ['\[','\]']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { equationNumbers: { autoNumber: "AMS" },
+			 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	  }
+	});
+	</script>
+
+	<script src="/js/goat.js"></script>
+  </body>
+</html>
