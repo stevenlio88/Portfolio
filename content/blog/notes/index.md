@@ -10,7 +10,7 @@ summary: "General Notes"
 ---
 
 <center>
-<img src="knowledge.jpg" width="50%">
+<img src="thumb.jpg" width="50%">
 </center>
 
 # Introduction
