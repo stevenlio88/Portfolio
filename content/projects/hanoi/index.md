@@ -558,22 +558,23 @@ Note, a well designed Neural Network may able to *generalize* without seeing all
 
 ### QNetwork
 
-The standard fully-connected (feedforward) Neural Network structure is:
+The Q-Network serves as the function approximator in the Deep Q-Network (DQN) agent, estimating the expected long-term return, or Q-Value, for taking a specific action in a given state, $Q(s, a)$.
 
-1. **Input**: The current **state** $s$ (a vector length $N \times K$ i.e. $ 3 \times 3 = 9$ representation of the disc positions)
-2. **Architecture**: A simple Multilayer Perceptron (MLP) with two hidden layers, each containing 64 nodes.
-3. **Activation**: The Rectified Linear Unit ($ReLU$) activation function is applied after the first and second hidden layers.
-3. **Output**: A Q-value for every possible **action** $a$ equals to the action space (e.g. size 6).
+**Network Structure**
 
-The agent - NN sees only what the given state is then based on iterative training, and based on the experiences it will begin to summarize its learning (based on reward/penality received) to better approximate the corresponding Q-Value for each state-action pair.
+The network is structured as a standard Fully-Connected (Feedforward) Neural Network (Multilayer Perceptron):
 
-In a sense that the Q-Table is now stored as the weights/bias within the hidden layers of the NN instead of a table.
+- **Input Layer**: Accepts the current state $s$ as input. For the 3-disc Tower of Hanoi, this is a flattened vector of length $N \times 3$ (i.e., $3 \times 3 = 9$) that numerically represents the disc configuration across the three pegs.
 
-It is important to understand the fundamental method behind the Q-Learning framework with DQN, where the QNetwork is estimating the Q-Value for each state-action pairs as opposed to directly output the best discrete action.
+- **Hidden Layers**: The core of the network features two hidden layers, each consisting of 64 nodes. The Rectified Linear Unit ($\text{ReLU}$) activation function is applied after each hidden layer to introduce the necessary non-linearity, enabling the network to learn complex relationships within the state space.
 
-Since we are still staying with the Q-Learning framework where leverages the Bellman Optimality Equation which provide the agent better sense on how the value of the reward is associated with the state and the action taken. This provide the efficiency improvement over a trial and error approach if the Neural Network just learn based on the amount of reward/loss after each action.
+- **Output Layer**: Produces a vector of Q-values, where the dimension equals the size of the action space (6 possible moves). Each output node represents the estimated value for one specific action.
 
-The Bellman Equation and the Bellman Optimality Equation key concept is in the **Target** value, where it updates the current Q-value after *peaking* at what the next reward would be if choose the next action based on the max Q-value in the next targeted state.
+**Q-Learning Mechanism**
+
+The network's primary function is to replace the traditional Q-Table. In essence, the vast array of state-action values is now implicitly encoded within the weights and biases of the network. Through iterative training based on rewards and penalties received, the Q-Network learns to approximate the optimal Q-Value for every state-action pair.
+
+The learning process stays rooted in the principles of Q-Learning by leveraging the Bellman Optimality Equation. This equation provides a major efficiency improvement by not only learning from the immediate reward but also by bootstrapping the future expected return. The key concept is the calculation of the Target Q-Value, which is used to update the current Q-estimate. It is derived by "looking ahead" to the maximum possible discounted value from the next state ($s'$), thus giving the agent a stronger and more efficient sense of the long-term value associated with each action taken.
 
 ### Bellman Optimality Equation
 
@@ -597,15 +598,31 @@ Solution is simple:
 - If realized not enough episodes then just add more
 - If agent's performance does not signifcantly improved after a while then stop (i.e. Early Stopping)
 
+### Dynamic ϵ
+
+Unlike the tabular Q-learning methods, where the exploration rate $\epsilon$ was held constant, in this Deep Q-Network (DQN) implementation, $\epsilon$ undergoes a decaying process (annealing). This strategy is used to balance the exploration-exploitation trade-off: starting with a high $\epsilon$ encourages maximum exploration early in training to discover the environment's rewards, while gradually reducing $\epsilon$ forces the agent to rely more on its learned Q-values (exploitation) later on.
+
+Crucially, as training nears its end, $\epsilon$ must approach its minimum (e.g., $0.001$ or $0.0$) to solidify the knowledge. This extended exploitation phase is essential for bootstrapping the maximum rewards back through the entire optimal sequence of states. If $\epsilon$ is still high when training stops and the "best agent" is saved, the saved Q-values are unreliable: the optimal solution may have been found by a random exploration step, and the surrounding Q-values haven't converged.
+
+Consequently, when this model is used for inference with a purely greedy policy ($\mathbf{\epsilon = 0.0}$), the agent is forced to choose the mathematically highest, but often suboptimal, Q-value at a critical junction, causing it to deviate from the optimal path and potentially lead to a long cycle or max-step failure. For deterministic systems like the Tower of Hanoi, a fully decayed $\epsilon$ is vital to ensure the final action choice is robustly greedy and optimal. In contrast, dynamic or stochastic systems sometimes benefit from a small, non-zero $\epsilon$ even during deployment to maintain flexibility and avoid getting stuck.
+
 ### Training
 
-The QNetwork was trained with 20,000 episodes, best network (solution with less step) is then saved to revisit and early stopping is implemented. However no earlier stopping is allowed before at least 30% of the total episodes is ran.
+**Experience Generation and Exploration**
 
-The agent will sample enough steps (BATCH_SIZE = 64) initially before learning (compute Q-Value estimates) happens and all seen steps (i.e. past experience) are stored in the replay buffer. The purpose is to break the correlation between sequence of action, instead the DQN will predict the Q-Value from any given random state (new or past experience) to reduce the chance for the network overfit quickly to the most recent step and forget past lessons (catastrophic forgetting).
+At the start of each episode, the agent begins by interacting with the environment, generating experiences. The action selection follows an $\epsilon$-greedy policy. The agent's $\epsilon$ starts high (**EPS_START** = 1.0) to encourage maximum exploration, allowing it to randomly discover the path to the solution. As training progresses, $\epsilon$ decays per episode at a rate of **EPS_DECAY** ($0.9998$) until it reaches a minimum (**EPS_END** = $0.001$), shifting the policy toward **exploitation** of the learned Q-values. The resulting state-action-reward-next state tuples are stored in a **Replay Buffer**, which has a capacity of **BUFFER_SIZE** ($100,000$). This large memory is crucial for breaking the correlation between sequential steps and providing a diverse data set for stable training.
 
-The DQN will query from the Replay Buffer object (once it collected enough experiences) then random choosen batch of states will feed into the network and Q-values for each states will be ouput. The goal is to achieve more stable and efficient training.
 
-For the ϵ-greedy is also implemented as a decaying process. i.e. ϵ - chances for random action for exploration will reduce as training goes on. That to simulate encouraging exploring earlier in the training then solidify knowledges later on in training.
+**Learning and Value Estimation**
+
+The agent is designed to learn every **UPDATE_EVERY** steps (4 steps). When learning is triggered, a random batch of past experiences, defined by **BATCH_SIZE** (64), is uniformly sampled from the Replay Buffer. This experience is used to perform the Q-value update via the Bellman equation. The core innovation of DQN is the use of two distinct networks: the Local Q-Network (`qnetwork_local`), which is actively being trained, and the Target Q-Network (`qnetwork_target`). The Target Network is used to calculate the stable Target Q-value ($Q_{\text{target}}$) to prevent the system from chasing a moving target during updates.
+
+The Target Q-value is calculated using the **GAMMA_DQN** (Discount Factor) of $0.99$. This high value signifies that the agent is highly far-sighted, placing significant importance on future rewards (like the ultimate goal of solving the puzzle) over immediate rewards. The difference between the Expected Q-value (from the local network) and the Target Q-value forms the basis of the Mean Squared Error (MSE) loss. This loss is then minimized using the Adam optimizer with a LR (**Learning Rate**) of $2 \times 10^{-4}$ to update the weights of the Local Q-Network.
+
+**Stabilization and Convergence**
+
+To further stabilize the learning process, the Target Network is synchronized with the Local Network every **TARGET_UPDATE_FREQ** steps (50 steps). This delayed synchronization ensures that the target values remain consistent for a sufficient period, allowing the Local Network to converge effectively. A critical aspect of the training for a deterministic, minimal-step problem like Tower of Hanoi is ensuring that the $\epsilon$ decay fully completes. As established, if training halts while $\epsilon$ is still high, the saved "best agent" may not have robustly encoded the optimal path as the greedy action in every state, leading to suboptimal performance or failure during pure greedy inference.
+
 
 ### Result
 
@@ -613,14 +630,13 @@ For the ϵ-greedy is also implemented as a decaying process. i.e. ϵ - chances f
 	<img src="learning_curve_dqn.png" style="width=80%; margin-bottom: 5px;"/>
 </center>
 
-The DQN agent performed much worst than the tabular versions (SARSA, Q-Learning, Expected SARSA) where it found the optimal solution (7 steps) for the 3 discs 3 pegs setup at episode 5,500. The convergence rate also is much slower than the other methods.
-The network is much harder to train and there are lot more hyper-parameters to fine tune.
+As expected under the listed conditions, the DQN takes much longer to train to produce the optimal solution reliably. The model first reached the optimal 7-steps solution at episode 1504, however the $\epsilon$ at that point is still high (~0.80) hence the agent is still in the exploration stage and it was by random chance that it stubble upon the optimal solution.
 
-Big drawbacks of DQN is that it is much harder to train, it is alot more sensitive to how the reward mechanism design that would improve learning efficiency. Currently the agents will gain 0 reward for a move, -1 for an illegal move and only when completing the puzzle will get the maximum reward. Hence for a larger puzzle, the agent will waste lot more time on exploring and exploiting without any meaningful rewards until by random chance it is able to complete the puzzle once.
+As training goes, $\epsilon$ decaying slowly to the minimum 0.001 (i.e. the final trained agent would still have 0.1% chance of picking a random action). Ideally this should be set to 0.0 as mentioned above. The average step per episode also steadily converages to the optimal 7-step as training goes - as seen from the learning curve.
 
-To scale up for a larger puzzle the DQN will also needed to be more sophasticated as a simple 2 hidden layers is just not enough.
+The final DQN agent can reliably solve the 3 discs 3 pegs puzzle in 7 steps, however it won't be able to solve the puzzle in any other configuration. i.e. transfer learning is more difficult for a setup like this. The agent can't *generalized* to a bigger puzzle, as the neural network is a fixed sized input and output.
 
-e.g. a 9 discs 3 pegs puzzle will have an optimal $ 2^9 - 1 = 511$ moves and $3^9 = 19,683$ possible states. Need a much bigger network.
+To scale up for a larger puzzle the DQN will also needed to be more sophasticated. e.g. a 9 discs 3 pegs puzzle will have an optimal $ 2^9 - 1 = 511$ moves and $3^9 = 19,683$ possible states. Need a much bigger network.
 
 <details>
   <summary><u>DQN Implementation:</u></summary>
@@ -651,25 +667,25 @@ class QNetwork(nn.Module):
         self.seed = torch.manual_seed(seed)
         
         # Simple feedforward network
-        self.fc1 = nn.Linear(state_size, 64)
-        self.fc2 = nn.Linear(64, 64)
-        self.fc3 = nn.Linear(64, action_size)
+        self.fc1 = nn.Linear(state_size, 256)
+        self.fc2 = nn.Linear(256, 256)
+        self.fc3 = nn.Linear(256, 128)
+        self.fc4 = nn.Linear(128, action_size)
 
     def forward(self, state):
         """Maps state input to action Q-values."""
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
-        return self.fc4(x)
-
-# %%
+        x = F.relu(self.fc3(x))
+        return self.fc4(x)        
 
 # Hyperparameters for the Agent
 BUFFER_SIZE = int(1e5)  # Replay buffer size
 BATCH_SIZE = 64         # Minibatch size for sampling
 GAMMA_DQN = 0.99        # Discount factor
-LR = 5e-4               # Learning rate of the optimizer
+LR = 2e-4               # Learning rate of the optimizer
 UPDATE_EVERY = 4        # How often to update the network (step count)
-TARGET_UPDATE_FREQ = 100 # How often to update the target network (step count)
+TARGET_UPDATE_FREQ = 50 # How often to update the target network (step count)
 
 # Define the device for PyTorch operations
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -796,13 +812,11 @@ class DQNAgent:
         self.qnetwork_local.load_state_dict(torch.load(path))
         self.qnetwork_target.load_state_dict(torch.load(path))
 
-
-# %%
 # --- DQN Specific Hyperparameters ---
-EPISODES_DQN = 20000 
+EPISODES_DQN = 40000 
 EPS_START = 1.0       # Starting value of epsilon
-EPS_END = 0.01        # Minimum value of epsilon
-EPS_DECAY = 0.9999    # Decay rate for epsilon - lower epsilon after each episode (i.e. less likely to choose random actions later in the training)
+EPS_END = 0.001       # Minimum value of epsilon
+EPS_DECAY = 0.9998    # Decay rate for epsilon - lower epsilon after each episode (i.e. less likely to choose random actions later in the training)
 SEED = 0
 best_agent_path = "TowerHanoi_DQN.pth"
 
@@ -819,8 +833,6 @@ eps = EPS_START             # Initialize epsilon
 ep_steps_DQN = []
 solved_in_episodes = None
 min_steps = 2**env.n_discs - 1 # Optimal moves for N discs
-
-best_steps = np.inf
 
 print(f"--- Starting DQN Training for {env.n_discs} Discs ---")
 
@@ -848,7 +860,6 @@ for ep in range(EPISODES_DQN):
              env.render()
              print(f"Action: {env.actions[action]} Reward: {reward}")
 
-    # Epsilon decay
     eps = max(EPS_END, eps * EPS_DECAY)
     
     ep_steps_DQN.append(steps)
@@ -857,15 +868,10 @@ for ep in range(EPISODES_DQN):
     if env.towers[2] == list(range(env.n_discs, 0, -1)):
         status = "**SOLVED!**"
 
-        if steps <= best_steps:
-            # Save best agent**
-            best_steps = steps
-            agent.save_agent(best_agent_path)
-            print(f"\nNew Best Agent Saved! Steps: {best_steps} at Episode {ep}")
-
         # Cheating:
         if steps == min_steps and solved_in_episodes is None:
             # if reached optimal solution (mininum steps)
+            # However this doesn't mean anything when epsilon is still high (i.e. best step is still by random chance)
             solved_in_episodes = ep
     else:
         status = "Max steps reached"
@@ -873,11 +879,13 @@ for ep in range(EPISODES_DQN):
     if ep % 100 == 0 or steps == min_steps:
         print(f"\nEpisode {ep}/{EPISODES_DQN} | Steps: {steps} | Status: {status} | Epsilon: {eps:.4f} | Avg Steps (last 100 episodes): {np.mean(ep_steps_DQN[-100:]):.1f}")
         
-    if solved_in_episodes is not None and ep - solved_in_episodes > 0.3 * EPISODES_DQN:
-        # Stop early once it has consistently solved the task but not before first 30% of the total episodes
-        #pass
-        print("Stop early since no significant improvemnt found.")
+    if solved_in_episodes is not None and eps <= EPS_END: # <-- Only stop if epsilon has reached its minimum
+        print("Stop early since epsilon has decayed and no significant improvement found.")
         break
+
+# Save final agent**
+agent.save_agent(best_agent_path)
+print(f"\nFinal Agent Saved!")
 
 print("\n--- DQN Training Finished ---")
 if solved_in_episodes is not None:
@@ -896,16 +904,15 @@ step = 0
 
 # Setup environment
 env = TowerOfHanoiEnv(n_discs=3)
-state = env.reset() #initial state
+state = env.reset()
 print(f"step {step}:\n")
 env.render()
 
-# Load best trained QNetwork
-best_agent = DQNAgent(state_size=state_size, action_size=action_size, seed=SEED)
+best_agent = DQNAgent(state_size=state_size, action_size=action_size, seed=0) # Seed won't be needed if epsilon is decay to 0.0
 best_agent.load_agent(best_agent_path)
 
 while not done:
-    action = best_agent.act(state, eps, inference=True) # Choose best action given by QNetwork
+    action = agent.act(state, 0.001, inference=True) # Turn on inference and set epsilon to the final epsilon value
     step += 1
     next_state, reward, done = env.step(action)
     print(f"\nstep {step}: {env.actions[action]} Reward: {reward}")
@@ -918,9 +925,9 @@ print(f"Total steps: {step}")
 
 ## What I've learned
 
-In this project I explored the different common Reinforcement Learning and reinforced (pun intended) my understanding in the key concept such as Temporal Differences, SARSA, Q-Learning, Expected SARSA, Q-Table, Bellman Equations and DQN.
+In this project I explored the different common Reinforcement Learning and reinforced (pun intended) my understanding in the key concept such as Temporal Differences, SARSA, Q-Learning, Expected SARSA, Q-Table, Deep Q-Network, Bellman Equations, ϵ-greedy, reward mechanism.
 
-While experimenting a well designed reward system is vital to a successful Reinforcement Learning process. Although given the limited time I gave myself for this project, the DQN wasn't proven to be successful as increasing the complexity of the QNetwork, increase batch sizes, replay buffer etc. The training process is significantly longer and very slow to converges.
+While experimenting a well designed reward system is vital to a successful Reinforcement Learning process. Although given the limited time I gave myself for this project, there are more to be explored such as see if I can train the DQN with 5,000 episodes of less by changing the reward mechanism (e.g. penality on redundant steps, small reward for each progressive move). The current training process is significantly longer and very slow to converge.
 
 The Tower of Hanoi puzzle can be solved with [recursive programming](https://en.wikipedia.org/wiki/Tower_of_Hanoi#Recursive_solution).
 
