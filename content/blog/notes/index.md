@@ -2,7 +2,7 @@
 title: "Notes"
 date: 2021-03-19
 draft: false
-tags: [Statistics, Machine Learning, Python, SQL]
+tags: [Statistics, Machine Learning, Deep Learning, Reinforcement Learning, SQL, Python]
 categories: []
 showReadingTime: true
 showTableOfContents: true
@@ -174,12 +174,76 @@ The most common application in A/B testing is defining a stopping rule based on 
 - Mean Squared Error (MSE): The average of the squared differences between predicted and actual values. This metric penalizes large errors more heavily than MAE.
 - Root Mean Squared Error (RMSE): The square root of the MSE. It is in the same units as the target variable, making it more interpretable than MSE.- R-squared (R<sup>2</sup>): Represents the proportion of the variance in the dependent variable that is predictable from the independent variables. A higher value indicates a better fit. 
 
+### L1 vs. L2 regularization
+
+**L1 (LASSO)**
+
+- Penalty: Adds a penalty proportional to the sum of the **absolute** values of the coefficients (weights) to the loss function.
+- Resulting model: Produces sparse models because it **tends to set the coefficients of less important features to exactly zero**.
+- Use case: **Ideal for feature selection**, especially when you have a large number of features and suspect many of them are irrelevant.
+- Constraint shape: Creates a diamond or square-shaped constraint, which has sharp corners that are more likely to intersect with the axes at zero. 
+
+**L2 (Ridge)**
+
+- Penalty: Adds a penalty proportional to the sum of the **squares of the coefficients** to the loss function.
+- Resulting model: **Encourages smaller, but generally non-zero** coefficients for all features, leading to a **less sparse, more stable model**.
+- Use case: Preferred when you believe most features are relevant and want to shrink their weights to prevent a few from having an undue influence, reducing overall variance. It is also more robust to correlated features.
+- Constraint shape: Creates a circular or elliptical constraint, which gradually shrinks all weights without forcing any single one to be zero. 
+
 **Clustering**
 
 - **Silhouette Score**: Measures how similar an object is to its own cluster compared to other clusters.
 - **Davies-Bouldin Index**: Measures the ratio of within-cluster scatter to between-cluster separation.
 - **Calinski-Harabasz Index**: Measures the ratio of between-cluster variance to within-cluster variance.
 - **Intraclass Correlation Coefficient (ICC)**: Statistical measure that quantifies the degree of similarity between observations within the same group or cluster. It ranges from 0 to 1, where 1 indicates perfect agreement and 0 indicates no agreement.
+
+
+### Tree Types Algorithms
+
+**Bagging (Bootstrap aggregating) vs. Boosting**
+
+| Methods | Bagging | Boosting |
+| ------- | ----------------------------- | ---------------------------------- |
+| Algorithms | Random Forest | AdaBoost, XGBoost |
+| Training | Parallel (models trained independently) | Sequential (models trained one after the other) |
+| Goal | Reduce Variance (e.g., combat overfitting) | Reduce Bias (e.g., combat underfitting) |
+| Data Usage | Each model trained on a bootstrap sample (random sampling with replacement). | Each model trained on the entire dataset (or a variation), with weights adjusted to emphasize previously misclassified points. |
+| Model Weighting | All base models (weak learners) are generally equally weighted in the final prediction (majority vote/simple average). | Base models are weighted based on their performance; better-performing models get higher weight. |
+| Base Model Type | Often uses complex/unstable models (e.g., deep decision trees) that have high variance. | Often uses simple/weak models (e.g., shallow decision trees) that have high bias. |
+| Training Speed | Generally faster due to parallelizable training. | Generally slower due to sequential, dependent training. |
+
+**Gini Impurity** - Quantifies the probability of misclassifying a randomly chosen element in the dataset if it were randomly labeled according to the class distribution in the node.
+
+**Entropy** - Measures the uncertainty or randomness in a set of data. It quantifies the average amount of information needed to classify a sample in the node.
+
+**Algorithms**
+| Algorithms | Decision Tree (DT) | Random Forest (RF) | Boosted Trees (BT) & Gradient Boosting Machines (GBM) |
+| ------- | ------------------ | ------------------ | ------------------ |
+| Ensemble Type | None (Single Model) | Bagging (Parallel) | Boosting (Sequential) |
+| Common Examples | CART, ID3, C4.5 | Random Forest, Bagging Classifier/Regressor | AdaBoost, XGBoost, LightGBM, CatBoost |
+| Goal | Achieve high purity/low error in splits. | Reduce Variance (address overfitting). | Reduce Bias (address underfitting). |
+| Training | Single pass, recursive splitting features. | All trees built independently. (random subset features) | Trees built sequentially, correcting errors. |
+| Speed | Fast | Parallelizable (Fast) | Sequential (Slower to train) |
+| Interpretability | High (Easy to visualize) | Low | Low |
+| Risk of Overfitting | High | Low | Moderate (if not well-tuned) |
+
+- Random Forest (RF):
+    - Uses bootstrapped samples (Bagging)
+    - Considers a random subset of features (columns) at every split point. This de-correlates the individual trees, making the ensemble's prediction much more robust.
+- AdaBoost (Adaptive Boosting):
+    - Adjusting the weights of the misclassified data points, forcing subsequent models to focus on them.
+    - Assigning higher weights to the weak learners that performed better during their training.
+- Gradient Boosting Machines (GBM):
+    - Builds new models that target the residuals (the errors or differences between the actual and predicted values) of the previous models.
+    - It uses the concept of gradient descent to minimize the loss function.
+- Extreme Gradient Boosting (XGBoost):
+    - An optimized and highly scalable implementation of Gradient Boosting.
+    - Exceptional in speed and performance supporting features:
+        - Regularization (L1 and L2) to prevent overfitting.
+        - Parallel processing of tree construction.
+        - Handling of missing values.
+- LightGBM & CatBoost:
+    - Highly efficient variants of Gradient Boosting that are optimized for handling large datasets and categorical features, respectively.
 
 ### Bias-Variance Tradeoff
 
@@ -213,39 +277,6 @@ Use regularization: Techniques like L1 and L2 regularization can penalize model 
 
 Ensemble methods: Combining multiple models can reduce variance and improve overall performance. 
 
-### L1 vs. L2 regularization
-
-**L1 (LASSO)**
-
-- Penalty: Adds a penalty proportional to the sum of the **absolute** values of the coefficients (weights) to the loss function.
-- Resulting model: Produces sparse models because it **tends to set the coefficients of less important features to exactly zero**.
-- Use case: **Ideal for feature selection**, especially when you have a large number of features and suspect many of them are irrelevant.
-- Constraint shape: Creates a diamond or square-shaped constraint, which has sharp corners that are more likely to intersect with the axes at zero. 
-
-**L2 (Ridge)**
-
-- Penalty: Adds a penalty proportional to the sum of the **squares of the coefficients** to the loss function.
-- Resulting model: **Encourages smaller, but generally non-zero** coefficients for all features, leading to a **less sparse, more stable model**.
-- Use case: Preferred when you believe most features are relevant and want to shrink their weights to prevent a few from having an undue influence, reducing overall variance. It is also more robust to correlated features.
-- Constraint shape: Creates a circular or elliptical constraint, which gradually shrinks all weights without forcing any single one to be zero. 
-
-### Bagging (Bootstrap aggregating)
-
-Bagging, short for Bootstrap Aggregating, is an ensemble learning technique in machine learning designed to improve the stability and accuracy of models, primarily by reducing variance and overfitting. It involves **training multiple versions of a prediction model and combining their predictions to achieve a more robust and accurate final output**.
-
-Multiple subsets of the original training data are created by sampling with replacement. This means that individual data points can be selected more than once in a single subset, and some data points may not appear in certain subsets. Each subset is roughly the same size as the original dataset.
-
-- Parallel Training of Base Learners: A base learning algorithm (e.g., a decision tree) is trained independently on each of these bootstrap samples. These base learners are often referred to as "weak models" because, individually, they might not be highly accurate.
-- Aggregation of Predictions: For a new, unseen input, each of the trained base learners makes a prediction.
-    - For classification tasks, the final prediction is typically determined by a majority vote among the base learners.
-    - For regression tasks, the final prediction is usually the average of the predictions from all base learners.
-
-Benefits of Bagging:
-
-- **Variance Reduction**: By training on different subsets of data and averaging or voting their predictions, bagging helps to reduce the variance of the overall model, making it less sensitive to noise in the training data and less prone to overfitting.
-- **Improved Stability and Accuracy**: The aggregation of multiple models generally leads to more stable and accurate predictions compared to a single model.
-- **Parallelization**: The training of individual base learners can be done in parallel, which can significantly speed up the training process.
-
 ### Multiclass vs. Multilabel Classification
 
 **Multiclass**
@@ -259,6 +290,15 @@ Each instance can only be assigned to one class out of a finite set of mutually 
 Each instance can be assigned to multiple labels simultaneously, and the labels are not mutually exclusive.
 - e.g. Tagging a news article with multiple topics.
 - Hamming loss, precision/recall at k (top-k labels)
+
+**SVM**
+
+| Kernel | Use Case / Data Type | Decision Boundary Shape (in original space) | Key Parameters |
+| ------ | -------------------- | ------------------------------------------- | -------------- |
+| Linear | Linearly separable data, high-dimensional data (like text classification) | Straight line (or flat hyperplane) | C (regularization) |
+| Polynomial | Data with a non-linear or polynomial trend; low-dimensional data | Curved or complex (e.g., circular, parabolic) | C, degree (d), coef0 (independent term) |
+| RBF (Gaussian) | Default choice when data nature is unknown; complex, non-linear data | Complex, potentially highly flexible and smooth curves | C, gamma (influence of single data points) |
+| Sigmoid | Useful in applications related to neural networks (as an activation function) | Highly non-linear, potentially complex and sometimes difficult to interpret | C, gamma, coef0 |
 
 ### Synthetic Oversampling (SMOTE)
 
@@ -296,6 +336,113 @@ Common types
 - **K-Fold Cross-Validation**: The most common type, where the data is split into k folds, and the process is repeated k times, with each fold used as the test set once.
 - **Leave-One-Out Cross-Validation (LOOCV)**: An extreme case of K-Fold where k is equal to the number of data points. It can be computationally expensive.
 - **Shuffle Split Cross-Validation**: Also known as repeated random subsampling, it involves multiple random splits of the data into training and testing sets. 
+
+# Deep Learning
+
+### Activation Functions
+
+| Activation Functions | Sigmoid | tanh | ReLU |
+| -------- | ------- | ---- | ---- |
+| Formula  | 1/(1+e<sup>-x</sup>) | tanh(x) | max(0, x) |
+| Range    | 0 to 1  |-1 to 1 | 0 to ∞ |
+| Gradient Issues | Severe vanishing gradients | Moderate vanishing gradients | No vanishing gradient for x>0x>0 |
+| Computation Cost | Expensive (exponential) | Expensive (exponential) | Very cheap (max operation) |
+| Use Case | Binary classification outputs | Hidden layers zero-centered data | Deep neural networks |
+| Pros | Smooth, probabilistic output | Better gradient flow than sigmoid | Fast, efficient, avoids vanishing gradient |
+| Cons | Not zero-centered, slow training | Still saturates for large inputs | Dying ReLU problem |
+| Output | Always positive | Symmetric around zero | Sparse |
+
+# Optimization
+
+### Gradient Descent
+
+| Optimizer | Description | Key Feature |
+| --------- | ----------- | ----------- |
+| Gradient Descent (GD) | Computes the gradient using the entire training dataset for each parameter update. | High precision, but slow and computationally expensive for large datasets. |
+| Stochastic Gradient Descent (SGD) | Computes the gradient using a single randomly chosen data sample for each update. | Fast updates, but the path to the minimum is noisy (high variance), leading to oscillations. |
+| Mini-Batch Gradient Descent | The most common practical approach. Computes the gradient using a small batch of data (e.g., 32, 64, 128 samples). | Strikes a balance between GD's stability and SGD's speed.
+SGD with Momentum | Adds a "velocity" term that accumulates a fraction of the previous update. | Helps the optimizer accelerate across flat areas and dampen oscillations in steep ravines, leading to faster convergence. |
+
+### Adaptive Learning Rate Methods
+
+| Optimizer | Description | Key Feature |
+| --------- | ----------- | ----------- |
+| AdaGrad (Adaptive Gradient) | Adapts the learning rate based on the sum of the squared historical gradients. | Great for sparse data (gives larger updates for infrequent parameters/features). Main drawback is an aggressively decaying learning rate. |
+| RMSProp (Root Mean Square Propagation) | Solves AdaGrad's aggressive decay by using an exponentially decaying average of squared past gradients. | The learning rate adjusts more slowly, making it more robust for non-convex problems (like deep neural networks). |
+| Adam (Adaptive Moment Estimation) | Combines the benefits of Momentum (using the average of past gradients) and RMSProp (using the average of past squared gradients). | Extremely popular due to its fast convergence and minimal need for hyperparameter tuning. It has a bias correction mechanism. |
+| AdamW (Adam with Decoupled Weight Decay) | A modification of Adam that decouples the weight decay (L2 regularization) from the gradient updates. | Improves generalization (performs better on unseen data) compared to standard Adam, which often finds sharper minima. This is the preferred version of Adam for most deep learning tasks today. |
+
+**Adam vs. AdamW**
+
+- Adam (Adaptive Moment Estimation): Weight decay (L2 regularization) is added to the gradient: grad = grad + weight_decay * param.
+
+- AdamW (Adam with Decoupled Weight Decay): Weight decay is applied after the gradient update: param = param * (1 - lr * weight_decay).
+
+**Learning Rate Schedules**: Techniques that change the learning rate over time (e.g., reducing it after a set number of epochs or using a cosine annealing schedule) to help the model converge more precisely.
+
+**Second-Order Methods (e.g., Newton's Method)**: These use the second derivative (Hessian matrix) to find a better direction to the minimum. They offer faster convergence but are often computationally prohibitively expensive for deep learning models with millions of parameters.
+
+**Regularization (L1, L2)**: Techniques like Weight Decay (which is L2 regularization) are often used alongside optimizers (as seen in AdamW) to penalize large weights and prevent overfitting.
+
+# Reinforcement Learning
+
+| Concepts | Q-table | Deep Q-Network (DQN) | Actor-Critic (A2C) | Proximal Policy Optimization (PPO) | Generalized Policy Optimization (GRPO) |
+| ------- | ------- | -------------------- | ------------------ | ---------------------------------- | -------------------------------------- |
+| Approach Type | Explicitly maps every state and every action to a numerical value in a table. | Uses a deep neural network (DNN) as a function approximator for the Q-table. | The Actor learns a policy (which action to take), and the Critic learns a value function (how good the state is). It uses the "advantage" (how much better an action was than average) to update the policy. | PPO improves upon earlier policy gradient methods by using a "clipping" mechanism to restrict how much the new policy can change from the old policy during each update. | GRPO generally refers to generalized frameworks for policy optimization, often related to older theoretical methods or specific academic implementations that generalize concepts found in algorithms like Trust Region Policy Optimization (TRPO).|
+| State Space | Small/Discrete | Large/Continuous | Large/Continuous | Large/Continuous | Large/Continuous |
+| Action Space | Discrete | Discrete | Discrete/Continuous | Discrete/Continuous | 	Discrete/Continuous |
+| Scalability | Poor | Good	Excellent | Excellent | Good |
+| Complexity | Low | Medium | High | High | Very High |
+| Stability/Robustness | High | Medium | Medium-High | Very High |
+
+**Policy**
+In Reinforcement Learning, a policy ($\pi$) is the agent's strategy or rule set for choosing an action. It is a mapping from observed states to actions.
+
+- Policy Notation: It is often written as $\pi(a|s)$, which is the probability of taking action $a$ when in state $s$.
+- Optimal Policy ($\pi^*$): The goal of nearly all RL algorithms is to find the optimal policy, $\pi^*$, which maximizes the expected cumulative discounted future reward.
+
+Policies come in two main types:
+1. Deterministic Policy: $\pi(s) = a$. For a given state, the agent always chooses the same action (e.g., Q-Learning's evaluation policy).
+2. Stochastic Policy: $\pi(a|s)$. For a given state, the agent chooses actions based on a probability distribution (e.g., the $\epsilon$-greedy policy used for exploration).
+
+**On-Policy vs. Off-Policy**
+
+1. **On-Policy Learning** (e.g., SARSA) algorithms learn the value of the policy they are currently using to act.
+    - **Behavior Policy ($\pi$)**: The policy used to select actions and interact with the environment (e.g., $\epsilon$-greedy).Evaluation Policy: The policy being evaluated and improved is the same policy ($\pi$).
+    - **Key Idea**: The agent learns the value of taking an action, including the risks and returns associated with the occasional random, exploratory steps. The learned Q-values reflect the returns expected under the $\epsilon$-greedy policy itself.
+    - **Result**: The learned policy is often more conservative because it accounts for the negative consequences of exploring.
+
+2. **Off-Policy Learning** (e.g., SARSAmax a.k.a. Q-Learning) algorithms learn the value of one policy (the target policy) while following a different policy (the behavior policy).
+    - **Behavior Policy ($\pi$)**: The policy used to gather data and explore (e.g., $\epsilon$-greedy).Evaluation Policy ($\mu$): The policy being evaluated and improved is the greedy (optimal) policy $\mu$, which selects the $\arg\max$ action.
+    - **Key Idea**: The agent uses the experience gained from its exploratory actions ($\pi$) to estimate what the returns would have been if it had followed the greedy policy ($\mu$).
+    - **Result**: The learned policy is the optimal greedy policy ($\pi^*$). This approach allows the agent to learn the best path faster, independent of the random steps taken for exploration, but it may lead to a riskier optimal path if exploration involves massive penalties (like falling off a cliff).
+
+| Feature | On-Policy (e.g., SARSA) | Off-Policy (e.g., Q-Learning) |
+| ------- | ----------------------- | ----------------------------- |
+| Learning Policy | $\pi$ (The policy the agent follows) | $\mu$ (The optimal/greedy policy) |
+| Data Policy | $\pi$ | $\pi$ |
+| Update Target | $\mathbf{Q(S_{t+1}, A_{t+1})}$ where $A_{t+1} \sim \pi$ | $\mathbf{\max_{a} Q(S_{t+1}, a)}$ |
+| Nature | Conservative | Optimal/Aggressive |
+
+
+**Temporal Difference methods**
+
+| Algorithm | SARSA | Q-Learning (SARSAmax) | Expected SARSA |
+| --------- | ----- | --------------------- | -------------- |
+| Policy Type | On-Policy | Off-Policy | Off-Policy (Hybrid) |
+| Policy Learned | The value of the Exploratory Policy ($\epsilon$-greedy). | The value of the Optimal Greedy Policy ($\mu$). | The value of the Optimal Greedy Policy ($\mu$). |
+| Next Action Used | The actual action $A_{t+1}$ chosen by the $\epsilon$-greedy policy $\pi$. | The greedy action $A_{\text{max}}$ (the one with the highest Q-value). | The expected value over all possible next actions $a'$, weighted by their probability $\pi(a')$ |
+| TD Target | $R_{t+1} + \gamma \mathbf{Q(S_{t+1}, A_{t+1})}$ | $R_{t+1} + \gamma \mathbf{\max_{a} Q(S_{t+1}, a)}$ | $R_{t+1} + \gamma \mathbf{\sum_{a'} \pi(a')}$ |
+| Convergence | Converges only to $Q^*$ if the policy $\pi$ decays $\epsilon \to 0$. | Converges directly to $Q^*$ regardless of the behavior policy $\pi$. | Converges directly to $Q^*$ regardless of the behavior policy $\pi$. |
+| Safety/Risk | Conservative: Learns safer paths, accounting for exploration risk. |Aggressive: Learns the mathematically optimal path, ignoring exploration risk. |Balanced: More stable than Q-Learning and learns the optimal path. |
+
+**Policy Relationship**
+| Algorithm | Relationship | Interpretation |
+| --------- | ------------ | -------------- |
+| SARSA | On-Policy (Policy $\pi$ learns about Policy $\pi$) | Learns the expected return from taking action $A_t$ and continuing to follow the same exploratory strategy $\pi$. |
+| Q-Learning | Off-Policy (Policy $\pi$ learns about Policy $\mu$) | Learns the expected return from taking action $A_t$ but assumes that after this step, the agent will always act greedily ($\mu$). |
+| Expected SARSA | Off-Policy (Policy $\pi$ learns about Policy $\mu$ using $\pi$) | Learns the expected return from taking action $A_t$ by averaging the values of all possible next actions, weighted by their probability of being chosen by the behavior policy $\pi$. This removes the stochasticity introduced by sampling $A_{t+1}$ in SARSA. |
+
 
 # SQL
 
@@ -391,6 +538,27 @@ Useful references:
 
 ### General
 
+| Feature | List | Set | Tuple | Dictionary |
+| ------- | ---- | --- | ----- | ---------- |
+| Mutability | Mutable | Mutable (elements must be immutable) | Immutable| Mutable |
+| Hashable | No | No | Yes | No |
+| Ordering | Ordered | Unordered | Ordered | Ordered |
+| Duplicates | Allows duplicates | No duplicates allowed | Allows duplicates | No duplicate keys |
+| Indexing | Supports indexing and slicing | Not supported | Supports indexing and slicing | By Key |
+| Performance | Slower for membership tests | Faster Membership tests | Faster than lists | Fast lookup and modification |
+| Use Case | When frequent modifications are required | When uniqueness is needed | When immutability is required| When association or mapping between values |
+
+
+### Algorithms
+
+
+
+
+
+
+
+
+### Snippets
 
 **Using** ```__main__``` **Safely** - Ensures script only runs when executed directly, not when imported.
 ```python
@@ -416,6 +584,53 @@ for i, value in enumerate(["a", "b", "c"], start=1):
 **List Comprehensions** - Pythonic, fast, and readable.
 ```python
 squares = [x**2 for x in range(10)]
+```
+
+**deque**
+```python
+from collections import deque
+
+# Create a deque
+my_deque = deque([1, 2, 3])
+
+# Append to the left
+my_deque.appendleft(0)
+print(f"Deque after appendleft(0): {my_deque}")
+```
+> Deque after appendleft(0): deque([0, 1, 2, 3])
+``` python
+# Append to the right
+my_deque.append(4)
+print(f"Deque after append(4): {my_deque}")
+```
+> Deque after append(4): deque([0, 1, 2, 3, 4])
+
+**Counter**
+```python
+from collections import Counter
+
+# Initialize a Counter from a string
+c = Counter("mississippi")
+print(c)
+```
+> Counter({'i': 4, 's': 4, 'p': 2, 'm': 1})
+```python
+# Updating counts (+)
+c.update("pennsylvania")
+print(c)
+```
+> Counter({'i': 5, 's': 5, 'p': 3, 'n': 3, 'a': 2, 'm': 1, 'e': 1, 'y': 1, 'l': 1, 'v': 1})
+
+```python
+# Arithmetic operations (-)
+c2 = Counter("apple")
+result = c - c2
+print(result)
+```
+> Counter({'i': 5, 's': 5, 'n': 3, 'm': 1, 'p': 1, 'y': 1, 'v': 1, 'a': 1})
+
+# Most common elements
+print(c.most_common(3)) # [('i', 5), ('s', 5), ('p', 3)]
 ```
 
 **Dictionary Comprehensions** - Quick way to build dictionaries.

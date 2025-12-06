@@ -1,0 +1,2080 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  
+  <title>Reinforcement Learning on Tower of Hanoi &middot; Steven Lio</title>
+    <meta name="title" content="Reinforcement Learning on Tower of Hanoi &middot; Steven Lio" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.74ad8406faea02f3e186ba5126249aaeed9073629e04b05037b903396b188724.js"
+    integrity="sha256-dK2EBvrqAvPhhrpRJiSaru2Qc2KeBLBQN7kDOWsYhyQ="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.d117412fe190302876127f0bef463c0a7f75a6360ad864a8416a9ebdb8cec411.css"
+    integrity="sha256-0RdBL&#43;GQMCh2En8L70Y8Cn91pjYK2GSoQWqevbjOxBE="
+  />
+  
+    
+    
+    
+  
+  
+  
+    
+    
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9abdfbcc9a5d4d9ed7b5d31ceb05c0294430ec07b1dfec07809754d561269294.js"
+      integrity="sha256-mr37zJpdTZ7XtdMc6wXAKUQw7Aex3&#43;wHgJdU1WEmkpQ="
+      data-copy="Copy"
+      data-copied="Copied"
+    ></script>
+  
+  
+  <meta
+    name="description"
+    content="
+      
+        Explore reinforcement learning to solve Tower of Hanoi
+      
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/projects/hanoi/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/projects/hanoi/">
+  <meta property="og:site_name" content="Steven Lio">
+  <meta property="og:title" content="Reinforcement Learning on Tower of Hanoi">
+  <meta property="og:description" content="Explore reinforcement learning to solve Tower of Hanoi">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2025-12-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-03T00:00:00+00:00">
+    <meta property="article:tag" content="Reinforcement Learning">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Computer Science">
+    <meta property="article:tag" content="Algorithm">
+    <meta property="article:tag" content="Python">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reinforcement Learning on Tower of Hanoi">
+  <meta name="twitter:description" content="Explore reinforcement learning to solve Tower of Hanoi">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Projects",
+    "name": "Reinforcement Learning on Tower of Hanoi",
+    "headline": "Reinforcement Learning on Tower of Hanoi",
+    
+    "abstract": "Explore reinforcement learning to solve Tower of Hanoi",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/projects\/hanoi\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Steven Lio"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-12-03T00:00:00\u002b00:00",
+    "datePublished": "2025-12-03T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-12-03T00:00:00\u002b00:00",
+    
+    "keywords": ["Reinforcement Learning","Machine Learning","Computer Science","Algorithm","Python"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "5814"
+  }
+  </script>
+
+
+  
+  <meta name="author" content="Steven Lio" />
+  
+    
+      <link href="https://linkedin.com/in/steven-lio" rel="me" />
+    
+      <link href="https://github.com/stevenlio88" rel="me" />
+    
+      <link href="https://stevenlio.medium.com/" rel="me" />
+    
+      <link href="https://www.instagram.com/stevenlio/" rel="me" />
+    
+      <link href="https://www.flickr.com/photos/stevenlio/" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 sm:px-14 md:px-24 lg:px-32 dark:bg-neutral-800 dark:text-neutral"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 print:hidden sm:py-10 dark:text-neutral">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >Steven Lio</a
+  >
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col text-end sm:flex-row">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/about/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >About</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/resume/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Résumé</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/projects/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Projects</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                <a
+                  href="/blog/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >Blog</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0.5">
+              
+                
+                
+                  <button
+                    id="search-button-1"
+                    title="Search (/)"
+                  >
+                    
+                      <span
+                        class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                      ><span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span></span><span
+                        class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                        ></span
+                      >
+                    
+                  </button>
+                
+              
+            </li>
+          
+            
+              
+          
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Reinforcement Learning on Tower of Hanoi
+      </h1>
+      
+        <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-12-03 00:00:00 &#43;0000 UTC">03 Dec, 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">28 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+      
+        
+      
+        
+          
+            <a
+              href="/tags/reinforcement-learning/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Reinforcement Learning</a
+            >
+          
+            <a
+              href="/tags/machine-learning/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Machine Learning</a
+            >
+          
+            <a
+              href="/tags/computer-science/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Computer Science</a
+            >
+          
+            <a
+              href="/tags/algorithm/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Algorithm</a
+            >
+          
+            <a
+              href="/tags/python/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Python</a
+            >
+          
+        
+      
+    </div>
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+          <div class="toc pe-5 print:hidden lg:sticky lg:top-10">
+            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
+  <summary
+    class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#the-tower-of-hanoi-problem">The Tower of Hanoi Problem</a></li>
+    <li><a href="#reinforcement-learning-overview">Reinforcement Learning Overview</a></li>
+    <li><a href="#the-environment">The Environment</a></li>
+    <li><a href="#tabular-temporal-difference-learning">Tabular Temporal Difference Learning</a>
+      <ul>
+        <li><a href="#sarsa-q-learning-expected-sarsa">SARSA, Q-Learning, Expected SARSA</a></li>
+        <li><a href="#results">Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#deep-q-network-dqn">Deep Q-Network (DQN)</a>
+      <ul>
+        <li><a href="#qnetwork">QNetwork</a></li>
+        <li><a href="#bellman-optimality-equation">Bellman Optimality Equation</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#result">Result</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-ive-learned">What I&rsquo;ve learned</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+          </div>
+        </div>
+      
+      
+	  <div class="min-h-0 min-w-0 lg:max-w-screen-lg grow">
+        <center>
+	<img src="thumb.gif"/>
+	<figcaption align="center">Animated solution of the 4 disc puzzle - Wikipedia</figcaption>
+</center>
+<hr>
+<h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>In this project, I explored the different foundation Reinforcement Learning (RL) algorithms - specifically Temporal Difference (TD) Q-table methods (SARSA, Q-Learning, Expected SARSA) and a Deep Q-Network (DQN) trained to solve the classic Tower of Hanoi puzzle. The objective is to compare their efficiency, convergence, and ability to find the optimal solution in this discrete action-space environment.</p>
+<h2 id="background" class="relative group">Background <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#background" aria-label="Anchor">#</a></span></h2><p>The Tower of Hanoi Problem was introduced during my first year computer science course (COMPSCI 1MA3) at McMaster University, Christopher Anand was my lecturer at that time. The problem was introduced to illustrate solving problems with recursion in Haskell.</p>
+<h2 id="the-tower-of-hanoi-problem" class="relative group">The Tower of Hanoi Problem <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#the-tower-of-hanoi-problem" aria-label="Anchor">#</a></span></h2><p>The Tower of Hanoi is a mathematical puzzle with a simple set of rules, making it an excellent testbed for RL.</p>
+<p><strong>Problem Details</strong></p>
+<ul>
+<li>
+<p><strong>Setup</strong>: A set of $n$ disks of different sizes is stacked on one of three pegs (Source, Auxiliary, Destination) in increasing order of size (largest on the bottom).</p>
+</li>
+<li>
+<p><strong>Goal</strong>: Move the entire stack to another peg, following these rules:</p>
+<ul>
+<li>Only one disk can be moved at a time.</li>
+<li>The top disk from any peg can be moved to any other peg.</li>
+<li>A larger disk can never be placed on top of a smaller disk.</li>
+</ul>
+</li>
+</ul>
+<p><strong>The Deterministic Solution</strong></p>
+<p>The problem has a well-known deterministic, optimal solution that requires $2^n - 1$ moves for $n$ disks. For example, a 3-disk problem requires $2^3 - 1 = 7$ moves. This optimal path provides a clear benchmark for our RL agents.</p>
+<center>
+	<img src="tower-of-hanoi.png" style="width=80%; margin-bottom: 5px;"/>
+	<figcaption align="center">Optimal Solution of the 3 disc puzzle - GeeksforGeeks</figcaption>
+</center>
+<p>Read more about The Tower of Hanoi Problem at <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi" target="_blank" rel="noreferrer">here</a> and <a href="https://www.geeksforgeeks.org/dsa/c-program-for-tower-of-hanoi/" target="_blank" rel="noreferrer">here</a>.
+You can also try the interactive puzzle <a href="https://www.mathsisfun.com/games/towerofhanoi.html" target="_blank" rel="noreferrer">here</a>.</p>
+<h2 id="reinforcement-learning-overview" class="relative group">Reinforcement Learning Overview <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#reinforcement-learning-overview" aria-label="Anchor">#</a></span></h2><p>RL is a framework where an <strong>agent</strong> learns to make sequential decisions by interacting with an environment.</p>
+<p>The Tower of Hanoi naturally fits this paradigm:</p>
+<ul>
+<li><strong>Agent</strong>: The RL algorithm (e.g., Q-Learning).</li>
+<li><strong>Environment</strong>: The state of the three pegs and the disks.</li>
+<li><strong>State</strong>: The configuration of disks on the three pegs (e.g., a tuple representing the disk on top of each peg).</li>
+<li><strong>Action</strong>: Moving the top disk from one peg to another valid peg (e.g., $Move(Peg_A \rightarrow Peg_C)$).</li>
+<li>Reward: A numerical value the agent receives after performing an action.</li>
+<li><strong>Episode</strong>: A single run from the starting state until the goal state is reached (or a maximum number of steps is hit).</li>
+<li><strong>Q-Value ($Q(s, a)$)</strong>: The expected future reward of taking action $a$ in state $s$. The agent&rsquo;s goal is to learn these values to choose the best action in every state.</li>
+</ul>
+<p><strong>Bellman Equation for Action Value Function (Q-function)</strong>
+$$Q_{new}(s, a) \leftarrow Q(s, a) + \alpha [Reward + \gamma \max_{a&rsquo;} Q(s&rsquo;, a&rsquo;) - Q(s, a)]$$</p>
+<h2 id="the-environment" class="relative group">The Environment <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#the-environment" aria-label="Anchor">#</a></span></h2><p>The environment is everything the learning agent interacts with. It is the simulation or real-world system that defines:</p>
+<ol>
+<li>The possible <strong>States</strong> the agent can be in (what the agent observes).</li>
+<li>The set of <strong>Actions</strong> the agent can take.</li>
+<li>The <strong>Dynamics (rules)</strong> that govern how the environment transitions from one state to another when an action is taken.</li>
+<li>The <strong>Reward</strong> or <strong>Penalty</strong> the agent receives for its actions.</li>
+</ol>
+<p>The goal of the agent is to learn a <strong>policy</strong> or a strategy that maximizes the total cumulative reward received from this environment.</p>
+<p>For this project a <code>TowerOfHanoiEnv</code> class is created which defined the formal environment for the agent to learn the optimal solution to the N-disk (default to 3), 3-peg Tower of Hanoi puzzle.</p>
+<p>The class defined:</p>
+<p><strong>1. State Space (Observation)</strong></p>
+<ul>
+<li>Concept: The complete, unique configuration of all 3 discs across the 3 pegs.</li>
+<li>Implementation: The state is encoded as a fixed-length vector (9 elements, 3 pegs $ \times $ 3 slots). This state vector is padded with zeros for empty slots, ensuring the agent always observes a consistent, unambiguous representation of the board (e.g., (3, 2, 1, 0, 0, 0, 0, 0, 0)). Size: $3^3 = \mathbf{27}$ valid states.</li>
+</ul>
+<p><strong>2. Action Space</strong></p>
+<ul>
+<li>Concept: The set of all possible moves between the pegs.</li>
+<li>Implementation: A set of 6 discrete actions (e.g. $ 0 \rightarrow 1 $, $ 1 \rightarrow 2 $, etc.) are mapped to the integer indices 0 through 5, which the agent chooses.</li>
+</ul>
+<p><strong>3. Dynamics and Rewards</strong></p>
+<ul>
+<li>Dynamics: The environment enforces the puzzle&rsquo;s rule: no larger disk can be placed on a smaller disk (_is_valid_move).</li>
+<li>Reward Function (The Guide):
+<ul>
+<li>Goal State (+1): A large positive reward is given only when all discs are correctly stacked on the final peg (Peg 2).</li>
+<li>Illegal Move (-1): A negative penalty is given for violating the rules, strongly discouraging invalid actions.</li>
+<li>Legal Non-Goal Move (0): A neutral reward for standard moves, which implicitly forces the agent to seek the solution path that minimizes the number of steps to reach the +1 reward.</li>
+</ul>
+</li>
+</ul>
+<p>Termination: An episode ends either upon solving the puzzle or when the maximum step limit (default 50) is exceeded.</p>
+<p><strong>4. Visualization</strong></p>
+<p>The <code>TowerOfHanoiEnv</code> came with the render method that is a utility function for debugging and human interpretability of the agent&rsquo;s actions.</p>
+<p>It will print out the puzzle state provided by the state tuple.</p>
+<p>For example for the initial state:
+$(3, 2, 1, 0, 0, 0, 0, 0, 0)$</p>
+<p>To initiate the environment and fetch initial state:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">TowerOfHanoiEnv</span><span class="p">(</span><span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span></code></pre></div><p>It will render as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="mi">1</span>    
+</span></span><span class="line"><span class="cl">  <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">__________________</span>
+</span></span><span class="line"><span class="cl">  <span class="n">P1</span>    <span class="n">P2</span>    <span class="n">P3</span>  
+</span></span><span class="line"><span class="cl"><span class="o">------------------</span>
+</span></span></code></pre></div><details>
+  <summary><u>Implementation of the Tower of Hanoi Environment in Python:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TowerOfHanoiEnv</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">n_discs</span> <span class="o">=</span> <span class="n">n_discs</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">max_steps</span> <span class="o">=</span> <span class="n">max_steps</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">actions</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span> <span class="c1">#action space</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Towers: top of stack on right</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">towers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_discs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="p">[],</span> <span class="p">[]]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_state</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Flattened state (pad with 0s)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">state</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">peg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s</span> <span class="o">=</span> <span class="n">peg</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_discs</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">peg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">state</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">_is_valid_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Check for illegal move</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="n">src</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="n">dest</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="n">src</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="n">dest</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Action: integer 0-5 mapping to move (src, dest)
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Mapping: [(1-&gt;2),(1-&gt;3),(2-&gt;1),(2-&gt;3),(3-&gt;1),(3-&gt;2)]
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">src</span><span class="p">,</span> <span class="n">dest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">src</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dest</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">reward</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_valid_move</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="n">dest</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="n">src</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">reward</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># penalty for illegal move</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_discs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">reward</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># solved</span>
+</span></span><span class="line"><span class="cl">            <span class="n">done</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_steps</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">done</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_state</span><span class="p">(),</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Render state to command line for human interpretability</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_discs</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_height</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">peg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">towers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">peg</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">level</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">peg</span><span class="p">[</span><span class="n">level</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;__________________&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;  P1    P2    P3  &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;-&#34;</span> <span class="o">*</span> <span class="mi">18</span><span class="p">)</span>
+</span></span></code></pre></div></details>
+<h2 id="tabular-temporal-difference-learning" class="relative group">Tabular Temporal Difference Learning <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#tabular-temporal-difference-learning" aria-label="Anchor">#</a></span></h2><p>After defining the environment, the first RL approach involved using a <strong>Q-Table</strong> to store the $Q(s, a)$ value for every possible state-action pair. Since the 3-disk problem has a manageable number of states, this is feasible.</p>
+<p>A <strong>Q-Table</strong> is essentially a <strong>lookup table</strong> used by a learning agent to help it make decisions in its environment.</p>
+<ul>
+<li>It is structured as a two-dimensional matrix:
+<ul>
+<li>Rows represent the possible States ($s$) the agent can be in.</li>
+<li>Columns represent the possible Actions ($a$) the agent can take.</li>
+</ul>
+</li>
+</ul>
+<p>An example Q-Table:</p>
+<div align="center">
+<table>
+<thead>
+<tr>
+<th>states</th>
+<th>action 1</th>
+<th>action 2</th>
+<th>action &hellip;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state 1</td>
+<td>-0.5</td>
+<td>1.8</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>state 2</td>
+<td>0.0</td>
+<td>-2.7</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>state 3</td>
+<td>2.5</td>
+<td>-0.1</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each cell in the table contains a Q-value ($Q(s, a)$), which is an <strong>estimate of the expected future reward the agent will receive if it takes a specific action ($a$) while in a specific state ($s$)</strong>, and then follows the optimal strategy thereafter.</p>
+<p>For a 3 discs ($N$) and 3 pegs ($K$) setup, there are total of $N^K = 3^3 = 27$ possible states and $K \times (K - 1) = 3 \times (3 - 1) = 6$ distinct actions an agent can apply.</p>
+<div align="center">
+<table>
+<thead>
+<tr>
+<th>From Peg</th>
+<th>To Peg</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>B</td>
+<td>Move A $\rightarrow$ B</td>
+</tr>
+<tr>
+<td>A</td>
+<td>C</td>
+<td>Move A $\rightarrow$ C</td>
+</tr>
+<tr>
+<td>B</td>
+<td>A</td>
+<td>Move B $\rightarrow$ A</td>
+</tr>
+<tr>
+<td>B</td>
+<td>C</td>
+<td>Move B $\rightarrow$ C</td>
+</tr>
+<tr>
+<td>C</td>
+<td>A</td>
+<td>Move C $\rightarrow$ A</td>
+</tr>
+<tr>
+<td>C</td>
+<td>B</td>
+<td>Move C $\rightarrow$ B</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Therefore the Q-Table for the Tower of Hanoi puzzle ($N=3$, $K=3$) is $ 27 \times 6 $.</p>
+<h3 id="sarsa-q-learning-expected-sarsa" class="relative group">SARSA, Q-Learning, Expected SARSA <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#sarsa-q-learning-expected-sarsa" aria-label="Anchor">#</a></span></h3><p>There are three common algorithms explored within the tabular temporal difference learning - SARSA, Q-Learning (a.k.a. SARSAMax) and Expected SARSA. They are known as the most common techniques used for model-free, off-policy and on-policy learning. They are all based on the concept of Temporal Difference (TD) learning, which involves updating an estimated Q-value based on a subsequent observed Q-value.</p>
+<details>
+  <summary><u>Details about the algorithms:</u></summary>
+<p><strong>SARSA Update Rule</strong>:
+$$Q(s, a) \leftarrow Q(s, a) + \alpha \left[r + \gamma Q(s&rsquo;, a&rsquo;) - Q(s, a)\right]$$
+Where $a&rsquo;$ is the action selected by the current policy $\pi$ in state $s&rsquo;$.</p>
+<p><strong>Q-Learning (a.k.a. SARSAMax) Update Rule</strong>:
+$$Q(s, a) \leftarrow Q(s, a) + \alpha \left[r + \gamma \max_{a&rsquo;} Q(s&rsquo;, a&rsquo;) - Q(s, a)\right]$$
+Where $\max_{a&rsquo;} Q(s&rsquo;, a&rsquo;)$ is the highest possible Q-value from the next state $s&rsquo;$, irrespective of the action actually taken.</p>
+<p><strong>Expected SARSA Update Rule</strong>:
+$$Q(s, a) \leftarrow Q(s, a) + \alpha \left[r + \gamma \sum_{a&rsquo;} \pi(a&rsquo;|s&rsquo;) Q(s&rsquo;, a&rsquo;) - Q(s, a)\right]$$
+Where the sum calculates the weighted average of all possible next Q-values based on the current policy&rsquo;s probabilities ($\pi$).</p>
+<p>Note:</p>
+<ul>
+<li>$\alpha$ - Learning Rate: extent to which the newly acquired information overrides the old information (the current Q-value).</li>
+<li>$\gamma$ - Discount Factor: determines the importance of future rewards vs. immediate rewards.</li>
+</ul>
+<p><strong>Algorithm Comparison</strong></p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Update Rule</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SARSA (On-Policy)</td>
+<td>Uses Q(s′,a′) where a′ is the next action actually taken by the ϵ-greedy policy.</td>
+<td>Guarantees convergence for ϵ-greedy policy, learns a safer policy.</td>
+<td>Slower to converge to the optimal policy, as it explores inefficient moves.</td>
+</tr>
+<tr>
+<td>Q-Learning (Off-Policy)</td>
+<td>Uses Q(s′,a∗), where a∗ is the optimal action in the next state s′ (ignoring the exploration policy).</td>
+<td>Learns the optimal policy Q∗. Often converges faster to optimality.</td>
+<td>Learns an optimal policy outside the actual explored path; prone to high reward variance.</td>
+</tr>
+<tr>
+<td>Expected SARSA (Off-Policy)</td>
+<td>Uses the E[Q(s′,a′)] weighted by the probability of taking each action a′ in state s′.</td>
+<td>Smoother learning than Q-Learning, better stability, learns the optimal policy.</td>
+<td>Requires calculating the expected value (a sum over all next actions), computationally heavier.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>On-Policy vs. Off-Policy</strong></p>
+<ul>
+<li>
+<p><strong>On-policy</strong> methods learn the value of the policy they are currently using to act.</p>
+</li>
+<li>
+<p><strong>Off-policy</strong> methods use data generated by an exploratory policy to learn the value of a different, usually optimal and non-exploratory policy.</p>
+</li>
+</ul>
+<p><strong>ϵ-greedy policy</strong></p>
+<p>The ϵ-greedy policy is a simple yet effective strategy used in Reinforcement Learning (RL) to manage the trade-off between exploration and exploitation. It dictates how an agent chooses its actions based on its current knowledge (Q-values).</p>
+<ul>
+<li>
+<p><strong>Exploitation</strong>: Choosing the action that has the highest estimated value (the best known action). This maximizes the immediate reward based on current knowledge.</p>
+</li>
+<li>
+<p><strong>Exploration</strong>: Choosing a random action, which allows the agent to discover new states and potentially find actions that yield higher long-term rewards than those currently known.</p>
+</li>
+</ul>
+</details>
+<h3 id="results" class="relative group">Results <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#results" aria-label="Anchor">#</a></span></h3><p>For each algorithms, 5,000 episodes were simulated. i.e. the algorithm has done 5,000 iterations each either solved the puzzle within max 50 moves or terminated due to max moves reached. Each time agent made a move with ϵ = 10% (i.e. 10% chance to make a random move given the current state - 10% chance for exploration), the Q-table values is updated with the respective state-action Q-value.</p>
+<p>Here is the learning curve comparison. i.e. the moving average of the total moves the agent taken from each episode.</p>
+<center>
+	<img src="learning_curve.png" style="width=80%; margin-bottom: 5px;"/>
+</center>
+<p>This analysis compares the learning performance of SARSA, Q-Learning, and Expected SARSA on the 3-disc Tower of Hanoi puzzle (optimal solution: 7 steps). While curve smoothing and persistent $\epsilon$-greedy exploration prevent average steps from strictly reaching the optimum, all algorithms successfully executed the optimal 7-step solution during training.</p>
+<p><strong>Comparative Performance Analysis</strong></p>
+<p>Expected SARSA demonstrated the fastest and most robust convergence, achieving the earliest optimal solution at episode 31. Its also has the best stability resulted in the most consistent performance near the optimum.</p>
+<p>Q-Learning showed surprisingly delayed initial performance. Despite its design to learn the optimal policy, it only achieved the optimal 7-step solution much later, at episode 606. Q-Learning consistently produced a higher average number of steps than the other two methods. This delayed convergence is attributed to the necessary testing and validation of its optimistic, off-policy updates by the behavior policy during early training.</p>
+<p>SARSA performed very well, finding the optimal solution as early as episode 55. However the learning curve was not as stable as the other two methods.</p>
+<details>
+  <summary><u>Implementation of the training process:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">TowerOfHanoiEnv</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">TowerOfHanoiEnv</span><span class="p">(</span><span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Hyperparameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">episodes</span> <span class="o">=</span> <span class="mi">5000</span>
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># Learning Rate - extent to which the newly acquired information overrides the old information (the current Q-value).</span>
+</span></span><span class="line"><span class="cl"><span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.99</span> <span class="c1"># Discount Factor - determines the importance of future rewards vs. immediate rewards.</span>
+</span></span><span class="line"><span class="cl"><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># Epsilon Greedy (20% chance to explore new action)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">algorithm_choice</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">algorithm_choices</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;sarsa&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;q_learning&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;expected_sarsa&#39;</span><span class="p">}</span> <span class="c1">#q_learning a.k.a. sarsamax</span>
+</span></span><span class="line"><span class="cl"><span class="n">current_algorithm</span> <span class="o">=</span> <span class="n">algorithm_choices</span><span class="p">[</span><span class="n">algorithm_choice</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">current_algorithm</span><span class="si">}</span><span class="s2"> RL algorithm is used.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Q</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="n">ep_steps</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">select_action</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">action_space_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Epsilon-greedy action selection.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Q</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Add unseen state to Q-table</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">action_space_size</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Explore: Choose a random action</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">action_space_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Exploit: Choose the best-known action</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">episodes</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Episode: </span><span class="si">{</span><span class="n">ep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">state</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">action</span> <span class="o">=</span> <span class="n">select_action</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">current_action</span> <span class="o">=</span> <span class="n">action</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">next_state</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">next_state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">next_state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Q</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Q</span><span class="p">[</span><span class="n">next_state</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># td_target - Temporal Difference Target</span>
+</span></span><span class="line"><span class="cl">        <span class="n">td_target</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">td_target</span> <span class="o">=</span> <span class="n">reward</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">greedy_action_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="n">next_state</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">current_algorithm</span> <span class="o">==</span> <span class="s1">&#39;sarsa&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">action_for_next_step</span> <span class="o">=</span> <span class="n">select_action</span><span class="p">(</span><span class="n">next_state</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">target_q_value</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">next_state</span><span class="p">][</span><span class="n">action_for_next_step</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">current_algorithm</span> <span class="o">==</span> <span class="s1">&#39;q_learning&#39;</span><span class="p">:</span> <span class="c1">#sarsamax</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># Greedy Policy - Use max (best) Q i.e. rewards from previous to select next action</span>
+</span></span><span class="line"><span class="cl">                <span class="n">action_for_next_step</span> <span class="o">=</span> <span class="n">select_action</span><span class="p">(</span><span class="n">next_state</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">))</span> <span class="c1"># Still need next step action for behavior (Off-Policy)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">target_q_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="n">next_state</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">current_algorithm</span> <span class="o">==</span> <span class="s1">&#39;expected_sarsa&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># Expected SARSA: A&#39; is the average value over the behavior policy</span>
+</span></span><span class="line"><span class="cl">                <span class="n">action_for_next_step</span> <span class="o">=</span> <span class="n">select_action</span><span class="p">(</span><span class="n">next_state</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">))</span> <span class="c1"># Still need next step action for behavior (Off-Policy)</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="n">expected_q_value</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">                <span class="n">prob_greedy</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span> <span class="o">+</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">prob_non_greedy</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="k">for</span> <span class="n">a_prime</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">q_value</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">next_state</span><span class="p">][</span><span class="n">a_prime</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="n">a_prime</span> <span class="o">==</span> <span class="n">greedy_action_idx</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">expected_q_value</span> <span class="o">+=</span> <span class="n">prob_greedy</span> <span class="o">*</span> <span class="n">q_value</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">expected_q_value</span> <span class="o">+=</span> <span class="n">prob_non_greedy</span> <span class="o">*</span> <span class="n">q_value</span>
+</span></span><span class="line"><span class="cl">                <span class="n">target_q_value</span> <span class="o">=</span> <span class="n">expected_q_value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Calculate the target Q - only differences between the three methods</span>
+</span></span><span class="line"><span class="cl">            <span class="n">td_target</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">target_q_value</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Update Q values</span>
+</span></span><span class="line"><span class="cl">        <span class="n">old_q_value</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">][</span><span class="n">current_action</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">][</span><span class="n">current_action</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_q_value</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">td_target</span> <span class="o">-</span> <span class="n">old_q_value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+</span></span><span class="line"><span class="cl">        <span class="n">action</span> <span class="o">=</span> <span class="n">action_for_next_step</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Action: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="si">}</span><span class="s2"> Reward: </span><span class="si">{</span><span class="n">reward</span><span class="si">}</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Episode </span><span class="si">{</span><span class="n">ep</span><span class="si">}</span><span class="s2"> Finished! Total steps: </span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ep_steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+</span></span></code></pre></div></details>
+<details>
+  <summary><u>Final Q-Table from Expected SARSA:</u></summary>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>(1, 2)</th>
+<th>(1, 3)</th>
+<th>(2, 1)</th>
+<th>(2, 3)</th>
+<th>(3, 1)</th>
+<th>(3, 2)</th>
+<th>best_move</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(3, 2, 1, 0, 0, 0, 0, 0, 0)</td>
+<td>0.075281</td>
+<td>0.187439</td>
+<td>-0.971061</td>
+<td>-0.971057</td>
+<td>-0.971060</td>
+<td>-0.971054</td>
+<td>(1, 3)</td>
+</tr>
+<tr>
+<td>(3, 2, 0, 1, 0, 0, 0, 0, 0)</td>
+<td>-0.831940</td>
+<td>0.013584</td>
+<td>0.012789</td>
+<td>0.187417</td>
+<td>-0.815452</td>
+<td>-0.792743</td>
+<td>(2, 3)</td>
+</tr>
+<tr>
+<td>(3, 0, 0, 1, 0, 0, 2, 0, 0)</td>
+<td>-0.413558</td>
+<td>-0.577953</td>
+<td>0.156089</td>
+<td>-0.034169</td>
+<td>-0.022135</td>
+<td>-0.277103</td>
+<td>(2, 1)</td>
+</tr>
+<tr>
+<td>(3, 0, 0, 0, 0, 0, 2, 1, 0)</td>
+<td>-0.030925</td>
+<td>-0.100004</td>
+<td>-0.477923</td>
+<td>-0.194165</td>
+<td>0.016315</td>
+<td>-0.030810</td>
+<td>(3, 1)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 3, 0, 0, 2, 1, 0)</td>
+<td>-0.350220</td>
+<td>-0.191525</td>
+<td>-0.020551</td>
+<td>-0.351484</td>
+<td>-0.022189</td>
+<td>-0.020075</td>
+<td>(3, 2)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 3, 1, 0, 2, 0, 0)</td>
+<td>-0.191602</td>
+<td>-0.190958</td>
+<td>-0.018596</td>
+<td>-0.017864</td>
+<td>-0.015734</td>
+<td>-0.419241</td>
+<td>(3, 1)</td>
+</tr>
+<tr>
+<td>(1, 0, 0, 3, 0, 0, 2, 0, 0)</td>
+<td>-0.016545</td>
+<td>-0.015582</td>
+<td>-0.415872</td>
+<td>-0.276835</td>
+<td>-0.276117</td>
+<td>-0.016887</td>
+<td>(1, 3)</td>
+</tr>
+<tr>
+<td>(3, 1, 0, 0, 0, 0, 2, 0, 0)</td>
+<td>-0.017275</td>
+<td>-0.035352</td>
+<td>-0.415176</td>
+<td>-0.392701</td>
+<td>-0.373058</td>
+<td>0.319704</td>
+<td>(3, 2)</td>
+</tr>
+<tr>
+<td>(3, 2, 0, 0, 0, 0, 1, 0, 0)</td>
+<td>0.320544</td>
+<td>-0.812580</td>
+<td>-0.812584</td>
+<td>-0.812577</td>
+<td>0.028942</td>
+<td>0.075287</td>
+<td>(1, 2)</td>
+</tr>
+<tr>
+<td>(3, 0, 0, 2, 0, 0, 1, 0, 0)</td>
+<td>-0.679507</td>
+<td>-0.679509</td>
+<td>0.187416</td>
+<td>-0.679514</td>
+<td>0.323786</td>
+<td>0.449636</td>
+<td>(3, 2)</td>
+</tr>
+<tr>
+<td>(3, 1, 0, 2, 0, 0, 0, 0, 0)</td>
+<td>0.449593</td>
+<td>0.265910</td>
+<td>-0.646636</td>
+<td>0.187752</td>
+<td>-0.640434</td>
+<td>-0.594036</td>
+<td>(1, 2)</td>
+</tr>
+<tr>
+<td>(3, 0, 0, 2, 1, 0, 0, 0, 0)</td>
+<td>-0.550422</td>
+<td>0.585302</td>
+<td>0.323746</td>
+<td>0.320510</td>
+<td>-0.550457</td>
+<td>-0.550443</td>
+<td>(1, 3)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 2, 1, 0, 3, 0, 0)</td>
+<td>-0.414763</td>
+<td>-0.414754</td>
+<td>0.718357</td>
+<td>0.572364</td>
+<td>0.449567</td>
+<td>-0.414802</td>
+<td>(2, 1)</td>
+</tr>
+<tr>
+<td>(1, 0, 0, 2, 0, 0, 3, 0, 0)</td>
+<td>0.585214</td>
+<td>0.572405</td>
+<td>-0.281705</td>
+<td>0.858238</td>
+<td>-0.281718</td>
+<td>-0.281688</td>
+<td>(2, 3)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 2, 0, 0, 3, 1, 0)</td>
+<td>-0.430065</td>
+<td>-0.380925</td>
+<td>0.156087</td>
+<td>-0.397285</td>
+<td>0.718319</td>
+<td>0.461980</td>
+<td>(3, 1)</td>
+</tr>
+<tr>
+<td>(2, 0, 0, 0, 0, 0, 3, 1, 0)</td>
+<td>-0.005120</td>
+<td>-0.363449</td>
+<td>-0.247507</td>
+<td>-0.395108</td>
+<td>-0.002112</td>
+<td>0.396416</td>
+<td>(3, 2)</td>
+</tr>
+<tr>
+<td>(2, 1, 0, 0, 0, 0, 3, 0, 0)</td>
+<td>0.087322</td>
+<td>-0.004142</td>
+<td>-0.273496</td>
+<td>-0.274181</td>
+<td>-0.100000</td>
+<td>-0.006605</td>
+<td>(1, 2)</td>
+</tr>
+<tr>
+<td>(2, 0, 0, 1, 0, 0, 3, 0, 0)</td>
+<td>-0.271407</td>
+<td>0.674633</td>
+<td>-0.000287</td>
+<td>0.034272</td>
+<td>-0.310084</td>
+<td>-0.191551</td>
+<td>(1, 3)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 1, 0, 0, 3, 2, 0)</td>
+<td>-0.305323</td>
+<td>-0.256640</td>
+<td>0.858193</td>
+<td>0.717570</td>
+<td>0.250321</td>
+<td>-0.171201</td>
+<td>(2, 1)</td>
+</tr>
+<tr>
+<td>(1, 0, 0, 0, 0, 0, 3, 2, 0)</td>
+<td>0.714351</td>
+<td>1.000000</td>
+<td>-0.141805</td>
+<td>-0.141801</td>
+<td>-0.141809</td>
+<td>0.718287</td>
+<td>(1, 3)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 0, 0, 0, 3, 2, 1)</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>(1, 2)</td>
+</tr>
+<tr>
+<td>(1, 0, 0, 3, 2, 0, 0, 0, 0)</td>
+<td>-0.015486</td>
+<td>-0.016414</td>
+<td>-0.191504</td>
+<td>-0.017834</td>
+<td>-0.349199</td>
+<td>-0.194357</td>
+<td>(1, 2)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 3, 2, 1, 0, 0, 0)</td>
+<td>-0.272894</td>
+<td>-0.191525</td>
+<td>-0.013734</td>
+<td>-0.011694</td>
+<td>-0.101263</td>
+<td>-0.193889</td>
+<td>(2, 3)</td>
+</tr>
+<tr>
+<td>(0, 0, 0, 3, 2, 0, 1, 0, 0)</td>
+<td>-0.274153</td>
+<td>-0.192381</td>
+<td>-0.017178</td>
+<td>-0.100960</td>
+<td>-0.015711</td>
+<td>-0.015948</td>
+<td>(3, 1)</td>
+</tr>
+<tr>
+<td>(2, 0, 0, 3, 0, 0, 1, 0, 0)</td>
+<td>-0.012178</td>
+<td>-0.273505</td>
+<td>-0.274876</td>
+<td>-0.192734</td>
+<td>-0.010320</td>
+<td>-0.012382</td>
+<td>(3, 1)</td>
+</tr>
+<tr>
+<td>(2, 1, 0, 3, 0, 0, 0, 0, 0)</td>
+<td>-0.011507</td>
+<td>-0.012488</td>
+<td>-0.190346</td>
+<td>-0.009123</td>
+<td>-0.192174</td>
+<td>-0.192999</td>
+<td>(2, 3)</td>
+</tr>
+<tr>
+<td>(2, 0, 0, 3, 1, 0, 0, 0, 0)</td>
+<td>-0.190330</td>
+<td>-0.014598</td>
+<td>-0.014421</td>
+<td>-0.013246</td>
+<td>-0.192705</td>
+<td>-0.351353</td>
+<td>(2, 3)</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+  <summary><u>Solution found by Expected SARSA:</u></summary>
+<pre tabindex="0"><code>step 0:
+
+  1              
+  2              
+  3              
+__________________
+  P1    P2    P3  
+------------------
+
+step 1: 1-&gt;3
+                 
+  2              
+  3           1  
+__________________
+  P1    P2    P3  
+------------------
+
+step 2: 1-&gt;2
+                 
+                 
+  3     2     1  
+__________________
+  P1    P2    P3  
+------------------
+
+step 3: 3-&gt;2
+                 
+        1        
+  3     2        
+__________________
+  P1    P2    P3  
+------------------
+
+step 4: 1-&gt;3
+                 
+        1        
+        2     3  
+__________________
+  P1    P2    P3  
+------------------
+
+step 5: 2-&gt;1
+                 
+                 
+  1     2     3  
+__________________
+  P1    P2    P3  
+------------------
+
+step 6: 2-&gt;3
+                 
+              2  
+  1           3  
+__________________
+  P1    P2    P3  
+------------------
+
+step 7: 1-&gt;3
+              1  
+              2  
+              3  
+__________________
+  P1    P2    P3  
+------------------
+</code></pre></details>
+<details>
+  <summary><u>To reuse a trained agent:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl"><span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Setup environment</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">TowerOfHanoiEnv</span><span class="p">(</span><span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">state</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span> <span class="c1">#initial state</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">action</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="n">state</span><span class="p">]))</span> <span class="c1"># Choose best action given by Q-Table</span>
+</span></span><span class="line"><span class="cl">    <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">state</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">next_state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span></code></pre></div></details>
+<h2 id="deep-q-network-dqn" class="relative group">Deep Q-Network (DQN) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#deep-q-network-dqn" aria-label="Anchor">#</a></span></h2><p>Tabular Temporal Difference Learning is perfect for problems with small action-state space, otherwise for a larger complex problems where the action-state space becomes too vast to fit in a table. For example a 6 discs 3 pegs puzzle quickly grow into $6^3 = 216 rows$ and there are totalling  $216 \times 6 = 1,296$ Q-values in the tables to be update, that leads to much more episodes for a stable convergence towards the final state. This is where Deep Q-Network (DQN) shines.</p>
+<p>Instead of a Q-Table, a Neural Network (NN) is used as a function approximator to estimate the $Q(s,a)$ values.</p>
+<p>Note, a well designed Neural Network may able to <em>generalize</em> without seeing all possible states where an agent trained with the incomplete Q-Table (not all possible states were seen given a finite time) is almost guaranteed not successful, as it only follows the trained Q-value from the Q-Table strictly to action.</p>
+<h3 id="qnetwork" class="relative group">QNetwork <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#qnetwork" aria-label="Anchor">#</a></span></h3><p>The standard fully-connected (feedforward) Neural Network structure is:</p>
+<ol>
+<li><strong>Input</strong>: The current <strong>state</strong> $s$ (a vector length $N \times K$ i.e. $ 3 \times 3 = 9$ representation of the disc positions)</li>
+<li><strong>Architecture</strong>: A simple Multilayer Perceptron (MLP) with two hidden layers, each containing 64 nodes.</li>
+<li><strong>Activation</strong>: The Rectified Linear Unit ($ReLU$) activation function is applied after the first and second hidden layers.</li>
+<li><strong>Output</strong>: A Q-value for every possible <strong>action</strong> $a$ equals to the action space (e.g. size 6).</li>
+</ol>
+<p>The agent - NN sees only what the given state is then based on iterative training, and based on the experiences it will begin to summarize its learning (based on reward/penality received) to better approximate the corresponding Q-Value for each state-action pair.</p>
+<p>In a sense that the Q-Table is now stored as the weights/bias within the hidden layers of the NN instead of a table.</p>
+<p>It is important to understand the fundamental method behind the Q-Learning framework with DQN, where the QNetwork is estimating the Q-Value for each state-action pairs as opposed to directly output the best discrete action.</p>
+<p>Since we are still staying with the Q-Learning framework where leverages the Bellman Optimality Equation which provide the agent better sense on how the value of the reward is associated with the state and the action taken. This provide the efficiency improvement over a trial and error approach if the Neural Network just learn based on the amount of reward/loss after each action.</p>
+<p>The Bellman Equation and the Bellman Optimality Equation key concept is in the <strong>Target</strong> value, where it updates the current Q-value after <em>peaking</em> at what the next reward would be if choose the next action based on the max Q-value in the next targeted state.</p>
+<h3 id="bellman-optimality-equation" class="relative group">Bellman Optimality Equation <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#bellman-optimality-equation" aria-label="Anchor">#</a></span></h3><p>DQN is a value-based method that is trained to satisfy the Bellman Optimality Equation. The loss function for DQN is based on minimizing the difference between the current Q-estimate and the Bellman target:</p>
+<p>$$\text{Loss} = \left[ (\text{Current Q-value}) - (\text{Target Q-value}) \right]^2$$</p>
+<p>Where the Target Q-value is calculated as:</p>
+<p>$$\text{Target} = R + \gamma \cdot \max_{a&rsquo;} Q_{\text{target}}(s&rsquo;, a&rsquo;)$$</p>
+<p>The network must output Q-values so that:</p>
+<ul>
+<li>The Current Estimate (The left side of the equation) can be read directly from the network&rsquo;s output for the specific action $a$ that was taken.</li>
+<li>The Target Estimate (The right side of the equation) can be calculated using the $\max$ function over the Q-values predicted for the next state, $s&rsquo;$, which requires the network to output the value for all possible next actions $a&rsquo;$.</li>
+</ul>
+<p>In short, the DQN is a value estimator because the math behind Q-Learning fundamentally requires it to estimate the future cumulative reward (the Q-value) in order to define a training target and guide action selection.</p>
+<p>One drawback (also strength) is that now it may take lot more episodes to train the NN (many more parameters to update - converges). So we may not know how many episodes is enough for the NN to converge or giving it too many episodes to run when it converges.</p>
+<p>Solution is simple:</p>
+<ul>
+<li>If realized not enough episodes then just add more</li>
+<li>If agent&rsquo;s performance does not signifcantly improved after a while then stop (i.e. Early Stopping)</li>
+</ul>
+<h3 id="training" class="relative group">Training <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#training" aria-label="Anchor">#</a></span></h3><p>The QNetwork was trained with 20,000 episodes, best network (solution with less step) is then saved to revisit and early stopping is implemented. However no earlier stopping is allowed before at least 30% of the total episodes is ran.</p>
+<p>The agent will sample enough steps (BATCH_SIZE = 64) initially before learning (compute Q-Value estimates) happens and all seen steps (i.e. past experience) are stored in the replay buffer. The purpose is to break the correlation between sequence of action, instead the DQN will predict the Q-Value from any given random state (new or past experience) to reduce the chance for the network overfit quickly to the most recent step and forget past lessons (catastrophic forgetting).</p>
+<p>The DQN will query from the Replay Buffer object (once it collected enough experiences) then random choosen batch of states will feed into the network and Q-values for each states will be ouput. The goal is to achieve more stable and efficient training.</p>
+<p>For the ϵ-greedy is also implemented as a decaying process. i.e. ϵ - chances for random action for exploration will reduce as training goes on. That to simulate encouraging exploring earlier in the training then solidify knowledges later on in training.</p>
+<h3 id="result" class="relative group">Result <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#result" aria-label="Anchor">#</a></span></h3><center>
+	<img src="learning_curve_dqn.png" style="width=80%; margin-bottom: 5px;"/>
+</center>
+<p>The DQN agent performed much worst than the tabular versions (SARSA, Q-Learning, Expected SARSA) where it found the optimal solution (7 steps) for the 3 discs 3 pegs setup at episode 5,500. The convergence rate also is much slower than the other methods.
+The network is much harder to train and there are lot more hyper-parameters to fine tune.</p>
+<p>Big drawbacks of DQN is that it is much harder to train, it is alot more sensitive to how the reward mechanism design that would improve learning efficiency. Currently the agents will gain 0 reward for a move, -1 for an illegal move and only when completing the puzzle will get the maximum reward. Hence for a larger puzzle, the agent will waste lot more time on exploring and exploiting without any meaningful rewards until by random chance it is able to complete the puzzle once.</p>
+<p>To scale up for a larger puzzle the DQN will also needed to be more sophasticated as a simple 2 hidden layers is just not enough.</p>
+<p>e.g. a 9 discs 3 pegs puzzle will have an optimal $ 2^9 - 1 = 511$ moves and $3^9 = 19,683$ possible states. Need a much bigger network.</p>
+<details>
+  <summary><u>DQN Implementation:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span><span class="p">,</span> <span class="n">namedtuple</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">TowerOfHanoiEnv</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">QNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Initializes parameters and builds model.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        
+</span></span></span><span class="line"><span class="cl"><span class="s2">        Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">            state_size (int): Dimension of each state (e.g., 9 for 3 discs).
+</span></span></span><span class="line"><span class="cl"><span class="s2">            action_size (int): Dimension of action space (6 possible moves).
+</span></span></span><span class="line"><span class="cl"><span class="s2">            seed (int): Random seed for reproducibility.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">QNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Set a seed for reproducibility</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Simple feedforward network</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">action_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Maps state input to action Q-values.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># %%</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Hyperparameters for the Agent</span>
+</span></span><span class="line"><span class="cl"><span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>  <span class="c1"># Replay buffer size</span>
+</span></span><span class="line"><span class="cl"><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>         <span class="c1"># Minibatch size for sampling</span>
+</span></span><span class="line"><span class="cl"><span class="n">GAMMA_DQN</span> <span class="o">=</span> <span class="mf">0.99</span>        <span class="c1"># Discount factor</span>
+</span></span><span class="line"><span class="cl"><span class="n">LR</span> <span class="o">=</span> <span class="mf">5e-4</span>               <span class="c1"># Learning rate of the optimizer</span>
+</span></span><span class="line"><span class="cl"><span class="n">UPDATE_EVERY</span> <span class="o">=</span> <span class="mi">4</span>        <span class="c1"># How often to update the network (step count)</span>
+</span></span><span class="line"><span class="cl"><span class="n">TARGET_UPDATE_FREQ</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># How often to update the target network (step count)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the device for PyTorch operations</span>
+</span></span><span class="line"><span class="cl"><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&#34;cuda:0&#34;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&#34;cpu&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Replay Buffer named tuple</span>
+</span></span><span class="line"><span class="cl"><span class="n">Experience</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Experience&#39;</span><span class="p">,</span> <span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;reward&#39;</span><span class="p">,</span> <span class="s1">&#39;next_state&#39;</span><span class="p">,</span> <span class="s1">&#39;done&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ReplayBuffer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Fixed-size buffer to store experience tuples.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">buffer_size</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Add a new experience to memory.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">e</span> <span class="o">=</span> <span class="n">Experience</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Randomly sample a batch of experiences from memory.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">experiences</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Convert experiences to Tensors</span>
+</span></span><span class="line"><span class="cl">        <span class="n">states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">state</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">experiences</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">actions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">action</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">experiences</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]))</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rewards</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">reward</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">experiences</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">next_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">next_state</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">experiences</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">done</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">experiences</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">next_states</span><span class="p">,</span> <span class="n">dones</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Return the current size of internal memory.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DQNAgent</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Interacts with and learns from the environment.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">state_size</span> <span class="o">=</span> <span class="n">state_size</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">action_size</span> <span class="o">=</span> <span class="n">action_size</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Q-Network (Local and Target)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span> <span class="o">=</span> <span class="n">QNetwork</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_target</span> <span class="o">=</span> <span class="n">QNetwork</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">LR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Replay memory</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">ReplayBuffer</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">,</span> <span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Initialize time step for learning updates</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">t_step</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Save experience in replay memory</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Learn every UPDATE_EVERY time steps.</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">t_step</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">UPDATE_EVERY</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_step</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># If enough samples are available in memory, get a random subset and learn</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">BATCH_SIZE</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">experiences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">experiences</span><span class="p">,</span> <span class="n">GAMMA_DQN</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Update target network every TARGET_UPDATE_FREQ steps</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_step</span> <span class="o">%</span> <span class="n">TARGET_UPDATE_FREQ</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">update_target_network</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">inference</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Returns actions for given state as per current policy (epsilon-greedy).&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Convert state from numpy array to PyTorch tensor</span>
+</span></span><span class="line"><span class="cl">        <span class="n">state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Get Q-values from local network</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="c1"># Set network to evaluation mode (no gradient tracking)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Note: Using torch.no_grad() is crucial during action selection to prevent training.</span>
+</span></span><span class="line"><span class="cl">            <span class="n">action_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">inference</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="o">.</span><span class="n">train</span><span class="p">()</span> <span class="c1"># Set network back to training mode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Epsilon-greedy action selection</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">action_values</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span> <span class="c1"># Best action</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_size</span><span class="p">))</span> <span class="c1"># Random action</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">experiences</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Update value parameters using given batch of experience tuples.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">next_states</span><span class="p">,</span> <span class="n">dones</span> <span class="o">=</span> <span class="n">experiences</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Get max predicted Q values (for next states) from target model</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># The Q-Learning update rule uses the max Q value for the next state</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Q_targets_next</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_target</span><span class="p">(</span><span class="n">next_states</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Compute Q targets for current states: Q_target = R + gamma * max_a(Q_target(s&#39;, a))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Q_targets</span> <span class="o">=</span> <span class="n">rewards</span> <span class="o">+</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">Q_targets_next</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">dones</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Get expected Q values from local model: Q_expected = Q_local(s, a)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Gather the Q-value for the action that was actually taken</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Q_expected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="p">(</span><span class="n">states</span><span class="p">)</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">actions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Compute loss (Mean Squared Error)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">Q_expected</span><span class="p">,</span> <span class="n">Q_targets</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Minimize the loss</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">update_target_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;&#34;&#34;Soft update model parameters: $</span><span class="se">\\</span><span class="s2">theta_{</span><span class="se">\\</span><span class="s2">text</span><span class="si">{target}</span><span class="s2">} = </span><span class="se">\\</span><span class="s2">tau*</span><span class="se">\\</span><span class="s2">theta_{</span><span class="se">\\</span><span class="s2">text</span><span class="si">{local}</span><span class="s2">} + (1 - </span><span class="se">\\</span><span class="s2">tau)*</span><span class="se">\\</span><span class="s2">theta_{</span><span class="se">\\</span><span class="s2">text</span><span class="si">{target}</span><span class="s2">}$&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># A full copy is often used in basic DQN, meaning $\\tau=1$.</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># This is a full copy update.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">target_param</span><span class="p">,</span> <span class="n">local_param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_target</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="o">.</span><span class="n">parameters</span><span class="p">()):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">target_param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">local_param</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">save_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">load_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_local</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">qnetwork_target</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># %%</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># --- DQN Specific Hyperparameters ---</span>
+</span></span><span class="line"><span class="cl"><span class="n">EPISODES_DQN</span> <span class="o">=</span> <span class="mi">20000</span> 
+</span></span><span class="line"><span class="cl"><span class="n">EPS_START</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># Starting value of epsilon</span>
+</span></span><span class="line"><span class="cl"><span class="n">EPS_END</span> <span class="o">=</span> <span class="mf">0.01</span>        <span class="c1"># Minimum value of epsilon</span>
+</span></span><span class="line"><span class="cl"><span class="n">EPS_DECAY</span> <span class="o">=</span> <span class="mf">0.9999</span>    <span class="c1"># Decay rate for epsilon - lower epsilon after each episode (i.e. less likely to choose random actions later in the training)</span>
+</span></span><span class="line"><span class="cl"><span class="n">SEED</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">best_agent_path</span> <span class="o">=</span> <span class="s2">&#34;TowerHanoi_DQN.pth&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Environment Setup (Using the existing TowerOfHanoiEnv) ---</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">TowerOfHanoiEnv</span><span class="p">(</span><span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">state_size</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">n_discs</span> <span class="o">*</span> <span class="mi">3</span> <span class="c1"># 3 pegs * n_discs (for padding)</span>
+</span></span><span class="line"><span class="cl"><span class="n">action_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Initialize the DQNAgent ---</span>
+</span></span><span class="line"><span class="cl"><span class="n">agent</span> <span class="o">=</span> <span class="n">DQNAgent</span><span class="p">(</span><span class="n">state_size</span><span class="o">=</span><span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="o">=</span><span class="n">action_size</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- DQN Training Loop ---</span>
+</span></span><span class="line"><span class="cl"><span class="n">eps</span> <span class="o">=</span> <span class="n">EPS_START</span>             <span class="c1"># Initialize epsilon</span>
+</span></span><span class="line"><span class="cl"><span class="n">ep_steps_DQN</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">solved_in_episodes</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_steps</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">env</span><span class="o">.</span><span class="n">n_discs</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># Optimal moves for N discs</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">best_steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;--- Starting DQN Training for </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">n_discs</span><span class="si">}</span><span class="s2"> Discs ---&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">EPISODES_DQN</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1"># State is a numpy array</span>
+</span></span><span class="line"><span class="cl">    <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Agent selects an action using epsilon-greedy policy</span>
+</span></span><span class="line"><span class="cl">        <span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Environment takes a step</span>
+</span></span><span class="line"><span class="cl">        <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Agent stores experience and learns</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Note: We pass the action index (int) and the reward/done must be float/int</span>
+</span></span><span class="line"><span class="cl">        <span class="n">agent</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+</span></span><span class="line"><span class="cl">        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Print rendering for every 100 episodes</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">ep</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Action: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="si">}</span><span class="s2"> Reward: </span><span class="si">{</span><span class="n">reward</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Epsilon decay</span>
+</span></span><span class="line"><span class="cl">    <span class="n">eps</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">EPS_END</span><span class="p">,</span> <span class="n">eps</span> <span class="o">*</span> <span class="n">EPS_DECAY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">ep_steps_DQN</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check for successful completion</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_discs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">status</span> <span class="o">=</span> <span class="s2">&#34;**SOLVED!**&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">steps</span> <span class="o">&lt;=</span> <span class="n">best_steps</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Save best agent**</span>
+</span></span><span class="line"><span class="cl">            <span class="n">best_steps</span> <span class="o">=</span> <span class="n">steps</span>
+</span></span><span class="line"><span class="cl">            <span class="n">agent</span><span class="o">.</span><span class="n">save_agent</span><span class="p">(</span><span class="n">best_agent_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">New Best Agent Saved! Steps: </span><span class="si">{</span><span class="n">best_steps</span><span class="si">}</span><span class="s2"> at Episode </span><span class="si">{</span><span class="n">ep</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Cheating:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">steps</span> <span class="o">==</span> <span class="n">min_steps</span> <span class="ow">and</span> <span class="n">solved_in_episodes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># if reached optimal solution (mininum steps)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">solved_in_episodes</span> <span class="o">=</span> <span class="n">ep</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">status</span> <span class="o">=</span> <span class="s2">&#34;Max steps reached&#34;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">ep</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">steps</span> <span class="o">==</span> <span class="n">min_steps</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Episode </span><span class="si">{</span><span class="n">ep</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">EPISODES_DQN</span><span class="si">}</span><span class="s2"> | Steps: </span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2"> | Status: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> | Epsilon: </span><span class="si">{</span><span class="n">eps</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> | Avg Steps (last 100 episodes): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ep_steps_DQN</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">solved_in_episodes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ep</span> <span class="o">-</span> <span class="n">solved_in_episodes</span> <span class="o">&gt;</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">EPISODES_DQN</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Stop early once it has consistently solved the task but not before first 30% of the total episodes</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#pass</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Stop early since no significant improvemnt found.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">--- DQN Training Finished ---&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">solved_in_episodes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Optimal (?) solution found at episode: </span><span class="si">{</span><span class="n">solved_in_episodes</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="n">ep_steps_DQN</span><span class="p">[</span><span class="n">solved_in_episodes</span><span class="p">]</span><span class="si">}</span><span class="s2"> steps.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Final average steps (last 100 episodes): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ep_steps_DQN</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div></details>
+<details>
+  <summary><u>To reuse trained DQN:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl"><span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Setup environment</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">TowerOfHanoiEnv</span><span class="p">(</span><span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1">#initial state</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load best trained QNetwork</span>
+</span></span><span class="line"><span class="cl"><span class="n">best_agent</span> <span class="o">=</span> <span class="n">DQNAgent</span><span class="p">(</span><span class="n">state_size</span><span class="o">=</span><span class="n">state_size</span><span class="p">,</span> <span class="n">action_size</span><span class="o">=</span><span class="n">action_size</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">best_agent</span><span class="o">.</span><span class="n">load_agent</span><span class="p">(</span><span class="n">best_agent_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">action</span> <span class="o">=</span> <span class="n">best_agent</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">inference</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Choose best action given by QNetwork</span>
+</span></span><span class="line"><span class="cl">    <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="si">}</span><span class="s2"> Reward: </span><span class="si">{</span><span class="n">reward</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+</span></span><span class="line"><span class="cl">    <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Total steps: </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div></details>
+<h2 id="what-ive-learned" class="relative group">What I&rsquo;ve learned <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#what-ive-learned" aria-label="Anchor">#</a></span></h2><p>In this project I explored the different common Reinforcement Learning and reinforced (pun intended) my understanding in the key concept such as Temporal Differences, SARSA, Q-Learning, Expected SARSA, Q-Table, Bellman Equations and DQN.</p>
+<p>While experimenting a well designed reward system is vital to a successful Reinforcement Learning process. Although given the limited time I gave myself for this project, the DQN wasn&rsquo;t proven to be successful as increasing the complexity of the QNetwork, increase batch sizes, replay buffer etc. The training process is significantly longer and very slow to converges.</p>
+<p>The Tower of Hanoi puzzle can be solved with <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi#Recursive_solution" target="_blank" rel="noreferrer">recursive programming</a>.</p>
+<details>
+  <summary><u>Recursive Implementation:</u></summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hanoi_solver</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">aux</span><span class="p">,</span> <span class="n">moves_list</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Finds the optimal sequence of moves to solve the Tower of Hanoi puzzle.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        n (int): The number of discs to move.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        src (int): The source peg (1, 2, or 3).
+</span></span></span><span class="line"><span class="cl"><span class="s2">        dest (int): The destination peg (1, 2, or 3).
+</span></span></span><span class="line"><span class="cl"><span class="s2">        aux (int): The auxiliary (temporary) peg (1, 2, or 3).
+</span></span></span><span class="line"><span class="cl"><span class="s2">        moves_list (list): A list to append the required moves (src, dest) to.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Base case: Move the single disc from source to destination</span>
+</span></span><span class="line"><span class="cl">        <span class="n">moves_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 1. Move n-1 discs from source to auxiliary peg</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hanoi_solver</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">aux</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">moves_list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 2. Move the largest disc (n) from source to destination peg</span>
+</span></span><span class="line"><span class="cl">    <span class="n">moves_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 3. Move n-1 discs from auxiliary to destination peg</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hanoi_solver</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aux</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">moves_list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solve_hanoi_with_env</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Uses the recursive solver to get the optimal moves and applies them 
+</span></span></span><span class="line"><span class="cl"><span class="s2">    to the provided TowerOfHanoiEnv instance.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        env (TowerOfHanoiEnv): The environment instance (must be reset).
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        list: The sequence of moves (tuples) found by the solver.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n_discs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">n_discs</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Pegs are 1, 2, 3 (consistent with environment&#39;s action definition)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">src_peg</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dest_peg</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="n">aux_peg</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">optimal_moves</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Generate the optimal sequence of moves</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hanoi_solver</span><span class="p">(</span><span class="n">n_discs</span><span class="p">,</span> <span class="n">src_peg</span><span class="p">,</span> <span class="n">dest_peg</span><span class="p">,</span> <span class="n">aux_peg</span><span class="p">,</span> <span class="n">optimal_moves</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Optimal Moves Generated: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">optimal_moves</span><span class="p">)</span><span class="si">}</span><span class="s2"> (2^</span><span class="si">{</span><span class="n">n_discs</span><span class="si">}</span><span class="s2"> - 1)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">    <span class="c1"># Convert (src, dest) tuple to the environment&#39;s action index (0-5)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">action_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">move</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">move</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">actions</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Starting Board State:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">optimal_moves</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Get the action index for the move</span>
+</span></span><span class="line"><span class="cl">        <span class="n">action_index</span> <span class="o">=</span> <span class="n">action_map</span><span class="p">[</span><span class="n">move</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Take a step in the environment</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action_index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Render the board</span>
+</span></span><span class="line"><span class="cl">        <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">--- Solving Complete ---&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Final Steps: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">steps</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Solved: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">towers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_discs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">optimal_moves</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># %%</span>
+</span></span><span class="line"><span class="cl"><span class="n">env_3discs</span> <span class="o">=</span> <span class="n">TowerOfHanoiEnv</span><span class="p">(</span><span class="n">n_discs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">solve_hanoi_with_env</span><span class="p">(</span><span class="n">env_3discs</span><span class="p">)</span>
+</span></span></code></pre></div></details>
+<h2 id="references" class="relative group">References <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a></span></h2><ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi" target="_blank" rel="noreferrer">Tower of Hanoi Wikipedia</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Reinforcement_learning" target="_blank" rel="noreferrer">Reinforcement Learning</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Temporal_difference_learning" target="_blank" rel="noreferrer">Temporal Difference</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/State-action-reward-state-action" target="_blank" rel="noreferrer">SARSA</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Q-learning" target="_blank" rel="noreferrer">Q-Learning</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Bellman_equation" target="_blank" rel="noreferrer">Bellman Equation</a></p>
+</li>
+<li>
+<p><a href="https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html" target="_blank" rel="noreferrer">DQN - PyTorch</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Policy_gradient_method" target="_blank" rel="noreferrer">Policy gradient</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Multi-agent_reinforcement_learning" target="_blank" rel="noreferrer">Multi-agent RL</a></p>
+</li>
+</ul>
+
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+  <div class="flex">
+    
+    
+    
+      
+      
+        
+        
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+      
+    >
+      
+      
+      
+      
+      <img
+        width="512"
+        height="512"
+        class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+        alt="Steven Lio"
+        loading="lazy" decoding="async"
+        
+          src="/img/android-chrome-512x512.png"
+        
+      />
+    </picture>
+  
+
+
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Steven Lio
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">M.Sc. in Data Science | Data Scientist &amp; ML Engineer | Agentic AI Developer | Data Analyst</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://linkedin.com/in/steven-lio"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://github.com/stevenlio88"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://stevenlio.medium.com/"
+          target="_blank"
+          aria-label="Medium"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.instagram.com/stevenlio/"
+          target="_blank"
+          aria-label="Instagram"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="https://www.flickr.com/photos/stevenlio/"
+          target="_blank"
+          aria-label="Flickr"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+            <div class="pt-3">
+              <script src="https://utteranc.es/client.js"
+repo="stevenlio88/Portfolio"
+issue-term="pathname"
+label="comment"
+theme="preferred-color-scheme"
+crossorigin="anonymous"
+async>
+</script>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+          <div class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12">
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+    <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex list-none flex-col sm:flex-row">
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.linkedin.com/in/steven-lio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://github.com/stevenlio88"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://stevenlio.medium.com/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.instagram.com/stevenlio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="https://www.flickr.com/photos/stevenlio/"
+                title=""
+                target="_blank"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                  ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg>
+</span></span></a
+              >
+            
+          </li>
+        
+          
+          <li class="group mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0">
+            
+              <a
+                href="/resume/"
+                title=""
+                
+                ><span
+                    class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                    >Résumé</span
+                  >
+                </a
+              >
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            © 2025 Steven Lio
+        </p>
+      
+      
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+        <div
+          class="me-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        >
+          <button id="appearance-switcher-0" type="button" aria-label="appearance switcher">
+            <div
+              class="flex h-12 w-12 items-center justify-center dark:hidden"
+              title="Switch to dark appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+            </div>
+            <div
+              class="hidden h-12 w-12 items-center justify-center dark:flex"
+              title="Switch to light appearance"
+            >
+              <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+            </div>
+          </button>
+        </div>
+      
+    </div>
+  </div>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm sm:p-6 md:p-[10vh] lg:p-[12vh] dark:bg-neutral-900/50"
+  data-url="http://localhost:1313/"
+>
+  <div
+    id="search-modal"
+    class="top-20 mx-auto flex min-h-0 w-full max-w-3xl flex-col rounded-md border border-neutral-200 bg-neutral shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex flex-none items-center justify-between px-2">
+      <form class="flex min-w-0 flex-auto items-center">
+        <div class="flex h-8 w-8 items-center justify-center text-neutral-400">
+          <span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="mx-1 flex h-12 flex-auto appearance-none bg-transparent focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex h-8 w-8 items-center justify-center text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto overflow-auto px-2">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+	
+	
+	<script type="text/javascript" id="MathJax-script" async
+	  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+
+	
+	<script>
+	  window.MathJax = {
+		tex: {
+		  inlineMath: [['$', '$'], ['\\(', '\\)']], 
+		  displayMath: [['$$', '$$'], ['\\[', '\\]']], 
+		  tags: 'ams' 
+		},
+		options: {
+		  skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	  };
+	</script>
+
+	<script src="/js/goat.js"></script>
+
+  </body>
+</html>

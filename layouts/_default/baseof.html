@@ -54,20 +54,20 @@
 	</script>
 
 	<!-- this part configures it -->
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-	  tex2jax: {
-		inlineMath: [['\\(','\\)']],
-		displayMath: [['$$','$$'], ['\[','\]']],
-		processEscapes: true,
-		processEnvironments: true,
-		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-		TeX: { equationNumbers: { autoNumber: "AMS" },
-			 extensions: ["AMSmath.js", "AMSsymbols.js"] }
-	  }
-	});
+	<script>
+	  window.MathJax = {
+		tex: {
+		  inlineMath: [['$', '$'], ['\\(', '\\)']], // Enables single $ for inline math
+		  displayMath: [['$$', '$$'], ['\\[', '\\]']], // Enables $$ for block math
+		  tags: 'ams' // Enables AMS automatic equation numbering
+		},
+		options: {
+		  skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	  };
 	</script>
 
 	<script src="{{ "js/goat.js" | relURL }}"></script>
+
   </body>
 </html>

@@ -107,8 +107,10 @@
     <meta property="article:modified_time" content="2021-03-19T00:00:00+00:00">
     <meta property="article:tag" content="Statistics">
     <meta property="article:tag" content="Machine Learning">
-    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Deep Learning">
+    <meta property="article:tag" content="Reinforcement Learning">
     <meta property="article:tag" content="SQL">
+    <meta property="article:tag" content="Python">
 
   
   <meta name="twitter:card" content="summary">
@@ -137,10 +139,10 @@
     
     "dateModified": "2021-03-19T00:00:00\u002b00:00",
     
-    "keywords": ["Statistics","Machine Learning","Python","SQL"],
+    "keywords": ["Statistics","Machine Learning","Deep Learning","Reinforcement Learning","SQL","Python"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "6489"
+    "wordCount": "8357"
   }
   </script>
 
@@ -345,7 +347,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2021-03-19 00:00:00 &#43;0000 UTC">19 Mar, 2021</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">31 mins</span>
+      <time datetime="2021-03-19 00:00:00 &#43;0000 UTC">19 Mar, 2021</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">40 mins</span>
     
 
     
@@ -373,15 +375,27 @@
             >
           
             <a
-              href="/tags/python/"
+              href="/tags/deep-learning/"
               class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
-              >Python</a
+              >Deep Learning</a
+            >
+          
+            <a
+              href="/tags/reinforcement-learning/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Reinforcement Learning</a
             >
           
             <a
               href="/tags/sql/"
               class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
               >SQL</a
+            >
+          
+            <a
+              href="/tags/python/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Python</a
             >
           
         
@@ -423,12 +437,29 @@
     <li>
       <ul>
         <li><a href="#evaluation-metrics">Evaluation metrics</a></li>
-        <li><a href="#bias-variance-tradeoff">Bias-Variance Tradeoff</a></li>
         <li><a href="#l1-vs-l2-regularization">L1 vs. L2 regularization</a></li>
-        <li><a href="#bagging-bootstrap-aggregating">Bagging (Bootstrap aggregating)</a></li>
+        <li><a href="#tree-types-algorithms">Tree Types Algorithms</a></li>
+        <li><a href="#bias-variance-tradeoff">Bias-Variance Tradeoff</a></li>
         <li><a href="#multiclass-vs-multilabel-classification">Multiclass vs. Multilabel Classification</a></li>
         <li><a href="#synthetic-oversampling-smote">Synthetic Oversampling (SMOTE)</a></li>
         <li><a href="#cross-validation">Cross-validation</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#activation-functions">Activation Functions</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gradient-descent">Gradient Descent</a></li>
+        <li><a href="#adaptive-learning-rate-methods">Adaptive Learning Rate Methods</a></li>
       </ul>
     </li>
   </ul>
@@ -448,6 +479,15 @@
     <li>
       <ul>
         <li><a href="#general">General</a></li>
+        <li><a href="#algorithms">Algorithms</a></li>
+        <li><a href="#snippets">Snippets</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
         <li><a href="#file-read--write--data-engineering">File Read / Write &amp; Data Engineering</a></li>
         <li><a href="#data-manipulation-pandas">Data Manipulation (Pandas)</a></li>
         <li><a href="#etl-patterns">ETL Patterns</a></li>
@@ -767,12 +807,167 @@ The most common application in A/B testing is defining a stopping rule based on 
 <li>Mean Squared Error (MSE): The average of the squared differences between predicted and actual values. This metric penalizes large errors more heavily than MAE.</li>
 <li>Root Mean Squared Error (RMSE): The square root of the MSE. It is in the same units as the target variable, making it more interpretable than MSE.- R-squared (R<sup>2</sup>): Represents the proportion of the variance in the dependent variable that is predictable from the independent variables. A higher value indicates a better fit. </li>
 </ul>
+<h3 id="l1-vs-l2-regularization" class="relative group">L1 vs. L2 regularization <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#l1-vs-l2-regularization" aria-label="Anchor">#</a></span></h3><p><strong>L1 (LASSO)</strong></p>
+<ul>
+<li>Penalty: Adds a penalty proportional to the sum of the <strong>absolute</strong> values of the coefficients (weights) to the loss function.</li>
+<li>Resulting model: Produces sparse models because it <strong>tends to set the coefficients of less important features to exactly zero</strong>.</li>
+<li>Use case: <strong>Ideal for feature selection</strong>, especially when you have a large number of features and suspect many of them are irrelevant.</li>
+<li>Constraint shape: Creates a diamond or square-shaped constraint, which has sharp corners that are more likely to intersect with the axes at zero.</li>
+</ul>
+<p><strong>L2 (Ridge)</strong></p>
+<ul>
+<li>Penalty: Adds a penalty proportional to the sum of the <strong>squares of the coefficients</strong> to the loss function.</li>
+<li>Resulting model: <strong>Encourages smaller, but generally non-zero</strong> coefficients for all features, leading to a <strong>less sparse, more stable model</strong>.</li>
+<li>Use case: Preferred when you believe most features are relevant and want to shrink their weights to prevent a few from having an undue influence, reducing overall variance. It is also more robust to correlated features.</li>
+<li>Constraint shape: Creates a circular or elliptical constraint, which gradually shrinks all weights without forcing any single one to be zero.</li>
+</ul>
 <p><strong>Clustering</strong></p>
 <ul>
 <li><strong>Silhouette Score</strong>: Measures how similar an object is to its own cluster compared to other clusters.</li>
 <li><strong>Davies-Bouldin Index</strong>: Measures the ratio of within-cluster scatter to between-cluster separation.</li>
 <li><strong>Calinski-Harabasz Index</strong>: Measures the ratio of between-cluster variance to within-cluster variance.</li>
 <li><strong>Intraclass Correlation Coefficient (ICC)</strong>: Statistical measure that quantifies the degree of similarity between observations within the same group or cluster. It ranges from 0 to 1, where 1 indicates perfect agreement and 0 indicates no agreement.</li>
+</ul>
+<h3 id="tree-types-algorithms" class="relative group">Tree Types Algorithms <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#tree-types-algorithms" aria-label="Anchor">#</a></span></h3><p><strong>Bagging (Bootstrap aggregating) vs. Boosting</strong></p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Bagging</th>
+<th>Boosting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Algorithms</td>
+<td>Random Forest</td>
+<td>AdaBoost, XGBoost</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Parallel (models trained independently)</td>
+<td>Sequential (models trained one after the other)</td>
+</tr>
+<tr>
+<td>Goal</td>
+<td>Reduce Variance (e.g., combat overfitting)</td>
+<td>Reduce Bias (e.g., combat underfitting)</td>
+</tr>
+<tr>
+<td>Data Usage</td>
+<td>Each model trained on a bootstrap sample (random sampling with replacement).</td>
+<td>Each model trained on the entire dataset (or a variation), with weights adjusted to emphasize previously misclassified points.</td>
+</tr>
+<tr>
+<td>Model Weighting</td>
+<td>All base models (weak learners) are generally equally weighted in the final prediction (majority vote/simple average).</td>
+<td>Base models are weighted based on their performance; better-performing models get higher weight.</td>
+</tr>
+<tr>
+<td>Base Model Type</td>
+<td>Often uses complex/unstable models (e.g., deep decision trees) that have high variance.</td>
+<td>Often uses simple/weak models (e.g., shallow decision trees) that have high bias.</td>
+</tr>
+<tr>
+<td>Training Speed</td>
+<td>Generally faster due to parallelizable training.</td>
+<td>Generally slower due to sequential, dependent training.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gini Impurity</strong> - Quantifies the probability of misclassifying a randomly chosen element in the dataset if it were randomly labeled according to the class distribution in the node.</p>
+<p><strong>Entropy</strong> - Measures the uncertainty or randomness in a set of data. It quantifies the average amount of information needed to classify a sample in the node.</p>
+<p><strong>Algorithms</strong></p>
+<table>
+<thead>
+<tr>
+<th>Algorithms</th>
+<th>Decision Tree (DT)</th>
+<th>Random Forest (RF)</th>
+<th>Boosted Trees (BT) &amp; Gradient Boosting Machines (GBM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ensemble Type</td>
+<td>None (Single Model)</td>
+<td>Bagging (Parallel)</td>
+<td>Boosting (Sequential)</td>
+</tr>
+<tr>
+<td>Common Examples</td>
+<td>CART, ID3, C4.5</td>
+<td>Random Forest, Bagging Classifier/Regressor</td>
+<td>AdaBoost, XGBoost, LightGBM, CatBoost</td>
+</tr>
+<tr>
+<td>Goal</td>
+<td>Achieve high purity/low error in splits.</td>
+<td>Reduce Variance (address overfitting).</td>
+<td>Reduce Bias (address underfitting).</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Single pass, recursive splitting features.</td>
+<td>All trees built independently. (random subset features)</td>
+<td>Trees built sequentially, correcting errors.</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Fast</td>
+<td>Parallelizable (Fast)</td>
+<td>Sequential (Slower to train)</td>
+</tr>
+<tr>
+<td>Interpretability</td>
+<td>High (Easy to visualize)</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Risk of Overfitting</td>
+<td>High</td>
+<td>Low</td>
+<td>Moderate (if not well-tuned)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Random Forest (RF):
+<ul>
+<li>Uses bootstrapped samples (Bagging)</li>
+<li>Considers a random subset of features (columns) at every split point. This de-correlates the individual trees, making the ensemble&rsquo;s prediction much more robust.</li>
+</ul>
+</li>
+<li>AdaBoost (Adaptive Boosting):
+<ul>
+<li>Adjusting the weights of the misclassified data points, forcing subsequent models to focus on them.</li>
+<li>Assigning higher weights to the weak learners that performed better during their training.</li>
+</ul>
+</li>
+<li>Gradient Boosting Machines (GBM):
+<ul>
+<li>Builds new models that target the residuals (the errors or differences between the actual and predicted values) of the previous models.</li>
+<li>It uses the concept of gradient descent to minimize the loss function.</li>
+</ul>
+</li>
+<li>Extreme Gradient Boosting (XGBoost):
+<ul>
+<li>An optimized and highly scalable implementation of Gradient Boosting.</li>
+<li>Exceptional in speed and performance supporting features:
+<ul>
+<li>Regularization (L1 and L2) to prevent overfitting.</li>
+<li>Parallel processing of tree construction.</li>
+<li>Handling of missing values.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>LightGBM &amp; CatBoost:
+<ul>
+<li>Highly efficient variants of Gradient Boosting that are optimized for handling large datasets and categorical features, respectively.</li>
+</ul>
+</li>
 </ul>
 <h3 id="bias-variance-tradeoff" class="relative group">Bias-Variance Tradeoff <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#bias-variance-tradeoff" aria-label="Anchor">#</a></span></h3><p><strong>Bias</strong>
 The error from a model&rsquo;s simplifying assumptions. A high bias model is a poor fit for the data because it&rsquo;s too simple.</p>
@@ -790,37 +985,6 @@ The error from a model&rsquo;s sensitivity to the specific training data. A high
 <p>Increase training data: A larger dataset can help reduce variance without a significant increase in bias.</p>
 <p>Use regularization: Techniques like L1 and L2 regularization can penalize model complexity, helping to reduce variance.</p>
 <p>Ensemble methods: Combining multiple models can reduce variance and improve overall performance.</p>
-<h3 id="l1-vs-l2-regularization" class="relative group">L1 vs. L2 regularization <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#l1-vs-l2-regularization" aria-label="Anchor">#</a></span></h3><p><strong>L1 (LASSO)</strong></p>
-<ul>
-<li>Penalty: Adds a penalty proportional to the sum of the <strong>absolute</strong> values of the coefficients (weights) to the loss function.</li>
-<li>Resulting model: Produces sparse models because it <strong>tends to set the coefficients of less important features to exactly zero</strong>.</li>
-<li>Use case: <strong>Ideal for feature selection</strong>, especially when you have a large number of features and suspect many of them are irrelevant.</li>
-<li>Constraint shape: Creates a diamond or square-shaped constraint, which has sharp corners that are more likely to intersect with the axes at zero.</li>
-</ul>
-<p><strong>L2 (Ridge)</strong></p>
-<ul>
-<li>Penalty: Adds a penalty proportional to the sum of the <strong>squares of the coefficients</strong> to the loss function.</li>
-<li>Resulting model: <strong>Encourages smaller, but generally non-zero</strong> coefficients for all features, leading to a <strong>less sparse, more stable model</strong>.</li>
-<li>Use case: Preferred when you believe most features are relevant and want to shrink their weights to prevent a few from having an undue influence, reducing overall variance. It is also more robust to correlated features.</li>
-<li>Constraint shape: Creates a circular or elliptical constraint, which gradually shrinks all weights without forcing any single one to be zero.</li>
-</ul>
-<h3 id="bagging-bootstrap-aggregating" class="relative group">Bagging (Bootstrap aggregating) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#bagging-bootstrap-aggregating" aria-label="Anchor">#</a></span></h3><p>Bagging, short for Bootstrap Aggregating, is an ensemble learning technique in machine learning designed to improve the stability and accuracy of models, primarily by reducing variance and overfitting. It involves <strong>training multiple versions of a prediction model and combining their predictions to achieve a more robust and accurate final output</strong>.</p>
-<p>Multiple subsets of the original training data are created by sampling with replacement. This means that individual data points can be selected more than once in a single subset, and some data points may not appear in certain subsets. Each subset is roughly the same size as the original dataset.</p>
-<ul>
-<li>Parallel Training of Base Learners: A base learning algorithm (e.g., a decision tree) is trained independently on each of these bootstrap samples. These base learners are often referred to as &ldquo;weak models&rdquo; because, individually, they might not be highly accurate.</li>
-<li>Aggregation of Predictions: For a new, unseen input, each of the trained base learners makes a prediction.
-<ul>
-<li>For classification tasks, the final prediction is typically determined by a majority vote among the base learners.</li>
-<li>For regression tasks, the final prediction is usually the average of the predictions from all base learners.</li>
-</ul>
-</li>
-</ul>
-<p>Benefits of Bagging:</p>
-<ul>
-<li><strong>Variance Reduction</strong>: By training on different subsets of data and averaging or voting their predictions, bagging helps to reduce the variance of the overall model, making it less sensitive to noise in the training data and less prone to overfitting.</li>
-<li><strong>Improved Stability and Accuracy</strong>: The aggregation of multiple models generally leads to more stable and accurate predictions compared to a single model.</li>
-<li><strong>Parallelization</strong>: The training of individual base learners can be done in parallel, which can significantly speed up the training process.</li>
-</ul>
 <h3 id="multiclass-vs-multilabel-classification" class="relative group">Multiclass vs. Multilabel Classification <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#multiclass-vs-multilabel-classification" aria-label="Anchor">#</a></span></h3><p><strong>Multiclass</strong></p>
 <p>Each instance can only be assigned to one class out of a finite set of mutually exclusive classes.</p>
 <ul>
@@ -833,6 +997,43 @@ The error from a model&rsquo;s sensitivity to the specific training data. A high
 <li>e.g. Tagging a news article with multiple topics.</li>
 <li>Hamming loss, precision/recall at k (top-k labels)</li>
 </ul>
+<p><strong>SVM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kernel</th>
+<th>Use Case / Data Type</th>
+<th>Decision Boundary Shape (in original space)</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear</td>
+<td>Linearly separable data, high-dimensional data (like text classification)</td>
+<td>Straight line (or flat hyperplane)</td>
+<td>C (regularization)</td>
+</tr>
+<tr>
+<td>Polynomial</td>
+<td>Data with a non-linear or polynomial trend; low-dimensional data</td>
+<td>Curved or complex (e.g., circular, parabolic)</td>
+<td>C, degree (d), coef0 (independent term)</td>
+</tr>
+<tr>
+<td>RBF (Gaussian)</td>
+<td>Default choice when data nature is unknown; complex, non-linear data</td>
+<td>Complex, potentially highly flexible and smooth curves</td>
+<td>C, gamma (influence of single data points)</td>
+</tr>
+<tr>
+<td>Sigmoid</td>
+<td>Useful in applications related to neural networks (as an activation function)</td>
+<td>Highly non-linear, potentially complex and sometimes difficult to interpret</td>
+<td>C, gamma, coef0</td>
+</tr>
+</tbody>
+</table>
 <h3 id="synthetic-oversampling-smote" class="relative group">Synthetic Oversampling (SMOTE) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#synthetic-oversampling-smote" aria-label="Anchor">#</a></span></h3><p>To deal with highly imbalanced data (like fraud - minority class) usually leverages an oversampling approaches such as creating synthetic or duplicate samples of the minority class to balance the class distribution, aiming for a 50/50 split for a binary class system for example.</p>
 <p>The two primary methods are:</p>
 <ol>
@@ -878,6 +1079,339 @@ The error from a model&rsquo;s sensitivity to the specific training data. A high
 <li><strong>Leave-One-Out Cross-Validation (LOOCV)</strong>: An extreme case of K-Fold where k is equal to the number of data points. It can be computationally expensive.</li>
 <li><strong>Shuffle Split Cross-Validation</strong>: Also known as repeated random subsampling, it involves multiple random splits of the data into training and testing sets.</li>
 </ul>
+<h1 id="deep-learning" class="relative group">Deep Learning <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#deep-learning" aria-label="Anchor">#</a></span></h1><h3 id="activation-functions" class="relative group">Activation Functions <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#activation-functions" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Activation Functions</th>
+<th>Sigmoid</th>
+<th>tanh</th>
+<th>ReLU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Formula</td>
+<td>1/(1+e<sup>-x</sup>)</td>
+<td>tanh(x)</td>
+<td>max(0, x)</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>0 to 1</td>
+<td>-1 to 1</td>
+<td>0 to ∞</td>
+</tr>
+<tr>
+<td>Gradient Issues</td>
+<td>Severe vanishing gradients</td>
+<td>Moderate vanishing gradients</td>
+<td>No vanishing gradient for x&gt;0x&gt;0</td>
+</tr>
+<tr>
+<td>Computation Cost</td>
+<td>Expensive (exponential)</td>
+<td>Expensive (exponential)</td>
+<td>Very cheap (max operation)</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>Binary classification outputs</td>
+<td>Hidden layers zero-centered data</td>
+<td>Deep neural networks</td>
+</tr>
+<tr>
+<td>Pros</td>
+<td>Smooth, probabilistic output</td>
+<td>Better gradient flow than sigmoid</td>
+<td>Fast, efficient, avoids vanishing gradient</td>
+</tr>
+<tr>
+<td>Cons</td>
+<td>Not zero-centered, slow training</td>
+<td>Still saturates for large inputs</td>
+<td>Dying ReLU problem</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Always positive</td>
+<td>Symmetric around zero</td>
+<td>Sparse</td>
+</tr>
+</tbody>
+</table>
+<h1 id="optimization" class="relative group">Optimization <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#optimization" aria-label="Anchor">#</a></span></h1><h3 id="gradient-descent" class="relative group">Gradient Descent <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#gradient-descent" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Optimizer</th>
+<th>Description</th>
+<th>Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gradient Descent (GD)</td>
+<td>Computes the gradient using the entire training dataset for each parameter update.</td>
+<td>High precision, but slow and computationally expensive for large datasets.</td>
+</tr>
+<tr>
+<td>Stochastic Gradient Descent (SGD)</td>
+<td>Computes the gradient using a single randomly chosen data sample for each update.</td>
+<td>Fast updates, but the path to the minimum is noisy (high variance), leading to oscillations.</td>
+</tr>
+<tr>
+<td>Mini-Batch Gradient Descent</td>
+<td>The most common practical approach. Computes the gradient using a small batch of data (e.g., 32, 64, 128 samples).</td>
+<td>Strikes a balance between GD&rsquo;s stability and SGD&rsquo;s speed.</td>
+</tr>
+<tr>
+<td>SGD with Momentum</td>
+<td>Adds a &ldquo;velocity&rdquo; term that accumulates a fraction of the previous update.</td>
+<td>Helps the optimizer accelerate across flat areas and dampen oscillations in steep ravines, leading to faster convergence.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adaptive-learning-rate-methods" class="relative group">Adaptive Learning Rate Methods <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#adaptive-learning-rate-methods" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Optimizer</th>
+<th>Description</th>
+<th>Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AdaGrad (Adaptive Gradient)</td>
+<td>Adapts the learning rate based on the sum of the squared historical gradients.</td>
+<td>Great for sparse data (gives larger updates for infrequent parameters/features). Main drawback is an aggressively decaying learning rate.</td>
+</tr>
+<tr>
+<td>RMSProp (Root Mean Square Propagation)</td>
+<td>Solves AdaGrad&rsquo;s aggressive decay by using an exponentially decaying average of squared past gradients.</td>
+<td>The learning rate adjusts more slowly, making it more robust for non-convex problems (like deep neural networks).</td>
+</tr>
+<tr>
+<td>Adam (Adaptive Moment Estimation)</td>
+<td>Combines the benefits of Momentum (using the average of past gradients) and RMSProp (using the average of past squared gradients).</td>
+<td>Extremely popular due to its fast convergence and minimal need for hyperparameter tuning. It has a bias correction mechanism.</td>
+</tr>
+<tr>
+<td>AdamW (Adam with Decoupled Weight Decay)</td>
+<td>A modification of Adam that decouples the weight decay (L2 regularization) from the gradient updates.</td>
+<td>Improves generalization (performs better on unseen data) compared to standard Adam, which often finds sharper minima. This is the preferred version of Adam for most deep learning tasks today.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Adam vs. AdamW</strong></p>
+<ul>
+<li>
+<p>Adam (Adaptive Moment Estimation): Weight decay (L2 regularization) is added to the gradient: grad = grad + weight_decay * param.</p>
+</li>
+<li>
+<p>AdamW (Adam with Decoupled Weight Decay): Weight decay is applied after the gradient update: param = param * (1 - lr * weight_decay).</p>
+</li>
+</ul>
+<p><strong>Learning Rate Schedules</strong>: Techniques that change the learning rate over time (e.g., reducing it after a set number of epochs or using a cosine annealing schedule) to help the model converge more precisely.</p>
+<p><strong>Second-Order Methods (e.g., Newton&rsquo;s Method)</strong>: These use the second derivative (Hessian matrix) to find a better direction to the minimum. They offer faster convergence but are often computationally prohibitively expensive for deep learning models with millions of parameters.</p>
+<p><strong>Regularization (L1, L2)</strong>: Techniques like Weight Decay (which is L2 regularization) are often used alongside optimizers (as seen in AdamW) to penalize large weights and prevent overfitting.</p>
+<h1 id="reinforcement-learning" class="relative group">Reinforcement Learning <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#reinforcement-learning" aria-label="Anchor">#</a></span></h1><table>
+<thead>
+<tr>
+<th>Concepts</th>
+<th>Q-table</th>
+<th>Deep Q-Network (DQN)</th>
+<th>Actor-Critic (A2C)</th>
+<th>Proximal Policy Optimization (PPO)</th>
+<th>Generalized Policy Optimization (GRPO)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approach Type</td>
+<td>Explicitly maps every state and every action to a numerical value in a table.</td>
+<td>Uses a deep neural network (DNN) as a function approximator for the Q-table.</td>
+<td>The Actor learns a policy (which action to take), and the Critic learns a value function (how good the state is). It uses the &ldquo;advantage&rdquo; (how much better an action was than average) to update the policy.</td>
+<td>PPO improves upon earlier policy gradient methods by using a &ldquo;clipping&rdquo; mechanism to restrict how much the new policy can change from the old policy during each update.</td>
+<td>GRPO generally refers to generalized frameworks for policy optimization, often related to older theoretical methods or specific academic implementations that generalize concepts found in algorithms like Trust Region Policy Optimization (TRPO).</td>
+</tr>
+<tr>
+<td>State Space</td>
+<td>Small/Discrete</td>
+<td>Large/Continuous</td>
+<td>Large/Continuous</td>
+<td>Large/Continuous</td>
+<td>Large/Continuous</td>
+</tr>
+<tr>
+<td>Action Space</td>
+<td>Discrete</td>
+<td>Discrete</td>
+<td>Discrete/Continuous</td>
+<td>Discrete/Continuous</td>
+<td>Discrete/Continuous</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Poor</td>
+<td>Good	Excellent</td>
+<td>Excellent</td>
+<td>Good</td>
+<td></td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+<td>High</td>
+<td>Very High</td>
+</tr>
+<tr>
+<td>Stability/Robustness</td>
+<td>High</td>
+<td>Medium</td>
+<td>Medium-High</td>
+<td>Very High</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Policy</strong>
+In Reinforcement Learning, a policy ($\pi$) is the agent&rsquo;s strategy or rule set for choosing an action. It is a mapping from observed states to actions.</p>
+<ul>
+<li>Policy Notation: It is often written as $\pi(a|s)$, which is the probability of taking action $a$ when in state $s$.</li>
+<li>Optimal Policy ($\pi^<em>$): The goal of nearly all RL algorithms is to find the optimal policy, $\pi^</em>$, which maximizes the expected cumulative discounted future reward.</li>
+</ul>
+<p>Policies come in two main types:</p>
+<ol>
+<li>Deterministic Policy: $\pi(s) = a$. For a given state, the agent always chooses the same action (e.g., Q-Learning&rsquo;s evaluation policy).</li>
+<li>Stochastic Policy: $\pi(a|s)$. For a given state, the agent chooses actions based on a probability distribution (e.g., the $\epsilon$-greedy policy used for exploration).</li>
+</ol>
+<p><strong>On-Policy vs. Off-Policy</strong></p>
+<ol>
+<li>
+<p><strong>On-Policy Learning</strong> (e.g., SARSA) algorithms learn the value of the policy they are currently using to act.</p>
+<ul>
+<li><strong>Behavior Policy ($\pi$)</strong>: The policy used to select actions and interact with the environment (e.g., $\epsilon$-greedy).Evaluation Policy: The policy being evaluated and improved is the same policy ($\pi$).</li>
+<li><strong>Key Idea</strong>: The agent learns the value of taking an action, including the risks and returns associated with the occasional random, exploratory steps. The learned Q-values reflect the returns expected under the $\epsilon$-greedy policy itself.</li>
+<li><strong>Result</strong>: The learned policy is often more conservative because it accounts for the negative consequences of exploring.</li>
+</ul>
+</li>
+<li>
+<p><strong>Off-Policy Learning</strong> (e.g., SARSAmax a.k.a. Q-Learning) algorithms learn the value of one policy (the target policy) while following a different policy (the behavior policy).</p>
+<ul>
+<li><strong>Behavior Policy ($\pi$)</strong>: The policy used to gather data and explore (e.g., $\epsilon$-greedy).Evaluation Policy ($\mu$): The policy being evaluated and improved is the greedy (optimal) policy $\mu$, which selects the $\arg\max$ action.</li>
+<li><strong>Key Idea</strong>: The agent uses the experience gained from its exploratory actions ($\pi$) to estimate what the returns would have been if it had followed the greedy policy ($\mu$).</li>
+<li><strong>Result</strong>: The learned policy is the optimal greedy policy ($\pi^*$). This approach allows the agent to learn the best path faster, independent of the random steps taken for exploration, but it may lead to a riskier optimal path if exploration involves massive penalties (like falling off a cliff).</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>On-Policy (e.g., SARSA)</th>
+<th>Off-Policy (e.g., Q-Learning)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learning Policy</td>
+<td>$\pi$ (The policy the agent follows)</td>
+<td>$\mu$ (The optimal/greedy policy)</td>
+</tr>
+<tr>
+<td>Data Policy</td>
+<td>$\pi$</td>
+<td>$\pi$</td>
+</tr>
+<tr>
+<td>Update Target</td>
+<td>$\mathbf{Q(S_{t+1}, A_{t+1})}$ where $A_{t+1} \sim \pi$</td>
+<td>$\mathbf{\max_{a} Q(S_{t+1}, a)}$</td>
+</tr>
+<tr>
+<td>Nature</td>
+<td>Conservative</td>
+<td>Optimal/Aggressive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Temporal Difference methods</strong></p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>SARSA</th>
+<th>Q-Learning (SARSAmax)</th>
+<th>Expected SARSA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy Type</td>
+<td>On-Policy</td>
+<td>Off-Policy</td>
+<td>Off-Policy (Hybrid)</td>
+</tr>
+<tr>
+<td>Policy Learned</td>
+<td>The value of the Exploratory Policy ($\epsilon$-greedy).</td>
+<td>The value of the Optimal Greedy Policy ($\mu$).</td>
+<td>The value of the Optimal Greedy Policy ($\mu$).</td>
+</tr>
+<tr>
+<td>Next Action Used</td>
+<td>The actual action $A_{t+1}$ chosen by the $\epsilon$-greedy policy $\pi$.</td>
+<td>The greedy action $A_{\text{max}}$ (the one with the highest Q-value).</td>
+<td>The expected value over all possible next actions $a&rsquo;$, weighted by their probability $\pi(a&rsquo;)$</td>
+</tr>
+<tr>
+<td>TD Target</td>
+<td>$R_{t+1} + \gamma \mathbf{Q(S_{t+1}, A_{t+1})}$</td>
+<td>$R_{t+1} + \gamma \mathbf{\max_{a} Q(S_{t+1}, a)}$</td>
+<td>$R_{t+1} + \gamma \mathbf{\sum_{a&rsquo;} \pi(a&rsquo;)}$</td>
+</tr>
+<tr>
+<td>Convergence</td>
+<td>Converges only to $Q^*$ if the policy $\pi$ decays $\epsilon \to 0$.</td>
+<td>Converges directly to $Q^*$ regardless of the behavior policy $\pi$.</td>
+<td>Converges directly to $Q^*$ regardless of the behavior policy $\pi$.</td>
+</tr>
+<tr>
+<td>Safety/Risk</td>
+<td>Conservative: Learns safer paths, accounting for exploration risk.</td>
+<td>Aggressive: Learns the mathematically optimal path, ignoring exploration risk.</td>
+<td>Balanced: More stable than Q-Learning and learns the optimal path.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Policy Relationship</strong></p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Relationship</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SARSA</td>
+<td>On-Policy (Policy $\pi$ learns about Policy $\pi$)</td>
+<td>Learns the expected return from taking action $A_t$ and continuing to follow the same exploratory strategy $\pi$.</td>
+</tr>
+<tr>
+<td>Q-Learning</td>
+<td>Off-Policy (Policy $\pi$ learns about Policy $\mu$)</td>
+<td>Learns the expected return from taking action $A_t$ but assumes that after this step, the agent will always act greedily ($\mu$).</td>
+</tr>
+<tr>
+<td>Expected SARSA</td>
+<td>Off-Policy (Policy $\pi$ learns about Policy $\mu$ using $\pi$)</td>
+<td>Learns the expected return from taking action $A_t$ by averaging the values of all possible next actions, weighted by their probability of being chosen by the behavior policy $\pi$. This removes the stochasticity introduced by sampling $A_{t+1}$ in SARSA.</td>
+</tr>
+</tbody>
+</table>
 <h1 id="sql" class="relative group">SQL <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#sql" aria-label="Anchor">#</a></span></h1><p>Useful references:</p>
 <ul>
 <li>w3school
@@ -1243,7 +1777,69 @@ The error from a model&rsquo;s sensitivity to the specific training data. A high
 </tr>
 </tbody>
 </table>
-<h1 id="python" class="relative group">Python <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#python" aria-label="Anchor">#</a></span></h1><h3 id="general" class="relative group">General <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#general" aria-label="Anchor">#</a></span></h3><p><strong>Using</strong> <code>__main__</code> <strong>Safely</strong> - Ensures script only runs when executed directly, not when imported.</p>
+<h1 id="python" class="relative group">Python <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#python" aria-label="Anchor">#</a></span></h1><h3 id="general" class="relative group">General <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#general" aria-label="Anchor">#</a></span></h3><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>List</th>
+<th>Set</th>
+<th>Tuple</th>
+<th>Dictionary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mutability</td>
+<td>Mutable</td>
+<td>Mutable (elements must be immutable)</td>
+<td>Immutable</td>
+<td>Mutable</td>
+</tr>
+<tr>
+<td>Hashable</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ordering</td>
+<td>Ordered</td>
+<td>Unordered</td>
+<td>Ordered</td>
+<td>Ordered</td>
+</tr>
+<tr>
+<td>Duplicates</td>
+<td>Allows duplicates</td>
+<td>No duplicates allowed</td>
+<td>Allows duplicates</td>
+<td>No duplicate keys</td>
+</tr>
+<tr>
+<td>Indexing</td>
+<td>Supports indexing and slicing</td>
+<td>Not supported</td>
+<td>Supports indexing and slicing</td>
+<td>By Key</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Slower for membership tests</td>
+<td>Faster Membership tests</td>
+<td>Faster than lists</td>
+<td>Fast lookup and modification</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>When frequent modifications are required</td>
+<td>When uniqueness is needed</td>
+<td>When immutability is required</td>
+<td>When association or mapping between values</td>
+</tr>
+</tbody>
+</table>
+<h3 id="algorithms" class="relative group">Algorithms <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#algorithms" aria-label="Anchor">#</a></span></h3><h3 id="snippets" class="relative group">Snippets <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#snippets" aria-label="Anchor">#</a></span></h3><p><strong>Using</strong> <code>__main__</code> <strong>Safely</strong> - Ensures script only runs when executed directly, not when imported.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Running script...&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
@@ -1257,9 +1853,52 @@ The error from a model&rsquo;s sensitivity to the specific training data. A high
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </span></span></code></pre></div><p><strong>List Comprehensions</strong> - Pythonic, fast, and readable.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
-</span></span></code></pre></div><p><strong>Dictionary Comprehensions</strong> - Quick way to build dictionaries.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lookup</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
-</span></span></code></pre></div><p><strong>Using pathlib Instead of</strong> <code>os.path</code> - More modern, readable file path handling.</p>
+</span></span></code></pre></div><p><strong>deque</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a deque</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Append to the left</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_deque</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Deque after appendleft(0): </span><span class="si">{</span><span class="n">my_deque</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Deque after appendleft(0): deque([0, 1, 2, 3])</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Append to the right</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_deque</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Deque after append(4): </span><span class="si">{</span><span class="n">my_deque</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Deque after append(4): deque([0, 1, 2, 3, 4])</p>
+</blockquote>
+<p><strong>Counter</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize a Counter from a string</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s2">&#34;mississippi&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Counter({&lsquo;i&rsquo;: 4, &rsquo;s&rsquo;: 4, &lsquo;p&rsquo;: 2, &rsquo;m&rsquo;: 1})</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Updating counts (+)</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&#34;pennsylvania&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Counter({&lsquo;i&rsquo;: 5, &rsquo;s&rsquo;: 5, &lsquo;p&rsquo;: 3, &rsquo;n&rsquo;: 3, &lsquo;a&rsquo;: 2, &rsquo;m&rsquo;: 1, &rsquo;e&rsquo;: 1, &lsquo;y&rsquo;: 1, &rsquo;l&rsquo;: 1, &lsquo;v&rsquo;: 1})</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Arithmetic operations (-)</span>
+</span></span><span class="line"><span class="cl"><span class="n">c2</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="n">c2</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Counter({&lsquo;i&rsquo;: 5, &rsquo;s&rsquo;: 5, &rsquo;n&rsquo;: 3, &rsquo;m&rsquo;: 1, &lsquo;p&rsquo;: 1, &lsquo;y&rsquo;: 1, &lsquo;v&rsquo;: 1, &lsquo;a&rsquo;: 1})</p>
+</blockquote>
+<h1 id="most-common-elements" class="relative group">Most common elements <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#most-common-elements" aria-label="Anchor">#</a></span></h1><p>print(c.most_common(3)) # [(&lsquo;i&rsquo;, 5), (&rsquo;s&rsquo;, 5), (&lsquo;p&rsquo;, 3)]</p>
+<pre tabindex="0"><code>
+**Dictionary Comprehensions** - Quick way to build dictionaries.
+```python
+lookup = {x: x**2 for x in range(5)}
+</code></pre><p><strong>Using pathlib Instead of</strong> <code>os.path</code> - More modern, readable file path handling.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&#34;data&#34;</span><span class="p">)</span>
@@ -2237,20 +2876,20 @@ async>
 	</script>
 
 	
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-	  tex2jax: {
-		inlineMath: [['\\(','\\)']],
-		displayMath: [['$$','$$'], ['\[','\]']],
-		processEscapes: true,
-		processEnvironments: true,
-		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-		TeX: { equationNumbers: { autoNumber: "AMS" },
-			 extensions: ["AMSmath.js", "AMSsymbols.js"] }
-	  }
-	});
+	<script>
+	  window.MathJax = {
+		tex: {
+		  inlineMath: [['$', '$'], ['\\(', '\\)']], 
+		  displayMath: [['$$', '$$'], ['\\[', '\\]']], 
+		  tags: 'ams' 
+		},
+		options: {
+		  skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	  };
 	</script>
 
 	<script src="/js/goat.js"></script>
+
   </body>
 </html>

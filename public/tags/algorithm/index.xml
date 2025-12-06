@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithm on Steven Lio</title>
+    <link>http://localhost:1313/tags/algorithm/</link>
+    <description>Recent content in Algorithm on Steven Lio</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>© 2025 Steven Lio</copyright>
+    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reinforcement Learning on Tower of Hanoi</title>
+      <link>http://localhost:1313/projects/hanoi/</link>
+      <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/hanoi/</guid>
+      <description>Explore reinforcement learning to solve Tower of Hanoi</description>
+    </item>
+  </channel>
+</rss>

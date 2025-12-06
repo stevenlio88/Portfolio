@@ -886,20 +886,20 @@ async>
 	</script>
 
 	
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-	  tex2jax: {
-		inlineMath: [['\\(','\\)']],
-		displayMath: [['$$','$$'], ['\[','\]']],
-		processEscapes: true,
-		processEnvironments: true,
-		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-		TeX: { equationNumbers: { autoNumber: "AMS" },
-			 extensions: ["AMSmath.js", "AMSsymbols.js"] }
-	  }
-	});
+	<script>
+	  window.MathJax = {
+		tex: {
+		  inlineMath: [['$', '$'], ['\\(', '\\)']], 
+		  displayMath: [['$$', '$$'], ['\\[', '\\]']], 
+		  tags: 'ams' 
+		},
+		options: {
+		  skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	  };
 	</script>
 
 	<script src="/js/goat.js"></script>
+
   </body>
 </html>

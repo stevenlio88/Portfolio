@@ -870,7 +870,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2021-03-19 00:00:00 &#43;0000 UTC">19 Mar, 2021</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">31 mins</span>
+      <time datetime="2021-03-19 00:00:00 &#43;0000 UTC">19 Mar, 2021</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">40 mins</span>
     
 
     
@@ -898,15 +898,27 @@
             >
           
             <a
-              href="/tags/python/"
+              href="/tags/deep-learning/"
               class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
-              >Python</a
+              >Deep Learning</a
+            >
+          
+            <a
+              href="/tags/reinforcement-learning/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Reinforcement Learning</a
             >
           
             <a
               href="/tags/sql/"
               class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
               >SQL</a
+            >
+          
+            <a
+              href="/tags/python/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Python</a
             >
           
         
@@ -1129,20 +1141,20 @@
 	</script>
 
 	
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-	  tex2jax: {
-		inlineMath: [['\\(','\\)']],
-		displayMath: [['$$','$$'], ['\[','\]']],
-		processEscapes: true,
-		processEnvironments: true,
-		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-		TeX: { equationNumbers: { autoNumber: "AMS" },
-			 extensions: ["AMSmath.js", "AMSsymbols.js"] }
-	  }
-	});
+	<script>
+	  window.MathJax = {
+		tex: {
+		  inlineMath: [['$', '$'], ['\\(', '\\)']], 
+		  displayMath: [['$$', '$$'], ['\\[', '\\]']], 
+		  tags: 'ams' 
+		},
+		options: {
+		  skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	  };
 	</script>
 
 	<script src="/js/goat.js"></script>
+
   </body>
 </html>

@@ -5,8 +5,34 @@
     
       <url>
             <loc>http://localhost:1313/</loc>
-            <lastmod>2025-11-10T00:00:00+00:00</lastmod>
+            <lastmod>2025-12-03T00:00:00+00:00</lastmod>
           </url>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/projects/</loc>
+            <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+          </url>
+    
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/projects/hanoi/</loc>
+            <lastmod>2025-12-03T00:00:00+00:00</lastmod>
+          </url>
+    
+  
     
   
     
@@ -36,23 +62,10 @@
     
   
     
-  
-    
-      <url>
-            <loc>http://localhost:1313/projects/</loc>
-            <lastmod>2025-11-10T00:00:00+00:00</lastmod>
-          </url>
-    
-  
-    
-  
-    
       <url>
             <loc>http://localhost:1313/projects/romaiance/</loc>
             <lastmod>2025-11-10T00:00:00+00:00</lastmod>
           </url>
-    
-  
     
   
     

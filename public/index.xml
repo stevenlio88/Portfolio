@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>© 2025 Steven Lio</copyright>
-    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reinforcement Learning on Tower of Hanoi</title>
+      <link>http://localhost:1313/projects/hanoi/</link>
+      <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/hanoi/</guid>
+      <description>Explore reinforcement learning to solve Tower of Hanoi</description>
+    </item>
     <item>
       <title>Exploring Modular LLM pipeline with DSPy</title>
       <link>http://localhost:1313/blog/dspy/</link>
