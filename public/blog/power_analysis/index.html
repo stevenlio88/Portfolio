@@ -142,7 +142,7 @@
     "keywords": ["Statistics","Hypothesis Testing","Data Science","Data Analytics","Web Analytics","Python","R"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1166"
+    "wordCount": "1204"
   }
   </script>
 
@@ -594,7 +594,7 @@ $$ fpc_1 = \frac{N_1 - n}{n-1},  fpc_2 = \frac{N_2 - n}{n-1}$$</p>
 <img src="we-dont-know-dont-know.gif" width="50%">
 </center>
 <p>The other problem is that data collection takes time. Also if the duration of the studies takes long time then the test results could be out-dated by the time it finished collecting all ~29,464 visitors.</p>
-<p>Often during collection we would need to constantly monitor how the key statistics are changing as well as deciding if we need to halt the test earlier when there are instrumental or systematic problems. Early stopping will need to be considered.</p>
+<p>Often during collection we would need to constantly monitor how the key statistics are changing (not to make inference to avoid committing Type I error or <a href="https://en.wikipedia.org/wiki/Data_dredging" target="_blank" rel="noreferrer">p-hacking</a>) as well as deciding if we need to halt the test earlier when there are instrumental or systematic problems. Early stopping will need to be considered (not for making conclusion, instead halt the experience if critical error is found or counter metrics such as customer negative reviews or application latency spikes etc.).</p>
 <p>Also often more recommended way is to create pilot tests with smaller samples on various scenarios before deciding a full-force tests to be conducted. If some scenarios turns out to be poor for some obvious reasons.</p>
 <p>Prior similar experiences / knowledge should also be considered when designing a new test. Also at that point, <a href="https://en.wikipedia.org/wiki/Bayesian_inference" target="_blank" rel="noreferrer">Bayesian Hypothesis Testing</a> usually is the way to go.</p>
 <h2 id="useful-resources" class="relative group">Useful Resources: <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#useful-resources" aria-label="Anchor">#</a></span></h2><ul>

@@ -125,7 +125,7 @@ Some sacrifices will need to be made:
 
 The other problem is that data collection takes time. Also if the duration of the studies takes long time then the test results could be out-dated by the time it finished collecting all ~29,464 visitors.
 
-Often during collection we would need to constantly monitor how the key statistics are changing as well as deciding if we need to halt the test earlier when there are instrumental or systematic problems. Early stopping will need to be considered. 
+Often during collection we would need to constantly monitor how the key statistics are changing (not to make inference to avoid committing Type I error or [p-hacking](https://en.wikipedia.org/wiki/Data_dredging)) as well as deciding if we need to halt the test earlier when there are instrumental or systematic problems. Early stopping will need to be considered (not for making conclusion, instead halt the experience if critical error is found or counter metrics such as customer negative reviews or application latency spikes etc.). 
 
 Also often more recommended way is to create pilot tests with smaller samples on various scenarios before deciding a full-force tests to be conducted. If some scenarios turns out to be poor for some obvious reasons.
 

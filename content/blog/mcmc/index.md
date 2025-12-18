@@ -191,7 +191,7 @@ The gray lines represent 1,000 simulation runs on the portfolio during the 252 t
 
 The point of this simulation is not to predict the exact stock price on any given day but to provide insight into the ranges of the most likely outcomes and risks based on our assumptions about the randomness of this particular stock prices.
 
-As expected, the variance of the predictions increases as we project further into the future. This can be seen in the widening of the percentile ranges towards the end of the 252 days. On the 252nd day, we would expected that the average simulated portfolio value to be $14,065.01 (+40.7%), while the actual value was $14,020.51, an overestimated for $44.5.
+As expected, the variance of the predictions increases as we project further into the future. This can be seen in the widening of the percentile ranges towards the end of the 252 days. On the 252nd day, we would expected that the average simulated portfolio value to be **&#36;14,065.01 (+40.7 %)**, while the actual value was **&#36;14,020.51**, an overestimated for **&#36;44.5**.
 
 It is important to note that this simulation is based on several assumptions:
 1. Percentage changes in the stock prices are Normally distributed

@@ -4,8 +4,8 @@ date: 2021-03-19
 draft: false
 tags: [Statistics, Machine Learning, Deep Learning, Reinforcement Learning, SQL, Python]
 categories: []
-showReadingTime: true
-showTableOfContents: true
+showReadingTime: false
+showTableOfContents: false
 summary: "General Notes"
 ---
 
@@ -19,7 +19,146 @@ This contains general notes (definitions, code snippets, useful resources etc.) 
 
 # Statistics
 
+### Probability vs. Likelihood
+- **Probability** quantifies the chance of future events given fixed model parameters (e.g., chance of heads with a fair coin)
+- **Likelihood** assesses the plausibility of model parameters given observed data (e.g., how likely a coin is fair given observed flips).
+
+**Conditional Probability**
+
+$$\mathbf{P(A|B) = \frac{P(A \cap B)}{P(B)}}$$
+
+**Independence**
+$$\mathbf{P(A|B) = P(A)} \text{ or } \mathbf{P(B|A) = P(B)}$$
+
+$$\mathbf{P(A \cap B) = P(A) \cdot P(B)} \text{ or } \mathbf{P(B \cap A) = P(A) \cdot P(B)}$$
+
+**Conditional Independence**
+
+$$\mathbf{P(A \cap B | C) = P(A|C) \cdot P(B|C)}$$
+$$\mathbf{P(A|B, C) = P(A|C)}$$
+
+**Bayes Theorem**
+$$\mathbf{P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}}$$
+
+Total probability:
+$$ \mathbf{P(B) = P(B|A) \cdot P(A) + P(B|A')\cdot P(A')} $$
+
+### Skewness
+
+**Left skewed (Neg)**: Tail of the distribution is longer on the left (mean **<** median)
+- Transformation: $x^2$ / $x^3$
+
+**Right skewed (Pos)**: Tail of the distribution is longer on the right (mean **>** median) e.g. Exponential Distribution
+- Transformation: $log$, $\sqrt{x}$, $\sqrt[3]{x}$, reciprocal ($\frac{1}{x}$)
+
+Fix Both: Cube Root, Box-Cox, Yeo-Johnson
+
+### Central Limit Theorem (CLT)
+
+The distribution of sample (i.i.d.) means will approximate a normal (bell-shaped) distribution as the sample size gets sufficiently large, regardless of the shape of the original population distribution with mean ($\mu$) and finite variance ($\sigma^2$).
+
+For i.i.d. random variables $X_1, X_2, \ldots, X_n$ size $n$:
+- sample mean $\bar{X_n} = \frac{1}{n}\sum_{i=1}^n X_i$ and $n$ is large
+- then $\bar{X_n} \overset{approx}{\sim} N\left(\mu, \frac{\sigma^2}{n}\right)$
+- hence $\frac{\bar{X_n} - \mu}{\sigma / \sqrt{n}} \overset{approx}{\sim} N\left(0, 1\right)$
+
+And
+- **Mean of the Sample Means**: The mean of this sampling distribution is $\mu$, which is the unbiased estimator of the population mean.
+- **Variance of the Sample Means**: The variance of this sampling distribution is $\sigma^2/n$.
+- **Standard Deviation of the Sample Means (Standard Error)**: The standard deviation is $\sigma/\sqrt{n}$. This is called the standard error and measures the typical distance between the sample mean ($\bar{X}$) and the population mean ($\mu$).
+
+Also the unbiased sample variance:
+
+$$ s^2 = \frac{1}{n−1}\sum_{i=1}^{n}(X_i - \bar{X})^2$$
+
+Is not normally distributed and even asymptotically in general.
+
+However for a Normal population $X_i \sim N(\mu,\sigma^2)$ then
+$$(n-1)\frac{s^2}{\sigma^2}\sim \chi_{n-1}^2$$
+i.e. chi-squared with $n-1$ degrees of freedom. Where $\mathbb{E[s^2] = \sigma^2}$ and $Var(s^2) = \frac{2\sigma^4}{n-1}$.
+
+For non-normal population, $s^2$ is approximately normal for large $n$, then after standardization:
+$$\frac{s^2-\sigma^2}{\sqrt{Var(s^2)}} \approx N(0,1) \text{ for large n}$$
+
+And the confidence intervals for the population variance:
+
+$$ Pr\left(\frac{(n-1)s^2}{\chi_{1-\frac{\alpha}{2}}^2} \le \sigma^2 \le \frac{(n-1)s^2}{\chi_{\frac{\alpha}{2}}^2}\right) = 1 - \alpha$$
+
+Where $\chi_p^2$ is the p-th quantile of the chi-square distribution with $n-1$ df.
+
+### Degree of Freedom (ddof)
+The number of values in a calculation that are free to vary while estimating a parameter. For example, if we have $n$ numbers with a fixed sum, once we know $n−1$ of them, the last one is determined. So the number of free values = $n – 1$.
+
+In sample variance calculation, dividing by the sample size $n$ instead of $n-1$ (degrees of freedom) underestimates the true population variance, because the sample mean is used, which is closer to the data points than the true mean, leading to smaller squared deviations; using $n-1$ (Bessel's Correction) provides an unbiased estimate by accounting for this tendency, especially crucial with small samples.
+
+### Probability Functions
+
+1. Probability Mass Function (PMF) - describe the probability distribution of a Discrete Random Variable ($X$).
+$$P(X=x) \text{ or } f(x)$$
+
+2. Probability Density Function (PDF) - describe the probability distribution of a Continuous Random Variable ($X$).
+    - $f(x) \ge 0$
+    - $\int_{-\infty}^{\infty} f(x) \, dx = 1$
+    - $P(a \le X \le b) = \int_{a}^{b} f(x) \, dx$
+
+3. Cumulative Distribution Function (CDF) - describes the probability that the random variable $X$ will take a value less than or equal to a specific value $x$.
+    - $F(x)$
+    - Discrete: $F(x) = P(X \le x) = \sum_{t \le x} P(X=t)$
+    - Continuous: $F(x) = P(X \le x) = \int_{-\infty}^{x} f(t) \, dt$
+    - The PDF is the derivative of the CDF: $f(x) = \frac{d}{dx} F(x)$.
+    - The CDF is the integral of the PDF.
+
+4. Joint Probability Distribution - gives the probability that two or more random variables simultaneously take on specific values or fall within a specific range. It is the foundation for calculating marginal and conditional distributions.
+$$P(X=x, Y=y)$$
+
+5. Marginal Distribution - a concept used when you have two or more random variables (a Joint Distribution), and you want to focus on the distribution of just one of those variables.
+    - Joint PMF of X and Y: $P(X=x, Y=y)$
+    - Marginal PMF of X: $P(X=x) = \sum_{y} P(X=x, Y=y)$
+    - Joint PDF of X and Y: $f(x, y)$
+    - Marginal PDF of X: $f_X(x) = \int_{-\infty}^{\infty} f(x, y) \, dy$
+
+6. Conditional Probability Distribution - describes the probability distribution of one random variable ($X$) given that the other random variable ($Y$) has taken a specific value ($y$).
+$$P(X=x | Y=y) = \frac{P(X=x, Y=y)}{P(Y=y)}$$
+
+### Discrete Probability Distributions
+
+| Distribution | Description | Parameters | Key Use Case |
+| ------------ | ----------- | ---------- | ------------ |
+| Uniform | All outcomes in a finite range are equally likely. | a (min value), b (max value) | Modeling fair dice rolls, generating random samples where every choice is equally probable. |
+| Bernoulli | Models a single trial with only two outcomes: success or failure. | p (probability of success) | Modeling a single coin flip, whether an email is opened or not, pass/fail events. |
+| Binomial | Models the number of successes in a fixed number (n) of independent Bernoulli trials. | n (number of trials) | p (probability of success) | Quality control (defective items in a batch), predicting the number of customers who click on an ad out of 100 viewers. |
+| Poisson | Models the number of events occurring within a fixed interval of time or space, given a known average rate. | λ (lambda, the average rate of occurrence) | Modeling call center volume per minute, number of website errors per hour, car accidents at an intersection per month. |
+| Geometric | Models the number of failures before the first success in a sequence of independent Bernoulli trials. | p (probability of success) | Modeling how many times a machine fails before it finally starts, number of attempts needed to solve a puzzle. |
+| Hypergeometric | Models the number of successes in a sample drawn without replacement from a finite population. | N (population size), K (number of successes in population), n (sample size) | Sampling inspection (e.g., drawing balls from an urn, checking items in a small batch where sampling affects the remaining probabilities). |
+| Negative Binomial | Models the number of failures until a fixed number of successes (r) is achieved. (Generalizes Geometric) | r (target number of successes), p (probability of success) | Modeling the number of games played until a team wins 5 championships. |
+
+### Continuous Probability Distributions
+
+| Distribution | Description | Parameters | Key Use Case |
+| ------------ | ----------- | ---------- | ------------ |
+| Normal (Gaussian) | The most common distribution. Symmetric, bell-shaped, defined by its mean and standard deviation. | μ (mean), σ (standard deviation) | Modeling natural phenomena (heights, weights, IQ scores), statistical inference (Central Limit Theorem), noise in signals. |
+| Uniform | All values within a given range are equally likely, and outside that range, the probability is zero. | a (min value), b (max value) | Modeling situations where little is known about the outcome, such as the error in rounding a measurement to the nearest integer. |
+| Exponential | Models the time or distance between events in a Poisson process. It is memoryless. | λ (rate parameter) | Modeling time between customer arrivals, time until a lightbulb burns out, time between bus arrivals. |
+| Gamma | A flexible distribution often used to model variables that are always positive and right-skewed. (Generalizes the Exponential distribution). | α (shape parameter), β (rate/scale parameter) | Modeling waiting times (e.g., time to complete n tasks), insurance claim amounts, or rainfall amounts. |
+| Beta | Defined on the interval [0, 1]. Highly flexible, used to model probabilities themselves. | α and β (shape parameters) | Modeling probabilities, proportions, or rates (e.g., the proportion of time a machine is down, prior distribution in Bayesian statistics). |
+| Student's t | Similar to the Normal distribution but with thicker tails, making it more robust to outliers. | v (degrees of freedom) | Statistical inference, particularly when the sample size is small or the population standard deviation is unknown (e.g., t-tests and confidence intervals). |
+| Chi-Squared (χ2) | Sum of squares of independent standard normal random variables. Always positive and right-skewed. | k (degrees of freedom) | Statistical inference: hypothesis testing (goodness-of-fit tests, tests of independence), calculating confidence intervals for population variance. |
+| Weibull | Highly flexible distribution used to model failure times or extreme value phenomena. The shape parameter determines its form. | $k$ (shape parameter), $\lambda$ (scale parameter) | Reliability Engineering & Survival Analysis: Modeling the time to failure of mechanical components, equipment life (e.g., bearings, batteries). Used in extreme value theory. |
+| Pareto | Used to model phenomena where a large portion of the distribution is concentrated in the small range, and the remainder decays slowly (a heavy-tailed distribution). | $x_m$ (scale parameter, minimum value), $\alpha$ (shape index/tail index) | Economics & Social Science: Modeling wealth distribution (the "80/20 rule," or Pareto principle), city population sizes, size of meteorites, and high-value insurance claims. |
+
+## Goodness of Fit (and checks)
+
+- Kolmogorov–Smirnov test
+- Anderson-Darling
+- Pearson Chi-Square
+- KL Divergence
+- AIC
+- BIC
+- QQ-plots
+
 ### Hypothesis Testing
+
+CLT justifies the use of $z$-scores and $t$-scores for conducting hypothesis tests and constructing confidence intervals for the population mean ($\mu$).
 
 | Error Type | Description | H<sub>0</sub> Status | Test Result |
 | ---------- | ----------- | ------------ | ----------- |
@@ -30,13 +169,15 @@ The significant level (*α*) is the maximum probability of making a Type I error
 
 The *p-value* is a number that quantifies the evidence against a null hypothesis (H<sub>0</sub>) in a statistical test. It measures how likely it is to observe the test results (or more extreme results) *if the null hypothesis were true*.
 
+*Power* is the probability that the p-value will fall below α when the alternative is true.
+
 Analogy about these concepts in terms of a courtroom trial:
-- Null Hypothesis (H<sub>0</sub>): The defendant is innocent.
-- Alternative Hypothesis (H<sub>a</sub>): The defendant is guilty.
-- Type I Error (α): Convicting an **innocent** person (false positive). The system sets a high standard of evidence (low α) to avoid this.
-- Type II Error (1−Power): Letting a **guilty** person go free (false negative).
-- Statistical Power: The sensitivity of the justice system to correctly convict a truly guilty person.
-- P-value: The probability of observing the evidence presented (or more extreme evidence) if the defendant was truly innocent (H<sub>0</sub> is true). A very low p-value suggests the evidence is unlikely if H<sub>0</sub> were true.
+- **Null Hypothesis (H<sub>0</sub>)**: The defendant is innocent.
+- **Alternative Hypothesis (H<sub>a</sub>)**: The defendant is guilty.
+- **Type I Error (α)**: Convicting an **innocent** person (false positive). The system sets a high standard of evidence (low α) to avoid this.
+- **Type II Error (1−Power)**: Letting a **guilty** person go free (false negative).
+- **Statistical Power**: The sensitivity of the justice system to correctly convict a truly guilty person.
+- **P-value**: The probability of observing the evidence presented (or more extreme evidence) if the defendant was truly innocent (H<sub>0</sub> is true). A very low p-value suggests the evidence is unlikely if H<sub>0</sub> were true.
 
 **Logical Basis**
 
@@ -70,6 +211,15 @@ The power of a test (1-β) is highly dependent on the **effect size** and the co
 | Event Rarity            | The "signal" (fraud) is buried in the "noise" (normal transactions).                               | Low Power (if you use a simple random sample).                                | Use imbalanced data techniques (e.g. oversampling the rare class), or use a case-control study design to enrich the sample with the rare event. Look into [SMOTE](https://en.wikipedia.org/wiki/Synthetic_minority_oversampling_technique)  |
 | High Stakes (α) | A false positive (α, flagging a legitimate customer as fraudulent) is costly and damaging. | Need to decrease α (e.g. from 0.05 to 0.001), which decreases power. | Accept the lower power (higher β) to prioritize minimizing the Type I Error (False Alarm). This means some fraud will be missed (β) but most customers maybe happier. |
 
+### FDR vs. FPR
+
+- **False Discovery Rate (FDR)** controls the proportion of "discoveries" (rejected null hypotheses) that are actually false positives, crucial in multiple testing, 
+    - Out of all my significant findings, what percentage are actually mistakes?
+
+- **False Positive Rate (FPR)** is the per-test probability of incorrectly flagging a true negative as positive, often set at a standard alpha level (e.g., 5%).
+    - What's the chance this single test is wrong if negative?
+
+ FDR is less strict than methods controlling the Family-Wise Error Rate (FWER, like Bonferroni), offering more power by accepting some false positives to find more true positives. 
 
 ### Multiple Hypothesis Testing Adjustments
 
@@ -90,7 +240,7 @@ This aims to control the expected proportion of false positives among all reject
 
 | Method                   | Goal                                                         | Definition                                                          | Difference                                                                                                                                     | Example                                                                                                   |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Benjamini-Hochberg (B-H) | Control FDR <= *q* (The desired FDR level, often *q* = 0.05) | Controls the expected proportion of false rejections (discoveries). | Less Conservative (Highest Power). Widely used in large-scale testing (like genomics, data mining) where a few false positives are acceptable. | An FDR of 0.05 means that to expect at most 5% of the total significant findings to be false positives. |
+| Benjamini-Hochberg (B-H) | Control FDR <= *q* (The desired FDR level, often *q* = 0.05) | Controls the expected proportion of false rejections (discoveries). | **Less Conservative (Highest Power)**. Widely used in large-scale testing (like genomics, data mining) where a few false positives are acceptable. | An FDR of 0.05 means that to expect at most 5% of the total significant findings to be false positives. |
 
 The key difference is the target:
 
@@ -98,19 +248,121 @@ The key difference is the target:
 
 - FDR Control (Benjamini-Hochberg): Focuses on the proportion of mistakes among the discoveries. (High confidence that most of the significant results are true.)
 
+### Maximum Likelihood Estimation (MLE)
+1. Define the Model & Likelihood:
+    - Choose a probability distribution (e.g., Normal, Poisson) that might model the data, with parameter(s) ($\theta$) (e.g., mean ($\mu$), rate ($\lambda$)).
+    - Write down the Probability Density Function (PDF) or Probability Mass Function (PMF) for a single data point, $f(x_{i}|\theta)$.
+    - For independent and identically distributed (i.i.d.) data ($x_{1},\dots ,x_{n}$), the Likelihood Function, $L(\theta |x)$, is the product of these PDFs: $L(\theta |x)=\prod_{i=1}^{n}f(x_{i}|\theta)$
+2. Transform to Log-Likelihood:
+    - Take the natural logarithm of the Likelihood Function to get the Log-Likelihood Function, $\ell (\theta |x)=\ln (L(\theta |x))=\sum_{i=1}^{n}\ln (f(x_{i}|\theta ))$. This makes differentiation easier and converts products to sums. 
+3. Differentiate & Find the Score Function:
+    - Calculate the first derivative of the log-likelihood with respect to $\theta$: $\frac{\partial \ell }{\partial \theta }$. This is the Score Function.
+4. Solve for the MLE Estimator ($\^{\theta }$):Set the Score Function to zero: $\frac{\partial \ell }{\partial \theta }=0$.
+    - Solve this equation for $\theta$ to find the value that maximizes the likelihood, which is your Maximum Likelihood Estimator, $\^{\theta }$.
+
+### Bayesian Statistics
+
+- Frequentist statistics relies solely on observed data and long-term frequencies, often ignoring prior knowledge. It uses point estimates and hypothesis testing with p-values, which can lead to rigid decisions.
+- Bayesian statistics incorporates prior beliefs and updates them as data accumulates, offering more nuanced probability statements. This is especially useful for unique events or when data is limited.
+
+**Bayesian Inference**
+$$\overbrace{P(\theta|X)}^{\text{posterior}} = \frac{P(\theta,X)}{P(X)} = \frac{\overbrace{P(X|\theta)}^{\text{likelihood}} \overbrace{P(\theta)}^{\text{prior}}}{\underbrace{P(X)}_{\text{marginal likelihood}}}$$
+
+Where:
+
+- $P(\theta∣X)$ is the **posterior** probability the updated belief after observing the data.
+- $P(X∣\theta)$ is the **likelihood** the probability of observing the data given the hypothesis.
+- $P(\theta)$ is the **prior** probability, our initial belief about the hypothesis before observing the data.
+- $P(X)$ is the **marginal likelihood** a normalizing constant that ensures the posterior probability sums to 1.
+
+Example:
+1. Likelihood Function
+The Bernoulli likelihood function is used for binary outcomes like success or failure (for a single trial).
+
+$$ P(X|\theta) = \theta^x \cdot (1 - \theta)^{1-x} $$
+
+Where:
+- X represents the observed data (0 for failure and 1 for success).
+- $\theta$ is the probability of success (e.g., click rate).
+- x is the observed outcome (0 for failure, 1 for success).
+
+2. Prior Distribution
+
+Distribution of $\theta$ based on prior knowledge/assumption. A commonly used probability parameter is the Beta distribution which is used as the prior distribution for parameters like 
+$\theta$. (a conjugate prior for the Binomial likelihood - sequence of independent Bernoulli trials)
+
+$$ P(\theta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} $$
+
+Where:
+- $\theta$ represents the probability of success.
+- $\alpha$ and $\beta$ are parameters that control the shape of the Beta distribution.
+- $B(\alpha, \beta)$ is the Beta function which ensures the distribution integrates to 1.
+
+3. Posteria Distribution
+
+Use Bayes’ Theorem to update our beliefs once new data $P(X∣\theta)$ is available. The updated belief is represented by the posterior belief distribution $P(\theta∣X)$ which combines the prior $P(\theta)$ belief and the new evidence.
+
+$$ P(\theta|X) \propto P(X|\theta) \times P(\theta) $$
+
+
+**Maximum A Posteriori (MAP)**
+
+The Maximum A Posteriori (MAP) estimate is an estimate of an unobserved quantity (like a probability or a parameter) that is derived from the posterior distribution. It represents the single value of the parameter that is considered most probable given both the observed data and the prior information.
+
+$$\hat{\theta}_{\text{MAP}} = \underset{\theta}{\operatorname{argmax}} \text{ } P(\theta | X)$$
+
+Therefore, finding the peak of the posterior means finding the value of $\theta$ that maximizes the product of the likelihood and the prior:
+$$\hat{\theta}_{\text{MAP}} = \underset{\theta}{\operatorname{argmax}} \left[ P(X | \theta) \cdot P(\theta) \right]$$
+
+- Likelihood $P(X | \theta)$: This describes how well the parameter value $\theta$ explains the observed data $D$.
+- Prior $P(\theta)$: This describes your initial beliefs about the parameter value 8$\theta$ before seeing any data.
+
+The MAP estimate is the result of balancing the evidence from the data (the likelihood) with your initial beliefs (the prior).
+
+**MAP vs. MLE**
+
+| Feature | Maximum Likelihood Estimate (MLE) | Maximum A Posteriori (MAP) Estimate |
+| ------- | --------------------------------- | ----------------------------------- |
+| Formula | $\hat{\theta}_{\text{MLE}} = \underset{\theta}{\operatorname{argmax}}\text{ }\mathcal{L}(\theta \| X)$ | $$\hat{\theta}_{\text{MAP}} = \underset{\theta}{\operatorname{argmax}}\text{ }P(\theta \| X)$$ |
+| Considers | Data only (maximizes the likelihood) | Data and Prior (maximizes the posterior) |
+| Sensitivity | Highly sensitive to small data sets | Less sensitive to small data sets (smoothed by the prior) |
+| Relationship | MLE is the same as the MAP estimate when the prior is uniform (i.e., $P(\theta)$ is constant). |
+
+**Conjugate Prior**
+
+A prior distribution is called conjugate to the likelihood function if the resulting posterior distribution belongs to the same family of distributions as the prior distribution.
+
+In simpler terms, if start with a prior from a specific family (e.g., Beta) and the data is generated by a specific process (e.g., Binomial likelihood), the posterior will also be from that same family (e.g., Beta).
+
+The primary reason to use a conjugate prior is mathematical tractability and computational efficiency. Conjugate priors allow the posterior distribution to be calculated in closed form (with an exact, simple equation). This means no complex computational methods needed. In BHT, calculating the marginal likelihood $P(e|H)$ is crucial for the Bayes Factor. With a conjugate prior, this marginal likelihood can often be calculated analytically, avoiding complex numerical integration.
+
+Known conjugate priors pairs (prior-likelihood): Beta-Binomial, Normal-Normal, Gamma-Poisson
+
+**Markov Chain Monte Carlo (MCMC)**
+
+Markov Chain Monte Carlo (MCMC) refers to a class of algorithms (like the Metropolis-Hastings algorithm or Gibbs Sampling) used to sample from a target probability distribution.
+
+In the context of Bayesian statistics, the target distribution is the posterior distribution, $P(\text{Parameters} | \text{Data})$.
+
+The core idea is:
+1. Start at a random point in the parameter space.
+2. Propose a new point (a "move").
+3. Accept or reject the move based on the target distribution's density at the new point.
+4. Repeat this thousands of times, creating a "chain" of samples.
+5. After the chain has run long enough (past the "burn-in" period), the distribution of these samples will accurately represent the true posterior distribution.
+
 ### Bayesian Hypothesis Testing
 
 Bayesian hypothesis testing is fundamentally about updating the degree of belief in a hypothesis as new data are collect. It treats the unknown population parameters (like the true conversion rate, *p*) as random variables with a probability distribution.
 
 The entire framework is centered on Bayes' Theorem:
 
-$$P(H \mid D) = \frac{P(D \mid H) \times P(H)}{P(D)}$$
+$$P(H|e) = \frac{P(e|H)P(H)}{P(e)}$$
 
-Where:
-- **P(H | D)**: The Posterior Probability (What we want to know: The probability of the Hypothesis being true given the Data).
-- **P(D | H)**: The Likelihood (The probability of observing the Data given the Hypothesis).
-- **P(H)**: The Prior Probability (Our initial belief in the Hypothesis before collecting data).
-- **P(D)**: The Marginal Likelihood (The probability of the Data itself, which acts as a normalizing constant).
+- **$P(H|e)$ - Posterior**: How probable is the hypothesis given the observed evidence (not directly computable)
+- **$P(e|H)$ - Likelihood**: How probable is the evidence given that the hypothesis is true?
+- **$P(H)$ - Prior**: How probable was the hypothesis *before* observing the evidence?
+- **$P(e)$ - Marginal/Evidence**: How probable is the new evidence under all possible hypothesis? $P(e) = \sum P(e|H_i)P(H_i)$
 
 Key Concepts in Bayesian A/B Testing
 
@@ -124,7 +376,7 @@ Key Concepts in Bayesian A/B Testing
 
 The Bayes Factor (BF<sub>10</sub>)The Bayes Factor is the Bayesian analogue to the *p*-value and provides a clear measure of evidence:
 
-$$\text{BF}_{10} = \frac{P(D \mid H_a)}{P(D \mid H_0)}$$
+$$\text{BF}_{10} = \frac{P(e \mid H_a)}{P(e \mid H_0)}$$
 
 The ratio between the probability observing the data given the alternative hypothesis H<sub>a</sub> vs. the probability observing the data given the null hypothesis H<sub>0</sub>.
 
@@ -154,8 +406,32 @@ The most common application in A/B testing is defining a stopping rule based on 
 - Rule Example: Stop the test as soon as the Probability of Superiority for Variant B remains above 98% for three consecutive days, OR when the Credible Interval for the difference excludes zero entirely.
 - Advantage: This allows for early stopping if the effect is large and clear, or continuing if the evidence is ambiguous, making the test much more efficient. This is statistically safe in the Bayesian framework, unlike the frequentist approach which requires complex correction methods to maintain its α guarantee when checking results early.
 
+### Survival vs. Hazard Models
+
+**Survival Function (S(t))** - measures the cumulative probability of non-occurrence (e.g. not churn/dead). Provide the probability that an individual survives past time *t* i.e. hasn't experienced the even yet. Use to see overall survival curves, compare group's general survival pattern (e.g. What percentage of patients are still alive after 5 years?)
+
+**Hazard Function (h(t))** - measures the instantaneous rate of *occurrence* (intensity of an event). The instantaneous rate (or risk) of the event occurring at time *t*, given the individual has survived up to time *t*. (Not a probability) Use to understand why survival differs and how factors influence the rate of the event. (e.g. Does Drug X halve the risk of event compared to placebo?)
 
 # Machine Learning
+
+### Missing Data
+
+| Mechanism | Definition | Example |
+| --------- | ---------- | ------- |
+| Missing Completely at Random (MCAR) | The probability of data being missing is unrelated to both the observed and unobserved data. | A survey is accidentally dropped and coffee is spilled on a random page, making a set of answers unreadable. The missingness is a random event. |
+| Missing at Random (MAR) | The probability of data being missing is systematically related to the observed data, but not the missing data itself. | Older survey respondents are less likely to report their income, but the likelihood of their income being missing does not depend on the actual value of their income (after accounting for age). |
+| Missing Not at Random (MNAR) | The probability of data being missing is systematically related to the unobserved data (the value that is actually missing). | Individuals with very high or very low incomes are less likely to report their income. The missingness is dependent on the income value itself. |
+
+| Method | Description | Pros | Cons |
+| ------ | ----------- | ---- | ---- |
+| Listwise Deletion (Complete-Case Analysis) | Excludes any case (row) that has any missing value in any variable relevant to the analysis. | Simple and unbiased if data are MCAR. | Leads to a significant loss of statistical power and potential bias if data are MAR or MNAR. |
+| Pairwise Deletion (Available-Case Analysis) | Uses all available data for a specific analysis (e.g., only cases with non-missing values for two variables are used to calculate their correlation). | Utilizes more data than listwise deletion. |Statistical estimates are based on different subsets of data, which can lead to non-sensical or inconsistent results. Biased under MAR. |
+| Mean/Median/Mode Imputation | Replaces missing values with the mean (for continuous data), median (less affected by outliers), or mode (for categorical data) of the observed values for that variable. | Simple, fast, and easy to implement. | Underestimates variance (standard errors are too small), distorts the shape of the variable's distribution, and can bias estimates, especially for MAR or MNAR data. |
+| Regression Imputation | Missing values are predicted using a regression model based on other variables in the dataset. | Uses information from other variables, maintaining the relationship between the imputed variable and the predictors. | Still a single value, so it underestimates variance (standard errors are too small) and can make relationships between the imputed variable and non-predictor variables artificially stronger. |
+| Last Observation Carried Forward (LOCF) | For longitudinal/time series data, the last observed value is used as the imputation for subsequent missing data points. | Simple, commonly used in clinical trials. | Only appropriate when the assumption that the value did not change is reasonable; can introduce significant bias if the underlying trend is changing. |
+| Multiple Imputation (MI) | The process is repeated multiple times (typically 5-50): 1. Impute (create M complete datasets, each with different plausible imputed values). 2. Analyze (run the desired analysis on each of the M datasets). 3. Pool (combine the results into a single set of estimates and standard errors). | Best general-purpose method for MAR data. Provides unbiased estimates for parameters and accurate standard errors, reflecting the uncertainty of imputation. | More complex to implement and computationally intensive, requiring specialized software packages. The method is sensitive to the imputation model. |
+| Full Information Maximum Likelihood (FIML) | A model-based approach that estimates the parameters of a statistical model directly from the incomplete data, effectively treating the missing values as parameters to be estimated. | Highly efficient and yields unbiased estimates under the MAR assumption. Does not impute data, so you get one set of results. | Only works for specific types of models (often structural equation models) and is computationally expensive for large datasets or complex models. |
+
 
 ### Evaluation metrics
 
@@ -163,16 +439,53 @@ The most common application in A/B testing is defining a stopping rule based on 
 
 - **Accuracy**: The most intuitive metric, it is the ratio of correct predictions to the total number of predictions. It can be misleading if the dataset is imbalanced (e.g., 98% of cases are in one class).
 - **Precision (Positive Predictive Value)**: Measures the proportion of positive identifications that were actually correct. It is useful in cases where the cost of a false positive is high.
+
+$$ \frac{TP}{TP + FP}$$
+
 - **Recall (Sensitivity or True Positive Rate)**: Measures the proportion of actual positives that were identified correctly. It is useful when the cost of a false negative is high (e.g., missing a disease diagnosis).
+
+$$ \frac{TP}{TP + FN}$$
+
 - **F1-Score**: The harmonic mean of precision and recall. It provides a single score that balances both concerns and is a good general measure for imbalanced classes.
 - **Confusion Matrix**: A table that visualizes the performance by breaking down predictions into True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN).
 - **ROC Curve and AUC**: The Receiver Operating Characteristic curve shows the trade-off between the True Positive Rate and False Positive Rate at various threshold settings. The Area Under the Curve (AUC) is a single measure of a model's overall ability to distinguish between classes. 
 
+- **Akaike Information Criterion (AIC)**: measures pure predictive fit → rewards flexibility
+    - If main goal is prediction, and are okay with a slightly more complex model if it improves predictive accuracy.
+$$ AIC=2 \cdot k−2 \cdot log L $$
+
+- **Bayesian Information Criterion (BIC)**: penalizes complexity → good for distribution selection
+    - If goal is to identify the "true" model or if a large dataset and want to strongly penalize complexity to avoid overfitting.
+$$BIC=k \cdot ln(n)−2 \cdot log L$$
+
+Where:
+- $k$ = number of parameters
+- $n$ = sample size
+- $L$ = maximized likelihood of the model
+
 **Regression**
 
-- Mean Absolute Error (MAE): The average of the absolute differences between the predicted values and the actual values. It gives an idea of the typical error magnitude.
-- Mean Squared Error (MSE): The average of the squared differences between predicted and actual values. This metric penalizes large errors more heavily than MAE.
-- Root Mean Squared Error (RMSE): The square root of the MSE. It is in the same units as the target variable, making it more interpretable than MSE.- R-squared (R<sup>2</sup>): Represents the proportion of the variance in the dependent variable that is predictable from the independent variables. A higher value indicates a better fit. 
+| Assumption | What It Means | Why It Matters |
+| ---------- | ------------- | -------------- |
+| Linearity | The relationship between X and Y is linear in the parameters (β). | If violated, the model is misspecified and the predictions are biased. |
+| No Perfect Multicollinearity | Independent variables (X's) are not perfectly correlated with each other. | If violated, the model cannot be solved (matrix is singular), leading to infinite coefficient variance. |
+| Exogeneity of Errors | The error term (ϵ) has an expected mean of zero, conditional on the predictors X. $\mathbb{E}[\epsilon \| X] = 0$. |  If violated (endogeneity), predictors link to unobserved factors, biasing results. | 
+| Homoscedasticity | The variance of the errors is constant across all levels of the independent variables. $Var[\epsilon_i​]=\sigma^2$. | If violated, OLS estimates are still unbiased, but they are no longer the most efficient (BLUE). Standard errors are incorrect. |
+| No Autocorrelation | The error terms are independent of each other (especially important for time series data). $Cov(\epsilon_i​,\epsilon_j​)=0$ for $i\ne j$. | If violated, OLS estimates are still unbiased, but standard errors are incorrect. |
+| Normality of Errors | The errors are normally distributed. $\epsilon∼N(0,\sigma^2)$. | Necessary for calculating t-statistics, p-values, and confidence intervals. |
+| Sufficient Sample Size | The number of observations (n) must be greater than the number of parameters (k). | Basic requirement for solvability. |
+
+- **Mean Absolute Error (MAE)**: The average of the absolute differences between the predicted values and the actual values. It gives an idea of the typical error magnitude.
+- **Mean Squared Error (MSE)**: The average of the squared differences between predicted and actual values. This metric penalizes large errors more heavily than MAE.
+- **Root Mean Squared Error (RMSE)**: The square root of the MSE. It is in the same units as the target variable, making it more interpretable than MSE.- R-squared (R<sup>2</sup>): Represents the proportion of the variance in the dependent variable that is predictable from the independent variables. A higher value indicates a better fit. 
+
+- **SST (Total Sum of Squares)**: Total variation in the dependent variable ($y$), calculated as the sum of squared differences between each observed value and the mean of all observed values.
+- **SSR (Sum of Squares Regression)**: Variation in the dependent variable explained by the regression model, calculated as the sum of squared differences between the predicted values ($\hat{y}$) and the mean of the observed values ($\bar{y}$).
+- **SSE (Sum of Squares Error/Residuals)**: Unexplained variation (error), calculated as the sum of squared differences between the observed values ($y$) and the predicted values ($\^{y}$). 
+- $SST = SSR + SSE$
+- R-squared ($R^{2}$): This metric, indicating model fit, is derived from these sums: $R^{2}=\frac{SSR}{SST}$. A higher $R^{2}$ (closer to 1) means the model explains a larger proportion of the total variance.
+- Adjusted R-squared (adj.$R^{2}$): A modified R-squared that accounts for the number of predictors in a regression model, penalizing for adding useless variables, making it better for comparing models with different numbers of independent variables.
+- adj.$R^{2} = 1 - \frac{(1-R^2)(n-1)}{n-p-1}$ $n$-number of samples, $p$-number of predictors/features
 
 ### L1 vs. L2 regularization
 
@@ -189,6 +502,133 @@ The most common application in A/B testing is defining a stopping rule based on 
 - Resulting model: **Encourages smaller, but generally non-zero** coefficients for all features, leading to a **less sparse, more stable model**.
 - Use case: Preferred when you believe most features are relevant and want to shrink their weights to prevent a few from having an undue influence, reducing overall variance. It is also more robust to correlated features.
 - Constraint shape: Creates a circular or elliptical constraint, which gradually shrinks all weights without forcing any single one to be zero. 
+
+
+| $\lambda$ (complexity) | Effect on coefficients | Effect on model |
+| -------------- | ---------------------- | --------------- |
+| **0 (small)**  | Almost no shrinkage                              | Equivalent to OLS, can overfit if p is large |
+| **Moderate**   | Coefficients shrink toward 0                     | Reduces variance, slightly biased estimates  |
+| **Large**      | Coefficients shrink a lot (but not exactly zero) | Simpler model, high bias, low variance       |
+
+
+**Key Components**
+| Purpose | Linear Regression | GLM (Logistic, Poisson, Gamma) |
+| ------- | ----------------- | ------------------------|
+| Model fit (“variance explained”) | $R^2$, adj. $R^2$ | Pseudo-$R^2$, deviance |
+| Compare nested models | F-test | Likelihood Ratio $\chi^2$ test |
+| Test coefficients | t-test | z-test / Wald test |
+| Goodness-of-fit | residual plots | Deviance, Pearson $\chi^2$ |
+| Check dispersion | N/A | Pearson $\chi^2$ / df |
+| Model selection | AIC, BIC (valid) | AIC, BIC (preferred) |
+
+**ANOVA**
+
+Analysis of Variance - test whether three or more groups have the same mean.
+
+| Source | SS | df | MS | F | p |
+| ------ | -- | -- | -- | - | - |
+| Between groups | SS_B | k−1 | MS_B = SS_B/(k-1) | F = MS_B / MS_W | p |
+| Within groups | SS_W | N−k | MS_W = SS_W / (N-k) | |
+| Total | SS_T | N−1 | | | |
+
+**F-test**
+Statistical test used inside ANOVA.
+
+$$F = \frac{\text{Between-group Variance}}{\text{Within-group Variance}} $$
+
+- If groups have similar means → numerator ≈ denominator → F close to 1.
+- If at least one group mean differs → numerator >> denominator → large F → small p-value.
+-Reject $H_0$ (all means equal) if: $p \lt \alpha$
+
+In Regression:
+$$F = \frac{\text{Model Mean Square (MSM)}}{\text{Residual Mean Square (MSE)}} $$
+
+- MSM ≈ MSE → predictors explain nothing → F ≈ 1
+- MSM >> MSE → predictors reduce error → F large → model significant
+
+| Source | Sum of Squares | Degree of Freedom (df) | Mean Squares | F-Statistics |
+| ------ | -- | -- | -- | - |
+| Model | SSR | p | MSM=SSR/p | MSM/MSE |
+| Residual | SSE | n-p-1 | MSE=SSE/(n-p-1) |
+| Total | SST | n-1 | | |
+
+- **SSR (Sum of Squares Regression)**: Variation explained by the regression line between $\hat{y}$ and the mean $\bar{y}$
+    - $SSR = \sum (\hat{y_i} - \bar{y})^2$
+- **SSE (Sum of Squares Error)**: Unexplained variation (residuals, between observed $y_i$ and predicted $\hat{y}$)
+    - $SSE = \sum (y_i - \hat{y_i})^2$
+- **SST (Sum of Squares Total)**: Total variation in the dependent variable ($Y$) from its mean ($\bar(y)$)
+    - $SST = \sum (y_i - \bar{y})^2 = SSR + SSE $
+
+- **MSM/MSR** (Mean Square Regression/Model) tells how strong the model is.
+- **MSE** (Mean Square Error/Residual) tells how noisy the data is.
+- F-statistic compares these two to test:
+$$H_0 : \beta_1 = \beta_2 = \cdot\cdot\cdot = \beta_p = 0 $$
+
+| Test | Answers | When Used |
+| ---- | ------- | --------- |
+| t-test | “Is this single β significant?” | Regression coefficients |
+| F-test (regression) | “Is the model useful at all?”	 | Overall model test |
+| ANOVA (F-test) | “Do multiple group means differ?” |Group comparison |
+| Partial F-test | “Does adding variables improve the model?” | Model comparison |
+| Chi-square test | GLMs where likelihood ratio asymptotically → $\chi^2$ | Logistic, Poisson, etc. |
+
+| Scenario | Test | Null Hypothesis | Notes |
+| -------- | ---- | --------------- | ----- |
+| Two groups (treatment vs control) | t-test / regression t-test | β1 = 0 | Classic two-group test |
+| Multiple groups (≥3) | ANOVA / F-test | β1 = β2 = … = 0 | Overall effect |
+| Identify which group differs | t-tests or contrasts | βj = 0 | Adjust for multiple comparisons |
+| Non-parametric alternative | Kruskal-Wallis | Group medians equal | When normality is violated |
+
+Hypothesis Testing Regression: t-test vs Bootstrap vs Permutation
+
+| Feature | Classical t-test | Bootstrap | Permutation |
+| ------- | ---------------- | --------- | ----------- |
+| Purpose | Test if a parameter (mean, coefficient) ≠ null | Empirically estimate p-values & SE | Empirically estimate p-value under null |
+| Null hypothesis | H0: parameter = 0 (or specified value) | Same | Same |
+| Assumptions | - Normal errors (small n), Independent observations, Low collinearity, Correctly specified model | Minimal; sample representative of population | Minimal; observations exchangeable under H0 |
+| How it works | Compute t-statistic = estimate / SE; compare to theoretical t-distribution | Resample rows with replacement B times; compute statistic each resample; p-value = fraction ≥ observed | Shuffle labels under H0 B times; compute statistic each permutation; p-value = fraction ≥ observed |
+| What it tests | Parameter significance | Parameter significance accounting for sample variability | Parameter significance under null, robust to dependence |
+| Handles small sample? | N | Y | Y |
+| Handles correlated predictors? | N | Y | Y |
+| Handles non-normal errors? | N | Y | Y |
+| Computational cost | Low | Medium–High | Medium–High |
+| Pros | Fast, simple, interpretable | Robust, empirically accurate SE & p-value | Robust, exact null distribution, minimal assumptions |
+| Cons | Sensitive to small n, collinearity, non-normality | Computationally intensive; model still assumed reasonable | Computationally intensive; requires exchangeable observations |
+| Use case | Large sample, independent predictors, normal errors | Small sample, multicollinearity, complex model | Small sample, correlated predictors, non-parametric / ML hypothesis testing |
+
+Classical $t$ shows the theoretical null, permutation shows the empirical null, and bootstrap shows the observed effect variability; the more the bootstrap distribution lies beyond the null's rejection region, the higher the power, regardless of its exact center.
+
+**Generalized Linear Models**
+
+| GLM | Random Component (Distribution) | Canonical Link Function | Best for |
+| --- | ------------------------------- | ----------------------- | -------- |
+| Normal | Gaussian (Normal) | Identity (μ=η) | Continuous, Unbounded Data (e.g., height, temperature, sales volume). This is standard Ordinary Least Squares (OLS) Linear Regression. |
+| Logistic | Binomial | Logit ($\log\frac{\mu}{1-\mu} = \eta$) | Binary Outcomes (e.g., 0/1, Yes/No, Pass/Fail, Spam/Not Spam). |
+| Poisson | Poisson | Log ($\log(\mu) = \eta$) | Count Data (e.g., number of clicks, number of accidents, number of insurance claims). Assumes mean = variance (equidispersion). |
+| Negative Binomial | Negative Binomial | Log ($\log(\mu) = \eta$) | Overdispersed Count Data (where variance > mean). Used as a robust alternative to Poisson regression. |
+| Gamma | Gamma | Inverse ($\frac{1}{\mu} = \eta$) | Continuous, Positive, Skewed Data (e.g., waiting times, financial claims size, duration). Often used when variance increases with the mean. |
+| Inverse Gaussian | Inverse Gaussian | Inverse Squared ($\frac{1}{\mu^2} = \eta$) | Highly Skewed Continuous, Positive Data (e.g., duration of processes with heavy tails). |
+
+- **Deviance** ($D$): 
+$ 2\cdot [\log (L_{\text{Saturated}})-\log (L_{\text{Fitted}})] $
+
+- **Akaike Information Criterion (AIC)**: $\text{AIC} = 2k - 2 \log(\mathcal{L}_m)$
+- **Overdispersion ($\phi > 1$)**: Occurs when the observed variance of the response variable is greater than the variance predicted by the assumed distribution (especially in Poisson ($\mu$ = $\sigma^2 = \lambda$) and Binomial models). The ratio of Residual Deviance to Residual Degrees of Freedom is significantly greater than 1 ($\phi \gg 1$).
+- **Dispersion Parameter ($\phi$)**: A scaling factor that corrects the standard errors in the presence of overdispersion.
+
+| Model Name | Key Concept | What it is for |
+| ---------- | ----------- | -------------- |
+| Quantile Regression (QR) | Models the relationship between predictors (X) and a specific quantile of the response variable (Y). | Robustness: Median regression (the 50th percentile) is far more robust to outliers than Mean (OLS) regression. Non-Homogeneity: Allows you to model how predictors affect different parts of the response distribution (e.g., modeling factors that affect the 10th percentile of income vs. the 90th percentile). |
+| Median Regression | This is Quantile Regression specifically focusing on the 50th percentile (the median). | Robustness to Skew/Outliers: If the residual distribution is highly skewed or contains severe outliers, the median provides a more stable and representative measure of central tendency than the mean. |
+| Generalized Additive Models (GAMs) | Extends GLMs by replacing the linear predictor terms ($\beta_i​X_i​$) with flexible smoothing functions ($f_i​(X_i​)$). | Non-Linear Relationships: Captures complex, non-linear, and non-monotonic relationships between predictors and the outcome without having to manually specify polynomial terms (like X2 or X3). Interpretability: Unlike black-box models (like neural networks), the effect of each predictor is plotted as a smooth curve, maintaining some interpretability. |
+| LOESS (or LOWESS) | A non-parametric method that fits a series of local polynomial regressions to small, overlapping subsets of the data. | Visualization/Exploration: Primarily used for exploratory data analysis (EDA) and smoothing time series. It creates a smooth curve without assuming any global functional form (linear, quadratic, etc.) for the entire dataset. Prediction: Less common for formal prediction as it's computationally intensive and sensitive to the chosen "span" (the size of the local subset). |
+| Finite Mixture Models (FMMs) | Assumes the entire population is composed of a finite number of unobserved (latent) sub-populations or "classes" and the response variable Y follows a different regression model within each class. | Heterogeneity: When you suspect your data contains distinct groups that follow different underlying processes. The model simultaneously estimates the parameters for each latent class and the probability that any given observation belongs to each class. Example: Modeling customer spending where one class is "low-spenders" and another is "high-spenders" each driven by different factors. |
+
+| Test Name | Distribution | Primary Role in OLS | What it Tests |
+| --------- | ------------ | ------------------- | ------------- |
+| t-Test | t-Distribution | Individual Coefficient Significance | Tests the null hypothesis that a single coefficient ($\beta_i$​) is equal to zero, holding all other variables constant. |
+| F-Test (ANOVA) | F-Distribution | Overall Model Significance & Group Significance | Overall: Tests the null hypothesis that all regression coefficients are zero ($\beta_1​=\beta_2​=⋯=0$). Groups: Tests the null hypothesis that a subset of coefficients is simultaneously zero (e.g., comparing a model with 5 variables to one with 2). |
+| $\chi^2$ Test | $\chi^2$-Distribution | Diagnostics and Model Fit (via GLMs) | Tests goodness-of-fit for GLMs, checks OLS assumptions (Normality, Homoscedasticity), or tests independence between categorical variables. |
 
 **Clustering**
 
@@ -214,7 +654,11 @@ The most common application in A/B testing is defining a stopping rule based on 
 
 **Gini Impurity** - Quantifies the probability of misclassifying a randomly chosen element in the dataset if it were randomly labeled according to the class distribution in the node.
 
+$$ 1 - \sum_{i=1}^{C} p_i^2 \text{ where p is the proportion of class i}$$
+
 **Entropy** - Measures the uncertainty or randomness in a set of data. It quantifies the average amount of information needed to classify a sample in the node.
+
+$$ - \sum_{i=1}^{C} p_i \log_2(p_i) \text{ where p is the proportion of class i}$$
 
 **Algorithms**
 | Algorithms | Decision Tree (DT) | Random Forest (RF) | Boosted Trees (BT) & Gradient Boosting Machines (GBM) |
@@ -300,6 +744,17 @@ Each instance can be assigned to multiple labels simultaneously, and the labels 
 | RBF (Gaussian) | Default choice when data nature is unknown; complex, non-linear data | Complex, potentially highly flexible and smooth curves | C, gamma (influence of single data points) |
 | Sigmoid | Useful in applications related to neural networks (as an activation function) | Highly non-linear, potentially complex and sometimes difficult to interpret | C, gamma, coef0 |
 
+### Reservoir Sampling
+Algorithm(s) for randomly selecting a fixed-size sample from a stream of unknown or very large size, where you cannot store all elements in memory.
+
+1. Fill reservoir with the first k elements.
+2. For each element x_i (i > k):
+    - Generate random integer j in [1, i]
+    - If j ≤ k, replace reservoir[j] with x_i
+Guarantee: every element has probability $k/n$ of being in the final reservoir.
+
+Intuition: Each new element has a chance to replace an existing one, so that at the end, every element has equal chance to be picked, without knowing the total size in advance.
+
 ### Synthetic Oversampling (SMOTE)
 
 To deal with highly imbalanced data (like fraud - minority class) usually leverages an oversampling approaches such as creating synthetic or duplicate samples of the minority class to balance the class distribution, aiming for a 50/50 split for a binary class system for example.
@@ -341,16 +796,26 @@ Common types
 
 ### Activation Functions
 
-| Activation Functions | Sigmoid | tanh | ReLU |
-| -------- | ------- | ---- | ---- |
-| Formula  | 1/(1+e<sup>-x</sup>) | tanh(x) | max(0, x) |
-| Range    | 0 to 1  |-1 to 1 | 0 to ∞ |
-| Gradient Issues | Severe vanishing gradients | Moderate vanishing gradients | No vanishing gradient for x>0x>0 |
-| Computation Cost | Expensive (exponential) | Expensive (exponential) | Very cheap (max operation) |
-| Use Case | Binary classification outputs | Hidden layers zero-centered data | Deep neural networks |
-| Pros | Smooth, probabilistic output | Better gradient flow than sigmoid | Fast, efficient, avoids vanishing gradient |
-| Cons | Not zero-centered, slow training | Still saturates for large inputs | Dying ReLU problem |
-| Output | Always positive | Symmetric around zero | Sparse |
+| Function       | Formula                                                  | Output Range | Typical Use                                    |
+| -------------- | -------------------------------------------------------- | ------------ | ---------------------------------------------- |
+| **Sigmoid**    | $ \sigma(z) = \frac{1}{1+e^{-z}} $                       | (0,1)        | Binary classification, probability output      |
+| **Tanh**       | $ \tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}} $         | (-1,1)       | Hidden layers, zero-centered outputs           |
+| **ReLU**       | $ \max(0, z) $                                           | [0, ∞)       | Hidden layers, CNNs, faster convergence        |
+| **Leaky ReLU** | $ \max(0.01 z, z) $                                      | (-∞, ∞)      | Mitigate dead neurons in ReLU                  |
+| **Softmax**    | $ \text{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}} $ | (0,1) sum=1  | Multi-class classification, probability output |
+
+
+### Loss Functions
+
+| Function       | Formula                                                  | Output Range | Typical Use                                    |
+| -------------- | -------------------------------------------------------- | ------------ | ---------------------------------------------- |
+| **Sigmoid**    | $ \sigma(z) = \frac{1}{1+e^{-z}} $                       | (0,1)        | Binary classification, probability output      |
+| **Tanh**       | $ \tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}} $         | (-1,1)       | Hidden layers, zero-centered outputs           |
+| **ReLU**       | $ \max(0, z) $                                           | [0, ∞)       | Hidden layers, CNNs, faster convergence        |
+| **Leaky ReLU** | $ \max(0.01 z, z) $                                      | (-∞, ∞)      | Mitigate dead neurons in ReLU                  |
+| **Softmax**    | $ \text{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}} $ | (0,1) sum=1  | Multi-class classification, probability output |
+
+
 
 # Optimization
 
@@ -384,6 +849,19 @@ SGD with Momentum | Adds a "velocity" term that accumulates a fraction of the pr
 
 **Regularization (L1, L2)**: Techniques like Weight Decay (which is L2 regularization) are often used alongside optimizers (as seen in AdamW) to penalize large weights and prevent overfitting.
 
+### Large Language Model
+
+**Perplexity (PPL)**
+A metric of how "surprised" or uncertain a model is by a sequence of text; essentially, how many choices it effectively has at each step.
+- Lower perplexity indicates the model is more confident and accurate in its predictions, finding text more probable.
+- Primarily an evaluation metric to assess model performance, though it's less reliable than human judgment and can be vocabulary-dependent. 
+
+**Temperature (T)**
+A hyperparameter that scales the output probabilities, affecting the randomness of token selection.
+- High Temperature (e.g., T > 1.0): Makes less likely tokens more probable, leading to diverse, creative, but potentially nonsensical outputs (higher uncertainty/perplexity).
+- Low Temperature (e.g., T < 0.7): Sharpens probabilities, favoring the most likely tokens, resulting in focused, predictable, but potentially dull or repetitive text (lower uncertainty/perplexity).
+- A direct control knob for generation style (e.g., brainstorming vs. factual answers). 
+
 # Reinforcement Learning
 
 | Concepts | Q-table | Deep Q-Network (DQN) | Actor-Critic (A2C) | Proximal Policy Optimization (PPO) | Generalized Policy Optimization (GRPO) |
@@ -399,7 +877,7 @@ SGD with Momentum | Adds a "velocity" term that accumulates a fraction of the pr
 In Reinforcement Learning, a policy ($\pi$) is the agent's strategy or rule set for choosing an action. It is a mapping from observed states to actions.
 
 - Policy Notation: It is often written as $\pi(a|s)$, which is the probability of taking action $a$ when in state $s$.
-- Optimal Policy ($\pi^*$): The goal of nearly all RL algorithms is to find the optimal policy, $\pi^*$, which maximizes the expected cumulative discounted future reward.
+- Optimal Policy ($\pi^{\*}$): The goal of nearly all RL algorithms is to find the optimal policy, $\pi^{\*}$, which maximizes the expected cumulative discounted future reward.
 
 Policies come in two main types:
 1. Deterministic Policy: $\pi(s) = a$. For a given state, the agent always chooses the same action (e.g., Q-Learning's evaluation policy).
